@@ -103,7 +103,7 @@ class Reorder {
 		$defaults = array(
 			'post_type'   => 'post',                     // Setting the post type to be reordered
 			'order'       => 'ASC',                      // Setting the order of the posts
-			'heading'     => __( 'Reorder', 'reorder' ), // Default text for heading
+			'heading'     => __( 'Reorder', 'metronet-reorder-posts' ), // Default text for heading
 			'initial'     => '',                         // Initial text displayed before sorting code
 			'final'       => '',                         // Initial text displayed before sorting code
 			'post_status' => 'publish',                  // Post status of posts to be reordered
@@ -147,7 +147,7 @@ class Reorder {
 		//Iterate through post data
 		$this->update_posts( $post_data, 0 );
 		
-		die( json_encode( array( 'success' => 'yo' ) ) );
+		die( json_encode( array( 'success' => 'true' ) ) );
 	} //end ajax_save_post_order
 	
 	/**
@@ -288,7 +288,7 @@ class Reorder {
 		setup_postdata( $post );
 		?>
 		<li id="list_<?php the_id(); ?>">
-			<div><?php the_title(); ?> <a href='#' style="float: right"><?php esc_html_e( 'Expand', 'reorder' ); ?></a></div>
+			<div><?php the_title(); ?> <a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
 			<ul class='children'>
 			<?php $this->output_row_children( $post_children, $all_children ); ?>
 			</ul>
