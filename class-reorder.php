@@ -193,7 +193,7 @@ class Reorder {
 		$pages = array( 'edit.php' );
 
 		if ( in_array( $pagenow, $pages ) )
-			wp_enqueue_style( 'reorderpages_style', REORDER_URL . '/admin.css' );
+			wp_enqueue_style( 'reorderpages_style', REORDER_URL . '/css/admin.css' );
 
 	}
 
