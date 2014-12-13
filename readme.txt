@@ -2,7 +2,7 @@
 Contributors: ryanhellyer, metronet, ronalfy
 Author URI: http://metronet.no/
 Plugin URL: http://metronet.no/
-Requires at Least: 3.3
+Requires at Least: 3.7
 Tested up to: 4.1
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
 Stable tag: 1.0.6
