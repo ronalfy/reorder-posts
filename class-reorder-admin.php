@@ -48,7 +48,7 @@ class Reorder_Admin {
 	
 } //end class Reorder_Admin
 
-add_action( 'init', 'mn_reorder_admin_instantiate' );
+add_action( 'init', 'mn_reorder_admin_instantiate', 15 );
 function mn_reorder_admin_instantiate() {
 	Reorder_Admin::get_instance();
 }

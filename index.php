@@ -6,6 +6,8 @@ Description: Reorder posts
 Version: 1.0.6
 Author: Ryan Hellyer, Ronald Huereca
 Author URI: http://geek.ryanhellyer.net/
+Text Domain: metronet-reorder-posts
+Domain Path: /languages
 
 ------------------------------------------------------------------------
 This program is free software; you can redistribute it and/or modify
@@ -72,14 +74,20 @@ function mn_reorder_posts_init() {
 			array(
 				'post_type'   => $post_type,
 				'order'       => 'ASC',
-				'heading'     => __( 'Metronet reorder posts', 'reorder' ),
+				'heading'     => __( 'Reorder Posts', 'metronet-reorder-posts' ),
 				'final'       => '',
 				'initial'     => '',
-				'menu_label'  => __( 'Reorder', 'reorder' ),
+				'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
 				'icon'        => REORDER_URL . '/metronet-icon.png',
 				'post_status' => 'publish',
 			)
 		);
 	}
 } //end mt_reorder_posts_init
+
+add_action( 'plugins_loaded', 'mn_reorder_init_language' );
+function mn_reorder_init_language() {
+	//* Localization Code */
+	load_plugin_textdomain( 'metronet-reorder-posts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
 
