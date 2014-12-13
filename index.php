@@ -63,7 +63,7 @@ define( 'REORDER_BASENAME', plugin_basename(__FILE__) ); //Plugin basename
  */
 add_action( 'wp_loaded', 'mn_reorder_posts_init', 100 ); //Load low priority in init for other plugins to generate their post types
 function mn_reorder_posts_init() {
-	$post_types = get_post_types( '','names' );
+	$post_types = get_post_types( array(), 'names' );
 	
 	// Add filter to allow users to control which post-types the plugin is used with via their theme
 	$post_types = apply_filters( 'metronet_reorder_post_types', $post_types );
