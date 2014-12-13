@@ -14,9 +14,18 @@
 	background:     -ms-linear-gradient(top, #f7f7f7, #e7e7e7); /* for IE 10+ */
 	cursor: move;
 	border: 1px solid #ddd;
-	border-raidus: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	border-raidus: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#post-list div:hover {
+	background: #f0f0f0; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#d8d8d8'); /* for IE 9 or older */
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#d8d8d8)); /* for WebKit */
+	background: -webkit-linear-gradient(top, #f7f7f7, #d8d8d8); /* for newer versions of WebKit */
+	background:    -moz-linear-gradient(top, #f7f7f7, #d8d8d8); /* for Firefox 3.6+ */
+	background:      -o-linear-gradient(top, #f7f7f7, #d8d8d8); /* for Opera 11.1+ */
+	background:     -ms-linear-gradient(top, #f7f7f7, #d8d8d8); /* for IE 10+ */
 }
 #post-list ul {
 	padding-left: 40px;
