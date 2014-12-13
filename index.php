@@ -40,6 +40,7 @@ if ( !defined( 'ABSPATH' ) )
  * @author Ryan Hellyer <ryan@metronet.no>
  */
 require( 'class-reorder.php' );
+require( 'class-reorder-admin.php' );
 
 /**
  * Define constants
