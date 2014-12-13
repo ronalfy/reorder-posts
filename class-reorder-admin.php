@@ -80,6 +80,64 @@ class Reorder_Admin {
 	}
 	
 	/**
+	 * Add post types to be overridden using menu_order
+	 *
+	 * Output options for menu_order
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @see init_admin_settings
+	 *
+	 * @param array $args {	
+	 		@type string $desc Description for the setting.
+	 		
+	 }
+	 */
+	public function add_settings_field_menu_order( $args = array() ) {
+		//Get options/defaults
+		$settings = $this->get_plugin_options();
+		$settings_menu_order = isset( $settings[ 'menu_order' ] ) ? $settings[ 'menu_order' ] : array();
+		$post_types = get_post_types( array(), 'object' );
+		
+		//Foreach loop to show de awesome post types
+		foreach( $post_types as $post_type_name => $post_type ) {
+			
+			//Determine whether to show this post type (show_ui = true)
+			$show_ui = (bool)isset( $post_type->show_ui ) ? $post_type->show_ui : false;
+			if ( !$show_ui || 'attachment' === $post_type_name ) continue;
+			
+			//Get post type labels for checkbox
+			$post_type_value = isset( $settings_post_types[ $post_type_name ] ) ? $settings_post_types[ $post_type_name ] : 'on';
+			$post_type_label = isset( $post_type->label ) ? $post_type->label : $post_type_name;
+			printf( '<div id="metronet-reorder-posts-%s">', esc_attr( $post_type_name ) );
+			printf( '<h3>%s</h3>', esc_html( $post_type_label ) );
+			
+			//Get menu order arguments
+			$menu_orderby = isset( $settings_menu_order[ $post_type_name ][ 'orderby' ] ) ? $settings_menu_order[ $post_type_name ][ 'orderby' ] : 'none';
+			
+			//Output Menu Order Arguments
+			printf(  '<p>%s</p>', esc_html__( 'Sort by:', 'metronet-reorder-posts' ) );
+			printf( '<select name="metronet-reorder-posts[menu_order][%1$s][orderby]">', esc_attr( $post_type_name ) );
+			printf( '<option value="none" %s>%s</option>', selected( 'none', $menu_orderby, false ), esc_html__( 'None', 'metronet-reorder-posts' ) );
+			printf( '<option value="menu_order" %s>%s</option>', selected( 'menu_order', $menu_orderby, false ), esc_html__( 'Menu Order', 'metronet-reorder-posts' ) );
+			echo '</select>';
+			
+			//Get order arguments
+			$menu_order = isset( $settings_menu_order[ $post_type_name ][ 'order' ] ) ? $settings_menu_order[ $post_type_name ][ 'order' ] : 'DESC'; //DESC is WP_Query default
+			//Output Menu Order Arguments
+			printf(  '<p>%s</p>', esc_html__( 'Sort Order:', 'metronet-reorder-posts' ) );
+			printf( '<select name="metronet-reorder-posts[menu_order][%1$s][order]">', esc_attr( $post_type_name ) );
+			printf( '<option value="ASC" %s>%s</option>', selected( 'ASC', $menu_order, false ), esc_html__( 'ASC', 'metronet-reorder-posts' ) );
+			printf( '<option value="DESC" %s>%s</option>', selected( 'DESC', $menu_order, false ), esc_html__( 'DESC', 'metronet-reorder-posts' ) );
+			echo '</select>';
+			
+			//Output closing div
+			echo '</div>';
+		}
+	}
+	
+	/**
 	 * Add post types to be reordered using the plugin
 	 *
 	 * Output checkboxes for post types
@@ -116,7 +174,7 @@ class Reorder_Admin {
 			} 
 			
 			//Output post type option
-			printf( '<div><input type="hidden" name="metronet-reorder-posts[post_types][%1$s]" value="off" /> <input type="checkbox" name="metronet-reorder-posts[post_types][%1$s]" id="post_type_%1$s" value="on" %2$s /><label for="post_type_%1$s">&nbsp;%3$s</label></div>', esc_attr( $post_type_name ), $checked, $post_type_label );
+			printf( '<div><input type="hidden" name="metronet-reorder-posts[post_types][%1$s]" value="off" /> <input type="checkbox" name="metronet-reorder-posts[post_types][%1$s]" id="post_type_%1$s" value="on" %2$s /><label for="post_type_%1$s">&nbsp;%3$s</label></div>', esc_attr( $post_type_name ), $checked, esc_html( $post_type_label ) );
 		}
 	}
 	
@@ -190,7 +248,7 @@ class Reorder_Admin {
 		
 		add_settings_field( 'mn-post-types', __( 'Post Types', 'metronet-reorder-posts' ), array( $this, 'add_settings_field_post_types' ), 'metronet-reorder-posts', 'mn-reorder-post-types', array( 'desc' => __( 'Select the post types you would like this plugin enabled for.', 'metronet-reorder-posts' ) ) );
 		
-		//add_settings_field( 'mn-menu-order', __( 'Select the menu order arguments.', 'metronet-reorder-posts' ), array( $this, 'add_settings_field_menu_order' ), 'metronet-reorder-posts', 'mn-reorder-menu-order', array( 'desc' => __( 'Select the menu order for the post types.', 'metronet-reorder-posts' ) ) );
+		add_settings_field( 'mn-menu-order', __( 'Select the menu order arguments.', 'metronet-reorder-posts' ), array( $this, 'add_settings_field_menu_order' ), 'metronet-reorder-posts', 'mn-reorder-menu-order', array( 'desc' => __( 'Select the menu order for the post types.', 'metronet-reorder-posts' ) ) );
 		
 	}
 	
@@ -242,7 +300,6 @@ class Reorder_Admin {
 	 * @return array Sanitized array of options
 	 */
 	public function sanitization( $input = array() ) {
-	
 		//Get post type options
 		$post_types = $input[ 'post_types' ];
 		if ( !empty( $post_types ) ) {
@@ -253,44 +310,25 @@ class Reorder_Admin {
 			}	
 			$input[ 'post_types' ] = $post_types;
 		}
-				
-		return $input;
-		$output = get_option( 'highlight-and-share' );
 		
-		//Check if settings are being initialized for the first time
-		if ( false === $output ) {
-			//No settings have been saved yet and we're being supplied with defaults
-			foreach( $input as $key => &$value ) {
-				if ( is_bool( $value ) ) continue;
-				$value = sanitize_text_field( $value );
-			}	
-			return $input;
-		}
-		//Settings are being saved.  Update.
-		foreach( $input as $key => $value ) {
-			if ( 'twitter' == $key ) {
-				$twitter_username = $input[ $key ];
-				if ( !preg_match( '/^[a-zA-Z0-9_]{1,15}$/', $twitter_username ) ) {
-					add_settings_error( 'highlight-and-share', 'invalid_twitter', _x( 'You have entered an incorrect Twitter username', 'Twitter username error', 'highlight-and-share' ) );
-				} else {
-					$output[ $key ] = sanitize_text_field( $value );
+		//Get menu order options
+		$menu_order = $input[ 'menu_order' ];
+		if ( !empty( $menu_order ) ) {
+			foreach( $post_types as $post_type_name => &$values ) {
+				$orderby = isset( $values[ 'orderby' ] ) ? $values[ 'orderby' ] : 'none';
+				if ( $orderby !== 'menu_order' ) {
+					$values[ 'orderby' ] == 'none';
 				}
-			} elseif( 'js_content' == $key ) {
-				$js_content = trim( $value );				
-				if( empty( $js_content ) || preg_match( '/[-_0-9a-zA-Z]+(,[-_0-9a-zA-Z]+)*$/', $js_content ) ) {
-					$output[ $key ] = sanitize_text_field( $js_content );
-				} else {
-					add_settings_error( 'highlight-and-share', 'invalid_twitter', _x( 'You must enter valid comma-separated values for the content.', 'Invalid comma-separated values', 'highlight-and-share' ) );
-				}
-			} elseif( ( 'show_twitter' || 'show_facebook' || 'enable_content' || 'enable_excerpt' ) == $key ) {
-				if ( $input[ $key ] == 'on' ) {
-					$output[ $key ] = true;	
-				} else {
-					$output[ $key ] = false;
+				
+				$order = isset( $values[ 'order' ] ) ? $values[ 'order' ] : 'DESC';
+				if ( $orderby !== 'ASC' ) {
+					$values[ 'order' ] == 'DESC';	
 				}
 			}
+			$input[ 'menu_order' ] = $menu_order;
+			
 		}
-		return $output;
+		return $input;
 	}
 	
 } //end class Reorder_Admin
