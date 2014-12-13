@@ -65,6 +65,16 @@ add_action( 'wp_loaded', 'mn_reorder_posts_init', 100 ); //Load low priority in 
 function mn_reorder_posts_init() {
 	$post_types = get_post_types( array(), 'names' );
 	
+	//Get plugin options for post types and exclude as necessary
+	$plugin_options = get_option( 'metronet-reorder-posts' );
+	if ( isset( $plugin_options[ 'post_types' ] ) && is_array( $plugin_options[ 'post_types' ] )  ) {
+		foreach( $plugin_options[ 'post_types' ]  as $post_type => $value ) {
+			if( $value === 'off' ) {
+				unset( $post_types[ $post_type ] );	
+			}
+		}
+	}
+	
 	// Add filter to allow users to control which post-types the plugin is used with via their theme
 	$post_types = apply_filters( 'metronet_reorder_post_types', $post_types );
 		
