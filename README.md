@@ -7,6 +7,8 @@ This plugin is very powerful and highly configurable if you need some serious re
 
 If you have a feature request, please add an issue.
 
+The stable version of this plugin <a href="https://wordpress.org/plugins/metronet-reorder-posts/">can be found on WordPress.org</a>.
+
 Features
 ----------------------
 <ul>

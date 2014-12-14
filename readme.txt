@@ -39,6 +39,8 @@ If you would like to contribute a translation, please leave a support request wi
 
 You are welcome to help us out and <a href="https://github.com/ronalfy/reorder-posts">contribute on GitHub</a>.
 
+Banner image courtesy of <a href="https://www.flickr.com/photos/pagedooley">Kevin Dooley</a>.
+
 == Installation ==
 
 Either install the plugin via the WordPress admin panel, or ... 
