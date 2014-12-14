@@ -47,7 +47,9 @@ class Reorder_Admin {
 		if ( !apply_filters( 'metronet_reorder_post_show_admin', true ) ) return;
 		
 		//Initialize actions
-		add_action( 'pre_get_posts', array( $this, 'modify_menu_order' ) );
+		add_filter( 'posts_orderby', array( $this, 'modify_menu_order_sql' ), 30, 2 );
+		add_action( 'pre_get_posts', array( $this, 'modify_menu_order_pre' ), 30, 1 );
+		
 		//Admin Settings
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'init_admin_settings' ) );
@@ -252,7 +254,88 @@ class Reorder_Admin {
 		
 	}
 	
-	public function modify_menu_order( $query ) {
+	//Used for get_posts calls
+	public function modify_menu_order_pre( $query ) {
+		if( $query->is_main_query() || is_admin() || is_feed() ) return;
+		
+		if ( !apply_filters( 'metronet_reorder_allow_menu_order', true ) ) return; //Return false to disable this completely
+		
+		//Get main plugin options
+		$plugin_options = $this->get_plugin_options();
+		if ( !isset( $plugin_options[ 'menu_order' ] ) || !is_array( $plugin_options[ 'menu_order' ] ) || empty( $plugin_options[ 'menu_order' ] ) ) return;
+		$menu_order = $plugin_options[ 'menu_order' ];
+		
+		//Get main post type
+		$main_query = $query->query;
+		$post_type = false;
+		if( isset( $main_query[ 'post_type' ] ) ) {
+			//Typically set on post type archives or custom WP_Query or get_posts instances
+			$post_type = $main_query[ 'post_type' ];	
+		}
+		if ( !$post_type ) return;
+		
+		//See if suppress filters is on (using get_posts) (if it's not, use modify_menu_order_sql for that)
+		if ( !isset( $main_query[ 'suppress_filters' ] ) ) return;
+		
+		if ( !apply_filters( 'metronet_reorder_allow_menu_order_' . $post_type, true ) ) return; //Return false to disable this for each individual post type as opposed to using a global filter above
+		
+		//See if we're modifying the menu_order
+		$menu_order_orderby = isset( $menu_order[ $post_type ][ 'orderby' ] ) ? $menu_order[ $post_type ][ 'orderby' ] : 'none';
+		$menu_order_order = isset( $menu_order[ $post_type ][ 'order' ] ) ? $menu_order[ $post_type ][ 'order' ] : 'DESC';
+		
+		//Return if post type is not be ordered
+		if ( $menu_order_orderby === 'none' ) return;
+		
+		//Return of $menu_order_order is invalid
+		if ( $menu_order_order !== 'ASC' && $menu_order_order !== 'DESC' ) return;
+		
+		//Overwrite the orderby clause
+		$query->set( 'orderby',  'menu_order' );
+		$query->set( 'order', $menu_order_order );
+	}
+	
+	//Used on homepage archives, post type archives, or custom WP_Query calls
+	public function modify_menu_order_sql(  $sql_orderby, $query ) {
+		if ( is_admin() || is_404() || is_feed() ) return $sql_orderby;
+		
+		if ( !apply_filters( 'metronet_reorder_allow_menu_order', true ) ) return $sql_orderby; //Return false to disable this completely
+		
+		//Get main plugin options
+		$plugin_options = $this->get_plugin_options();
+		if ( !isset( $plugin_options[ 'menu_order' ] ) || !is_array( $plugin_options[ 'menu_order' ] ) || empty( $plugin_options[ 'menu_order' ] ) ) return;
+		
+		$menu_order = $plugin_options[ 'menu_order' ];
+		
+		$main_query = $query->query;
+		
+		//Get main post type - Try to get post_type first, if not, see if we're on the main page showing blog posts
+		$post_type = false;
+		if( isset( $main_query[ 'post_type' ] ) ) {
+			//Typically set on post type archives or custom WP_Query or get_posts instances
+			$post_type = $main_query[ 'post_type' ];	
+		} elseif ( is_home() ) {
+			$post_type = 'post';
+		} 
+		if ( !$post_type ) return $sql_orderby;
+		
+		if ( !apply_filters( 'metronet_reorder_allow_menu_order_' . $post_type, true ) ) return $sql_orderby; //Return false to disable this for each individual post type as opposed to using a global filter above
+		
+		//See if we're modifying the menu_order
+		$menu_order_orderby = isset( $menu_order[ $post_type ][ 'orderby' ] ) ? $menu_order[ $post_type ][ 'orderby' ] : 'none';
+		$menu_order_order = isset( $menu_order[ $post_type ][ 'order' ] ) ? $menu_order[ $post_type ][ 'order' ] : 'DESC';
+		
+		//Return if post type is not be ordered
+		if ( $menu_order_orderby === 'none' ) return $sql_orderby;
+		
+		//Return of $menu_order_order is invalid
+		if ( $menu_order_order !== 'ASC' && $menu_order_order !== 'DESC' ) return $sql_orderby;
+		
+		//Overwrite the orderby clause
+		global $wpdb;
+		$sql_orderby = sprintf( '%s.menu_order %s', $wpdb->posts, $menu_order_order );
+
+		//Return 
+		return $sql_orderby;		
 		
 	}
 	
