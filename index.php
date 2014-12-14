@@ -3,9 +3,9 @@
 Plugin Name: Metronet Reorder Posts
 Plugin URI: https://wordpress.org/plugins/metronet-reorder-posts/
 Description: Reorder posts
-Version: 2.0.0
-Author: Ryan Hellyer, Ronald Huereca
-Author URI: http://geek.ryanhellyer.net/
+Version: 2.0.1
+Author: Ryan Hellyer, Ronald Huereca, Scott Basgaard
+Author URI: https://github.com/ronalfy/reorder-posts
 Text Domain: metronet-reorder-posts
 Domain Path: /languages
 
