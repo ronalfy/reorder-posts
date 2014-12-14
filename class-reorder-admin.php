@@ -47,6 +47,7 @@ class Reorder_Admin {
 		if ( !apply_filters( 'metronet_reorder_post_allow_admin', true ) ) return; //Use this filter if you want to disable the admin panel settings for this plugin, including disabling the menu order overrides
 		
 		//Initialize actions
+		/* Dev note:  If you know what you're doing code-wise, add the menu_order in get_posts, pre_get_posts, or WP_Query, disable these filters, and/or disable the admin settings (see above). */
 		add_filter( 'posts_orderby', array( $this, 'modify_menu_order_sql' ), 30, 2 );
 		add_action( 'pre_get_posts', array( $this, 'modify_menu_order_pre' ), 30, 1 );
 		
