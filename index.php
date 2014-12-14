@@ -89,7 +89,6 @@ function mn_reorder_posts_init() {
 				'final'       => '',
 				'initial'     => '',
 				'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
-				'icon'        => REORDER_URL . '/metronet-icon.png',
 				'post_status' => 'publish',
 			)
 		);

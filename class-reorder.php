@@ -78,13 +78,6 @@ class Reorder {
 	 * @access private
 	 */
 	private $menu_label;
-	
-	/**
-	 * @var $icon
-	 * @desc Admin page icon
-	 * @access private
-	 */
-	private $icon;
 
 	/**
 	 * Class constructor
@@ -117,7 +110,6 @@ class Reorder {
 		$this->initial     = $initial;
 		$this->final       = $final;
 		$this->menu_label  = $menu_label;
-		$this->icon        = $icon;
 		$this->post_status = $post_status;
 		$this->page_hook = $post_type . '_page_reorder-video';
 		
@@ -332,13 +324,8 @@ class Reorder {
 	 */
 	public function sort_posts() {
 		?>
-		<style type="text/css">
-		#icon-reorder-posts {
-			background:url(<?php echo $this->icon; ?>) no-repeat;
-		}
 		</style>
 		<div class="wrap">
-			<?php screen_icon( 'reorder-posts' ); ?>
 			<h2>
 				<?php echo $this->heading; ?>
 				<img src="<?php echo admin_url( 'images/loading.gif' ); ?>" id="loading-animation" />
