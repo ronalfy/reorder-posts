@@ -305,7 +305,7 @@ class Reorder_Admin {
 		
 		//Get main plugin options
 		$plugin_options = $this->get_plugin_options();
-		if ( !isset( $plugin_options[ 'menu_order' ] ) || !is_array( $plugin_options[ 'menu_order' ] ) || empty( $plugin_options[ 'menu_order' ] ) ) return;
+		if ( !isset( $plugin_options[ 'menu_order' ] ) || !is_array( $plugin_options[ 'menu_order' ] ) || empty( $plugin_options[ 'menu_order' ] ) ) return $sql_orderby;
 		
 		$menu_order = $plugin_options[ 'menu_order' ];
 		
