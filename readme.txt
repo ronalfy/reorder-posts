@@ -5,13 +5,17 @@ Plugin URL: http://metronet.no/
 Requires at Least: 3.7
 Tested up to: 4.1
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
-Stable tag: 1.0.6
+Stable tag: 2.0.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 A simple and easy way to reorder your custom post-type posts in WordPress.
 
 == Description ==
 
 A simple and easy way to reorder your custom post-type posts in WordPress. Adds drag and drop functionality for post ordering in the WordPress admin panel. Works with custom post-types and regular posts.
+
+A settings panel is available for determining which post types to enable ordering for.  Advanced options allow you to change the menu order for post types.
 
 == Installation ==
 
@@ -20,21 +24,29 @@ Either install the plugin via the WordPress admin panel, or ...
 1. Upload `metronet-reorder-posts` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-There are no configuration options in this plugin. Simply navigate to "Posts" > "Reorder" to change the order of your posts. Changes are saved immediately, there is no need to click a save or update button. Additional links automatically appear for custom post-types.
+For each post type, you will see a new "Reorder" submenu.  Simply navigate to "Reorder" to change the order of your post types. Changes are saved immediately, there is no need to click a save or update button.  
+
+By default, ordering is enabled for all post types.  A settings panel is available for determining which post types to enable ordering for.  Advanced options allow you to change the menu order for post types.
 
 == Frequently Asked Questions ==
 
 = Where's the settings page? =
 
-There is no settings page per se. The plugin adds an ordering page as a submenu under each post type.
+The settings are located under Settings->Reorder Posts.
 
-= Where is the "save" button? =
+= Where is the "save" button when re-ordering? =
 
 There isn't one. The changes are saved automatically.
 
+= Do I need to add custom code to get this to work? =
+
+Yes, and no.  There are many ways to retrieve posts using the WordPress API, and if the code has a `menu_order` sort property, the changes should be reflected immediately.
+
+Often, however, there is no `menu_order` argument.  In the plugin's settings, there is an "Advanced" section which will attempt to override the `menu_order` property.  Please use this with caution. 
+
 = Can I use this on a single post type? =
 
-We have attempted to make the class as user-friendly and adaptable as possible. You can either extract the "Reorder" class from the plugin and use it directly. Or alternatively, you can filter the post-types via your custom plugin or theme.
+You are able to override the post types used via a filter (see below) or navigate to the plugin's settings and enable which post types you would like to use.
 
 `<?php
 
@@ -52,13 +64,20 @@ Yes, but be wary that the plugin now allows you to re-nest hierarchical items ea
 
 = Does it work in older versions of WordPress? =
 
-Probably, but we only support the latest version of WordPress.
+This plugin requires WordPress 3.7 or above.  We urge you, however, to always use the latest version of WordPress.
 
 == Screenshots ==
 
 1. Metronet Reorder Posts allows you to easily drag and drop posts to change their order
 
 == Changelog ==
+
+= 2.0.0 =
+* Released 2014-12-12 
+* Added settings panel for enabling/disabling the Reorder plugin for post types.
+* Added advanced settings for overriding the menu order of post types.
+* Added internationalization capabilities. 
+* Slightly adjusted the styles of the Reordering interface.
 
 = 1.0.6 =
 * Updated 2014-12-11 - Ensuring WordPress 4.1 compatibility
