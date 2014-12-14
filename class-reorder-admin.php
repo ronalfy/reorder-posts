@@ -180,6 +180,9 @@ class Reorder_Admin {
 		}
 	}
 	
+	public function add_settings_heading_menu_order() {
+		printf( '<p>%s</p>', esc_html__( 'These are advanced options and you should only use these if you know what you are doing.  These can overwrite the menu orders of custom queries (using get_posts or WP_Query), custom post type archives, and even the order your blog posts display.', 'metronet-reorder-posts' ) );	
+	}
 	/**
 	 * Add a settings link to the plugin's options.
 	 *
@@ -246,7 +249,7 @@ class Reorder_Admin {
 		
 		add_settings_section( 'mn-reorder-post-types', _x( 'Enable Post Types', 'plugin settings heading' , 'metronet-reorder-posts' ), '__return_empty_string', 'metronet-reorder-posts' );
 		
-		add_settings_section( 'mn-reorder-menu-order', _x( 'Advanced', 'plugin settings heading' , 'metronet-reorder-posts' ), '__return_empty_string', 'metronet-reorder-posts' );
+		add_settings_section( 'mn-reorder-menu-order', _x( 'Advanced', 'plugin settings heading' , 'metronet-reorder-posts' ), array( $this, 'add_settings_heading_menu_order' ), 'metronet-reorder-posts' );
 		
 		add_settings_field( 'mn-post-types', __( 'Post Types', 'metronet-reorder-posts' ), array( $this, 'add_settings_field_post_types' ), 'metronet-reorder-posts', 'mn-reorder-post-types', array( 'desc' => __( 'Select the post types you would like this plugin enabled for.', 'metronet-reorder-posts' ) ) );
 		
