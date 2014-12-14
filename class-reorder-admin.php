@@ -378,11 +378,8 @@ class Reorder_Admin {
 	 * @see init_admin_settings
 	 *
 	 * @param array $input {
-	 		@type string $js_content Content to be parsed via Javascript.  Default 'entry-content'.
-	
-	 		@type string $twitter Twitter username.  Default ''.
-	 		@type bool $show_twitter Whether to show twitter share option.  Default true.
-	 		@type bool $show_facebook Whether to show facebook share option.  Default true
+	 		@type array $post_types
+	 		@type array $menu_order 
 	 }
 	 * @return array Sanitized array of options
 	 */
