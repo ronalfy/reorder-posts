@@ -335,7 +335,7 @@ class Reorder_Admin {
 		
 		//Overwrite the orderby clause
 		global $wpdb;
-		$sql_orderby = sprintf( '%s.menu_order %s', $wpdb->posts, $menu_order_order );
+		$sql_orderby = sprintf( '%s.menu_order %s', $wpdb->posts, $menu_order_order ); //for devs: no sanitization required as tablename is from $wpdb and $menu_order_order is set to match only ASC or DESC.
 
 		//Return 
 		return $sql_orderby;		
