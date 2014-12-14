@@ -17,6 +17,28 @@ A simple and easy way to reorder your custom post-type posts in WordPress. Adds 
 
 A settings panel is available for determining which post types to enable ordering for.  Advanced options allow you to change the menu order for post types.
 
+<h3>Features</h3>
+<ul>
+<li>Adds "Reorder" sub-menu to all post types by default</li>
+<li>Hierarchical post type support (i.e., supports nested posts)</li>
+<li>Allows you to re-nest hierarchical posts</li>
+<li>Auto-saves order without having to click an update button</li>
+<li>Dedicated settings panel for determining which post types can be reordered</li>
+<li>Advanced settings panel for overriding the menu order of custom post type queries</li>
+</ul>
+
+Advanced customization is allowed via hooks.  See the <a  href="https://github.com/ronalfy/reorder-posts#plugin-filters">Plugin Filters on GitHub</a>.
+
+<h3>Spread the Word</h3>
+If you like this plugin, please help spread the word.  Rate the plugin.  Write about the plugin.  Something :)
+
+<h3>Translations</h3>
+ None so far.
+
+If you would like to contribute a translation, please leave a support request with a link to your translation.
+
+You are welcome to help us out and <a href="https://github.com/ronalfy/reorder-posts">contribute on GitHub</a>.
+
 == Installation ==
 
 Either install the plugin via the WordPress admin panel, or ... 
@@ -68,7 +90,8 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 
 == Screenshots ==
 
-1. Metronet Reorder Posts allows you to easily drag and drop posts to change their order
+1. Reorder Posts allows you to easily drag and drop posts to change their order
+2.  Admin panel settings
 
 == Changelog ==
 
@@ -111,3 +134,8 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 
 = 1.0 =
 * Initial plugin release
+
+== Upgrade Notice ==
+
+= 2.0.0 =
+New admin panel settings for setting Reorder for post types, and advanced options for modifying the menu order of post type queries.
