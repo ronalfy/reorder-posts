@@ -1,7 +1,7 @@
 === Reorder Posts ===
 Contributors: ryanhellyer, metronet, ronalfy
-Author URI: http://metronet.no/
-Plugin URL: http://metronet.no/
+Author URI: https://hellyer.kiwi/
+Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
 Tested up to: 4.1
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
@@ -39,6 +39,15 @@ If you would like to contribute a translation, please leave a support request wi
 
 You are welcome to help us out and <a href="https://github.com/ronalfy/reorder-posts">contribute on GitHub</a>.
 
+<h3>Support</h3>
+
+Please feel free to leave a support request here or create an <a href="https://github.com/ronalfy/reorder-posts/issues">issue on GitHub</a>.  If you require immediate feedback, feel free to @reply us on Twitter with your support link:  (<a href="https://twitter.com/ryanhellyer">@ryanhellyer</a> or <a href="https://twitter.com/ronalfy">@ronalfy</a>).  Support is always free unless you require some advanced customization out of the scope of the plugin's existing features.  We'll do our best to get with you when we can.  Please rate/review the plugin if we have helped you to show thanks for the support.
+
+<h3>Credits</h3>
+This plugin was originally developed for <a href="https://metronet.no/">Metronet AS in Norway</a>.
+
+The plugin is now independently developed by <a href="https://hellyer.kiwi/">Ryan Hellyer</a> and <a href="http://www.ronalfy.com">Ronald Huereca</a>.
+
 Banner image courtesy of <a href="https://www.flickr.com/photos/pagedooley">Kevin Dooley</a>.
 
 == Installation ==
@@ -56,7 +65,7 @@ By default, ordering is enabled for all post types.  A settings panel is availab
 
 = Where's the settings page? =
 
-The settings are located under Settings->Reorder Posts.
+The settings are located under Settings->Reorder Posts.  Settings are optional, of course, as the plugin will work with no configuration.  We consider the settings useful for only advanced users (i.e., users with coding experience).
 
 = Where is the "save" button when re-ordering? =
 
