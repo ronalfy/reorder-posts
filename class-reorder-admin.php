@@ -44,7 +44,7 @@ class Reorder_Admin {
 	 */
 	private function __construct( ) {
 		//Filter to hide the admin panel options
-		if ( !apply_filters( 'metronet_reorder_post_show_admin', true ) ) return;
+		if ( !apply_filters( 'metronet_reorder_post_allow_admin', true ) ) return; //Use this filter if you want to disable the admin panel settings for this plugin, including disabling the menu order overrides
 		
 		//Initialize actions
 		add_filter( 'posts_orderby', array( $this, 'modify_menu_order_sql' ), 30, 2 );

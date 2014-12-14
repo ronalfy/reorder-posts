@@ -66,8 +66,8 @@ function mn_reorder_posts_init() {
 	$post_types = get_post_types( array(), 'names' );
 	
 	//Get plugin options for post types and exclude as necessary
-	$plugin_options = get_option( 'metronet-reorder-posts' );
-	if ( isset( $plugin_options[ 'post_types' ] ) && is_array( $plugin_options[ 'post_types' ] )  ) {
+	$plugin_options = get_option( 'metronet-reorder-posts', false );
+	if ( $plugin_options && isset( $plugin_options[ 'post_types' ] ) && is_array( $plugin_options[ 'post_types' ] )  ) {
 		foreach( $plugin_options[ 'post_types' ]  as $post_type => $value ) {
 			if( $value === 'off' ) {
 				unset( $post_types[ $post_type ] );	
