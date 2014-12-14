@@ -1,4 +1,4 @@
-=== Metronet Reorder Posts ===
+=== Reorder Posts ===
 Contributors: ryanhellyer, metronet, ronalfy
 Author URI: http://metronet.no/
 Plugin URL: http://metronet.no/
