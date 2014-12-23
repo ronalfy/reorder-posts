@@ -216,11 +216,11 @@ class MN_Reorder {
 	public function enable_post_sort() {
 		$post_type = $this->post_type;
 		if ( 'post' != $post_type ) {
-		
+			$menu_location = apply_filters( 'metronet_reorder_menu_location_' . $post_type, 'edit.php?post_type=' . $post_type );
 			$hook = add_submenu_page(
-				'edit.php?post_type=' . $post_type, // Parent slug
+				$menu_location, // Parent slug
 				$this->heading,                     // Page title (unneeded since specified directly)
-				$this->menu_label,                  // Menu title
+				apply_filters( 'metronet_reorder_menu_label_' . $post_type, $this->menu_label ),                  // Menu title
 				'edit_posts',                       // Capability
 				'reorder-' . $post_type,            // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
@@ -229,7 +229,7 @@ class MN_Reorder {
 		else {
 			$hook = add_posts_page(
 				$this->heading,                     // Page title (unneeded since specified directly)
-				$this->menu_label,                  // Menu title
+				apply_filters( 'metronet_reorder_menu_label_' . $post_type, $this->menu_label ),                  // Menu title
 				'edit_posts',                       // Capability
 				'reorder-posts',                    // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
