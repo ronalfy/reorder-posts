@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Metronet Reorder Posts v1.0.0\n"
 "Report-Msgid-Bugs-To: Ronald Huereca <ronalfy@gmail.com>\n"
-"POT-Creation-Date: 2014-12-13 19:25-0600\n"
+"POT-Creation-Date: 2014-12-23 17:00-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ronald Huereca <ron@ronalfy.com>\n"
 "Language-Team: Ronald Huereca <ronalfy@gmail.com>\n"
@@ -23,41 +23,41 @@ msgstr ""
 "X-Generator: Poedit 1.5.3\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: class-reorder-admin.php:81 class-reorder-admin.php:359
+#: class-reorder-admin.php:82 class-reorder-admin.php:360
 msgctxt "Plugin Name - Settings Page Title"
 msgid "Reorder Posts"
 msgstr ""
 
-#: class-reorder-admin.php:81
+#: class-reorder-admin.php:82
 msgctxt "Plugin Name - Menu Item"
 msgid "Reorder Posts"
 msgstr ""
 
-#: class-reorder-admin.php:122
+#: class-reorder-admin.php:123
 msgid "Sort by:"
 msgstr ""
 
-#: class-reorder-admin.php:124
+#: class-reorder-admin.php:125
 msgid "None"
 msgstr ""
 
-#: class-reorder-admin.php:125
+#: class-reorder-admin.php:126
 msgid "Menu Order"
 msgstr ""
 
-#: class-reorder-admin.php:131
+#: class-reorder-admin.php:132
 msgid "Sort Order:"
 msgstr ""
 
-#: class-reorder-admin.php:133
+#: class-reorder-admin.php:134
 msgid "ASC"
 msgstr ""
 
-#: class-reorder-admin.php:134
+#: class-reorder-admin.php:135
 msgid "DESC"
 msgstr ""
 
-#: class-reorder-admin.php:184
+#: class-reorder-admin.php:185
 msgid ""
 "These are advanced options and you should only use these if you know what "
 "you are doing.  These can overwrite the menu orders of custom queries (using "
@@ -65,49 +65,58 @@ msgid ""
 "blog posts display."
 msgstr ""
 
-#: class-reorder-admin.php:200
+#: class-reorder-admin.php:201
 msgctxt "Plugin settings link on the plugins page"
 msgid "Settings"
 msgstr ""
 
-#: class-reorder-admin.php:250
+#: class-reorder-admin.php:251
 msgctxt "plugin settings heading"
 msgid "Enable Post Types"
 msgstr ""
 
-#: class-reorder-admin.php:252
+#: class-reorder-admin.php:253
 msgctxt "plugin settings heading"
 msgid "Advanced"
 msgstr ""
 
-#: class-reorder-admin.php:254
+#: class-reorder-admin.php:255
 msgid "Post Types"
 msgstr ""
 
-#: class-reorder-admin.php:254
+#: class-reorder-admin.php:255
 msgid "Select the post types you would like this plugin enabled for."
 msgstr ""
 
-#: class-reorder-admin.php:256
+#: class-reorder-admin.php:257
 msgid "Select the menu order arguments."
 msgstr ""
 
-#: class-reorder-admin.php:256
+#: class-reorder-admin.php:257
 msgid "Select the menu order for the post types."
 msgstr ""
 
-#: class-reorder.php:99 index.php:91
+#: class-reorder.php:92 class-reorder.php:96 index.php:95
 msgid "Reorder"
 msgstr ""
 
-#: class-reorder.php:208 class-reorder.php:283
+#: class-reorder.php:201 class-reorder.php:276
 msgid "Expand"
 msgstr ""
 
-#: class-reorder.php:209
+#: class-reorder.php:202
 msgid "Collapse"
 msgstr ""
 
-#: index.php:88
-msgid "Reorder Posts"
+#: class-reorder.php:383
+msgid "There is nothing to sort at this time"
+msgstr ""
+
+#: index.php:84
+msgid "Posts"
+msgstr ""
+
+#: index.php:85
+#, php-format
+msgid "Reorder %s"
 msgstr ""
