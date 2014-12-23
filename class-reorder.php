@@ -323,45 +323,48 @@ class MN_Reorder {
 	 * @global string $post_type
 	 */
 	public function sort_posts() {
-		//todo - output error message when there are no posts
 		$has_posts = false;
 		?>
 		</style>
 		<div class="wrap">
 			<h2>
-				<?php echo $this->heading; ?>
-				<img src="<?php echo admin_url( 'images/loading.gif' ); ?>" id="loading-animation" />
+				<?php echo esc_html( $this->heading ); ?>
+				<img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" />
 			</h2>
 			<div id="reorder-error"></div>
-			<?php echo $this->initial; ?>
-			<ul id="post-list">
+			<?php echo esc_html( $this->initial ); ?>
 		<?php
 		if ( is_post_type_hierarchical( $this->post_type ) ) {
 			$pages = get_pages( array( 
 				'sort_column' => 'menu_order',
 				'post_type' => $this->post_type,
-			 ) );
-			 //Get hiearchy of children/parents
-			 $top_level_pages = array();
-			 $children_pages = array();
-			 foreach( $pages as $page ) {
-			 	if ( $page->post_parent == 0 ) {
-			 		//Parent page
-			 		$top_level_pages[] = $page;
-			 	} else {
-			 		$children_pages[ $page->post_parent ][] = $page;
-			 	}
-			 } //end foreach
-			 			 
-			 foreach( $top_level_pages as $page ) {
-			 	$page_id = $page->ID;
-			 	if ( isset( $children_pages[ $page_id ] ) && !empty( $children_pages[ $page_id ] ) ) {
-			 		//If page has children, output page and its children
-			 		$this->output_row_hierarchical( $page, $children_pages[ $page_id ], $children_pages );
-			 	} else {
-			 		$this->output_row( $page );
-			 	}
-			 }			 
+			) );
+			if( $pages ) {
+				$has_posts = true;
+				echo '<ul id="post-list">';
+				//Get hiearchy of children/parents
+				$top_level_pages = array();
+				$children_pages = array();
+				foreach( $pages as $page ) {
+					if ( $page->post_parent == 0 ) {
+						//Parent page
+						$top_level_pages[] = $page;
+					} else {
+						$children_pages[ $page->post_parent ][] = $page;
+					}
+				} //end foreach
+							 
+				foreach( $top_level_pages as $page ) {
+					$page_id = $page->ID;
+					if ( isset( $children_pages[ $page_id ] ) && !empty( $children_pages[ $page_id ] ) ) {
+						//If page has children, output page and its children
+						$this->output_row_hierarchical( $page, $children_pages[ $page_id ], $children_pages );
+					} else {
+						$this->output_row( $page );
+					}
+				}
+				echo '</ul>';	 
+			}		 
 		} else {
 			//Output non hierarchical posts
 			$post_query = new WP_Query(
@@ -374,15 +377,19 @@ class MN_Reorder {
 				)
 			);
 			$posts = $post_query->get_posts();
-			if ( !$posts || empty( $posts ) ) return;
-			foreach( $posts as $post ) {
-				$this->output_row( $post );
-			} //end foreach
+			if( $posts && !empty( $posts ) ) {
+				$has_posts = true;
+				echo '<ul id="post-list">';
+				foreach( $posts as $post ) {
+					$this->output_row( $post );
+				} //end foreach
+				echo '</ul>';
+			}
 		}
-		?>
-		</ul>
-		<?php
-		echo $this->final; 
+		if ( false === $has_posts ) {
+			echo sprintf( '<h3>%s</h3>	', esc_html__( 'There is nothing to sort at this time', 'metronet-reorder-posts' ) );
+		}
+		echo esc_html( $this->final ); 
 		?>
 		</div><!-- .wrap -->
 		<?php
