@@ -57,6 +57,29 @@ add_filter( 'metronet_reorder_allow_menu_order', '__return_true' ); //Enable or 
 add_filter( 'metronet_reorder_allow_menu_order_post', '__return_true' ); //Enable or disable the plugin's advanced menu_order modifications for a single post type (format metronet_reorder_allow_menu_order_{post_type}) - If Filter metronet_reorder_allow_menu_order is false, there is no need for this filter
 ```
 
+The filters below demonstrate how to add re-ordering to <a href="https://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a> plugin.
+
+```php
+//Add The Events Calendar post types to main Events menu item
+//Format metronet_reorder_menu_location_{post_type}
+add_filter( 'metronet_reorder_menu_location_tribe_venue', 'unique_menu_event_post_type_locations' );
+add_filter( 'metronet_reorder_menu_location_tribe_organizer', 'unique_menu_event_post_type_locations' );
+function unique_menu_event_post_type_locations( $menu_location ) {
+	return 'edit.php?post_type=tribe_events';	
+}
+
+//Re-label The Events Calendar post types
+//Format metronet_reorder_menu_label_{post_type}
+add_filter( 'metronet_reorder_menu_label_tribe_events', 'unique_reorder_label_events', 10, 2 );
+add_filter( 'metronet_reorder_menu_label_tribe_venue', 'unique_reorder_label_events', 10, 2 );
+add_filter( 'metronet_reorder_menu_label_tribe_organizer', 'unique_reorder_label_events', 10, 2 );
+function unique_reorder_label_events( $label = '', $post_type = '' ) {
+	$post_type = get_post_type_object( $post_type );
+	$label = isset( $post_type->label ) ? $post_type->label : '';
+	return 'Reorder ' . $label;
+}
+```
+
 Credits
 ----------------------
 This plugin was originally developed for <a href="https://metronet.no/">Metronet AS in Norway</a>.
