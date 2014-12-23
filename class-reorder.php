@@ -29,13 +29,6 @@ class MN_Reorder {
 	 * @access private
 	 */
 	private $post_type;
-	
-	/**
-	 * @var $page_hook
-	 * @desc Page hook to add reorder scripts/styles to
-	 * @access private
-	 */
-	private $page_hook;
 
 	/**
 	 * @var $direction 
@@ -100,18 +93,18 @@ class MN_Reorder {
 			'initial'     => '',                         // Initial text displayed before sorting code
 			'final'       => '',                         // Initial text displayed before sorting code
 			'post_status' => 'publish',                  // Post status of posts to be reordered
+			'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ), //Menu label for the post type
 		);
-		extract( wp_parse_args( $args, $defaults ) );
+		$args = wp_parse_args( $args, $defaults );
 
 		// Set variables
-		$this->post_type   = $post_type;
-		$this->order       = $order;
-		$this->heading     = $heading;
-		$this->initial     = $initial;
-		$this->final       = $final;
-		$this->menu_label  = $menu_label;
-		$this->post_status = $post_status;
-		$this->page_hook = $post_type . '_page_reorder-video';
+		$this->post_type   = $args[ 'post_type' ];
+		$this->order       = $args[ 'order' ];;
+		$this->heading     = $args[ 'heading' ];
+		$this->initial     = $args[ 'initial' ];
+		$this->final       = $args[ 'final' ];
+		$this->menu_label  = $args[ 'menu_label' ];
+		$this->post_status = $args[ 'post_status' ];
 		
 		// Add actions
 		add_action( 'wp_ajax_post_sort',   array( $this, 'ajax_save_post_order'  ) );
