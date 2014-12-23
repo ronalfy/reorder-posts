@@ -79,13 +79,17 @@ function mn_reorder_posts_init() {
 	$post_types = array_unique( apply_filters( 'metronet_reorder_post_types', $post_types ) );
 		
 	foreach ( $post_types as $post_type ) {
+		//Generate heading
+		$post_type_object = get_post_type_object( $post_type );
+		$post_type_label = isset( $post_type_object->label ) ? $post_type_object->label : __( 'Posts', 'metronet-reorder-posts' );
+		$heading = sprintf( __( 'Reorder %s', 'metronet-reorder-posts' ), $post_type_label );
 		
 		// Instantiate new reordering
 		new MN_Reorder(
 			array(
 				'post_type'   => $post_type,
 				'order'       => 'ASC',
-				'heading'     => __( 'Reorder Posts', 'metronet-reorder-posts' ),
+				'heading'     => $heading,
 				'final'       => '',
 				'initial'     => '',
 				'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
