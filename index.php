@@ -81,7 +81,7 @@ function mn_reorder_posts_init() {
 	foreach ( $post_types as $post_type ) {
 		
 		// Instantiate new reordering
-		new Reorder(
+		new MN_Reorder(
 			array(
 				'post_type'   => $post_type,
 				'order'       => 'ASC',

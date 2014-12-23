@@ -14,14 +14,14 @@
  * Based on work by Scott Basgaard and Ronald Huereca
  * 
  * To use this class, simply instantiate it using an argument to set the post type as follows:
- * new Reorder( array( 'post_type' => 'post', 'order'=> 'ASC' ) );
+ * new MN_Reorder( array( 'post_type' => 'post', 'order'=> 'ASC' ) );
  * 
  * @copyright Copyright (c), Metronet
  * @license http://www.gnu.org/licenses/gpl.html GPL
  * @author Ryan Hellyer <ryan@metronet.no>
  * @since 1.0
  */
-class Reorder {
+class MN_Reorder {
 
 	/**
 	 * @var $post_type 
@@ -323,6 +323,8 @@ class Reorder {
 	 * @global string $post_type
 	 */
 	public function sort_posts() {
+		//todo - output error message when there are no posts
+		$has_posts = false;
 		?>
 		</style>
 		<div class="wrap">
@@ -372,7 +374,7 @@ class Reorder {
 				)
 			);
 			$posts = $post_query->get_posts();
-			if ( !$posts ) return;
+			if ( !$posts || empty( $posts ) ) return;
 			foreach( $posts as $post ) {
 				$this->output_row( $post );
 			} //end foreach
