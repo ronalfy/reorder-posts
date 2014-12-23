@@ -107,8 +107,11 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 == Changelog ==
 
 = 2.0.1 =
-* Not yet released.
 * Altered contributor documentation.
+* Adding filters for determining where the Reorder sub-menu will show up.
+* Sub-menu headings now reflect the post type that is being re-ordered.
+* Fixed bug in display when there are no post types to re-order.
+* Changed class names to be more unique.
 
 = 2.0.0 =
 * Released 2014-12-12 
@@ -151,6 +154,9 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 * Initial plugin release
 
 == Upgrade Notice ==
+
+= 2.0.1 =
+Filter additions, and several bug fixes.
 
 = 2.0.0 =
 New admin panel settings for setting Reorder for post types, and advanced options for modifying the menu order of post type queries.
