@@ -76,7 +76,7 @@ function mn_reorder_posts_init() {
 	}
 	
 	// Add filter to allow users to control which post-types the plugin is used with via their theme
-	$post_types = apply_filters( 'metronet_reorder_post_types', $post_types );
+	$post_types = array_unique( apply_filters( 'metronet_reorder_post_types', $post_types ) );
 		
 	foreach ( $post_types as $post_type ) {
 		
