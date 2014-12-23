@@ -17,7 +17,7 @@
  * @author Ronald Huereca
  * @since 2.0.0
  */
-class Reorder_Admin {
+class MN_Reorder_Admin {
 	/**
 	 * @var $instance 
 	 * @desc Instance of the admin class
@@ -419,5 +419,5 @@ class Reorder_Admin {
 
 add_action( 'init', 'mn_reorder_admin_instantiate', 15 );
 function mn_reorder_admin_instantiate() {
-	Reorder_Admin::get_instance();
+	MN_Reorder_Admin::get_instance();
 }
