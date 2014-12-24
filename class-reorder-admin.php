@@ -399,14 +399,14 @@ class MN_Reorder_Admin {
 		$menu_order = $input[ 'menu_order' ];
 		if ( !empty( $menu_order ) ) {
 			foreach( $post_types as $post_type_name => &$values ) {
-				$orderby = isset( $values[ 'orderby' ] ) ? $values[ 'orderby' ] : 'none';
+				$orderby = isset( $menu_order[ $post_type_name ][ 'orderby' ] ) ? $menu_order[ $post_type_name ] : 'none';
 				if ( $orderby !== 'menu_order' ) {
-					$values[ 'orderby' ] == 'none';
+					$menu_order[ $post_type_name ][ 'orderby' ] == 'none';
 				}
 				
-				$order = isset( $values[ 'order' ] ) ? $values[ 'order' ] : 'DESC';
+				$order = isset( $menu_order[ $post_type_name ][ 'order' ] ) ? $menu_order[ $post_type_name ] : 'DESC';
 				if ( $orderby !== 'ASC' ) {
-					$values[ 'order' ] == 'DESC';	
+					$menu_order[ $post_type_name ][ 'order' ] == 'DESC';	
 				}
 			}
 			$input[ 'menu_order' ] = $menu_order;
