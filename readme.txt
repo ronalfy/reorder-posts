@@ -5,7 +5,7 @@ Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
 Tested up to: 4.1
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,7 +106,13 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 
 == Changelog ==
 
+= 2.0.2 =
+* Released 2014-12-26
+* Bug fix:  Saving admin panel settings resulted in a variety of PHP offset error messages.
+* Bug fix:  Querying multiple post types resulted in PHP illegal offset error messages.
+
 = 2.0.1 =
+* Released 2014-12-23
 * Altered contributor documentation.
 * Adding filters for determining where the Reorder sub-menu will show up.
 * Sub-menu headings now reflect the post type that is being re-ordered.
@@ -154,6 +160,9 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 * Initial plugin release
 
 == Upgrade Notice ==
+
+= 2.0.2 =
+Bug fixes with PHP error notices.  Highly recommend you upgrade.
 
 = 2.0.1 =
 Filter additions, and several bug fixes.
