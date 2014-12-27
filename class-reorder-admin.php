@@ -276,7 +276,7 @@ class MN_Reorder_Admin {
 			//Typically set on post type archives or custom WP_Query or get_posts instances
 			$post_type = $main_query[ 'post_type' ];	
 		}
-		if ( !$post_type ) return;
+		if ( !$post_type || is_array( $post_type ) ) return;
 		
 		//See if suppress filters is on (using get_posts) (if it's not, use modify_menu_order_sql for that)
 		if ( !isset( $main_query[ 'suppress_filters' ] ) ) return;
@@ -320,7 +320,7 @@ class MN_Reorder_Admin {
 		} elseif ( is_home() ) {
 			$post_type = 'post';
 		} 
-		if ( !$post_type ) return $sql_orderby;
+		if ( !$post_type || is_array( $post_type ) ) return $sql_orderby;
 		
 		if ( !apply_filters( 'metronet_reorder_allow_menu_order_' . $post_type, true ) ) return $sql_orderby; //Return false to disable this for each individual post type as opposed to using a global filter above
 		
