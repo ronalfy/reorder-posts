@@ -198,7 +198,7 @@ class MN_Reorder {
 		//Build Query
 		$query_args = array(
 			'post_type' => $post_type,
-			'orderby' => 'menu_order',
+			'orderby' => 'menu_order title',
 			'order' => $this->order,
 			'posts_per_page' => 2,
 			'suppress_filters' => true,
@@ -383,7 +383,7 @@ class MN_Reorder {
 			array(
 				'post_type'      => $this->post_type,
 				'posts_per_page' => $this->posts_per_page,
-				'orderby'        => 'menu_order',
+				'orderby'        => 'menu_order title',
 				'order'          => $this->order,
 				'post_status'    => $this->post_status,
 				'post_parent' => 0,
