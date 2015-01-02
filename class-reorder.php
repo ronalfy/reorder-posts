@@ -164,43 +164,77 @@ class MN_Reorder {
 		// Verify nonce value, for security purposes
 		if ( !wp_verify_nonce( $_POST['nonce'], 'sortnonce' ) ) die( '' );
 		
-		//Get JSON data
-		$post_data = json_decode( str_replace( "\\", '', $_POST[ 'data' ] ) );
+		//Get Ajax Vars
+		$post_parent = isset( $_POST[ 'post_parent' ] ) ? absint( $_POST[ 'post_parent' ] ) : 0;
+		$menu_order_start = isset( $_POST[ 'start' ] ) ? absint( $_POST[ 'start' ] ) : 0;
+		$post_id = isset( $_POST[ 'post_id' ] ) ? absint( $_POST[ 'post_id' ] ) : 0;
+		$post_menu_order = isset( $_POST[ 'menu_order' ] ) ? absint( $_POST[ 'menu_order' ] ) : 0;
+		$posts_to_exclude = isset( $_POST[ 'excluded' ] ) ? array_filter( $_POST[ 'excluded' ], 'absint' ) : array();
+		$post_type = isset( $_POST[ 'post_type' ] ) ? sanitize_text_field( $_POST[ 'post_type' ] ) : false;
+		$remove_loading = isset( $_POST[ 'remove_loading' ] ) ? (bool)$_POST[ 'remove_loading' ] : false;
 		
-		//Iterate through post data
-		$this->update_posts( $post_data, 0 );
+		if ( !$post_type ) die( '' );
 		
-		die( json_encode( array( 'success' => 'true' ) ) );
-	} //end ajax_save_post_order
-	
-	/**
-	 * Saving the post order recursively	 
-	 *
-	 * @author Ronald Huereca <ronald@metronet.no>
-	 * @since Reorder 1.0
-	 * @access public
-	 * @global object $wpdb  The primary global database object used internally by WordPress
-	 */
-	protected function update_posts( $post_data, $parent_id ) {
-		global $wpdb;
-		$count = 0;
+		//Performance
+		remove_action( 'pre_post_update', 'wp_save_post_revision' );
 		
-		foreach( $post_data as $post_obj ) {
-			$post_id = absint( $post_obj->id );
-			$children = isset( $post_obj->children ) ? $post_obj->children : false;
-			if ( $children ) 
-				$this->update_posts( $children, $post_id );
+		//Build Initial Return 
+		$return = array();
+		$return[ 'more_posts' ] = false;
+		$return[ 'action' ] = 'post_sort';
+		$return[ 'post_parent' ] = $post_parent;
+		$return[ 'nonce' ] = sanitize_text_field( $_POST[ 'nonce' ] );
+		$return[ 'post_id'] = $post_id;
+		$return[ 'menu_order' ] = $post_menu_order;
+		$return[ 'post_type' ] = $post_type;
+		$return[ 'remove_loading' ] = $remove_loading;
+		
+		//Update post if passed
+		if( $post_id > 0 && !isset( $_POST[ 'more_posts' ] ) ) {
+			wp_update_post( array( 'ID' => $post_id, 'post_parent' => $post_parent, 'menu_order' => $post_menu_order ) );	
+			$posts_to_exclude[] = $post_id;
+		}
+		
+		//Build Query
+		$query_args = array(
+			'post_type' => $post_type,
+			'orderby' => 'menu_order',
+			'order' => $this->order,
+			'posts_per_page' => 2,
+			'suppress_filters' => true,
+			'ignore_sticky_posts' => true,
+			'post_status' => $this->post_status,
+			'post_parent' => $post_parent,
+			'post__not_in' => $posts_to_exclude
+		);
+		$posts = new WP_Query( $query_args );
+		$start = $menu_order_start;
+		if ( $posts->have_posts() ) {
+			foreach( $posts->posts as $post ) {
+				//Increment start if matches menu_order and there is a post to change
+				if ( $start == $post_menu_order && $post_id > 0 ) {
+					$start++;	
+				}
 				
-			//Update the posts
-			$wpdb->update(
-				$wpdb->posts,
-				array( 'menu_order' => $count, 'post_parent' => $parent_id ),
-				array( 'ID'         => $post_id )
-			);
-			$count += 1;
-			
-		} //end foreach $post_data
-	} //end update_posts
+				if ( $post_id != $post->ID ) {
+					//Update post and counts
+					wp_update_post( array( 'ID' => $post->ID, 'menu_order' => $start, 'post_parent' => $post_parent ) );
+				}
+				$posts_to_exclude[] = $post->ID;
+				$start++;
+			}
+			$return[ 'excluded' ] = $posts_to_exclude;
+			$return[ 'start' ] = $start;
+			if ( $posts->max_num_pages > 1 ) {
+				$return[ 'more_posts' ] = true;	
+			} else {
+				$return[ 'more_posts' ] = false;	
+			}
+			die( json_encode( $return ) );
+		} else {
+			die( json_encode( $return ) );
+		}
+	} //end ajax_save_post_order
 
 	/**
 	 * Print styles to admin page
@@ -278,7 +312,7 @@ class MN_Reorder {
 		global $post;
 		setup_postdata( $post );
 		?>
-		<li id="list_<?php the_id(); ?>" data-id="<?php the_id(); ?>" data-menu-order="<?php echo absint( $post->menu_order ); ?>" data-parent="<?php echo absint( $post->post_parent ); ?>">
+		<li id="list_<?php the_id(); ?>" data-id="<?php the_id(); ?>" data-menu-order="<?php echo absint( $post->menu_order ); ?>" data-parent="<?php echo absint( $post->post_parent ); ?>" data-post-type="<?php echo esc_attr( $post->post_type ); ?>">
 			<?php
 			//Get the children
 			$args = array(
@@ -293,11 +327,11 @@ class MN_Reorder {
 			//Output parent title
 			if( $children->have_posts() ) {
 				?>
-				<div><?php the_title(); ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+				<div><?php the_title(); ?><?php echo $post->menu_order; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
 				<?php
 			} else {
 				?>
-				<div><?php the_title(); ?></div>
+				<div><?php the_title(); ?><?php echo $post->menu_order; ?></div>
 				<?php
 			}
 			
@@ -342,6 +376,8 @@ class MN_Reorder {
 		} elseif ( $page > 1 ) {
 			$offset = $this->offset * ( $page - 1 );
 		}
+		echo 'offset: ' . $offset; //todo - remove
+		printf( '<input type="hidden" id="reorder-offset" value="%s" />', absint( $offset ) );
 		add_filter( 'found_posts', array( $this, 'adjust_offset_pagination' ), 10, 2 );
 		$post_query = new WP_Query(
 			array(
