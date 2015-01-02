@@ -327,11 +327,11 @@ class MN_Reorder {
 			//Output parent title
 			if( $children->have_posts() ) {
 				?>
-				<div><?php the_title(); ?><?php echo $post->menu_order; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+				<div><?php the_title(); ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
 				<?php
 			} else {
 				?>
-				<div><?php the_title(); ?><?php echo $post->menu_order; ?></div>
+				<div><?php the_title(); ?></div>
 				<?php
 			}
 			
@@ -366,6 +366,13 @@ class MN_Reorder {
 				<?php echo esc_html( $this->heading ); ?>
 				<img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" />
 			</h2>
+			<?php
+				$post_count_obj = wp_count_posts( $this->post_type );
+				$post_count = isset( $post_count_obj->{$this->post_status} )  ?absint( $post_count_obj->{$this->post_status} ) : absint( $post_count_obj[ 'publish' ] );
+				if ( $post_count >= 1000 ) {
+					printf( '<div class="error"><p>%s</p></div>', sprintf( __( 'There are over %s posts found.  We do not recommend you sort these posts for performance reasons.', 'metronet_reorder_posts' ), number_format( $post_count ) ) );
+				}
+			?>
 			<div id="reorder-error"></div>
 			<?php echo esc_html( $this->initial ); ?>
 		<?php
@@ -376,7 +383,6 @@ class MN_Reorder {
 		} elseif ( $page > 1 ) {
 			$offset = $this->offset * ( $page - 1 );
 		}
-		echo 'offset: ' . $offset; //todo - remove
 		printf( '<input type="hidden" id="reorder-offset" value="%s" />', absint( $offset ) );
 		add_filter( 'found_posts', array( $this, 'adjust_offset_pagination' ), 10, 2 );
 		$post_query = new WP_Query(
