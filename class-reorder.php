@@ -28,49 +28,49 @@ class MN_Reorder {
 	 * @desc Post type to be reordered
 	 * @access private
 	 */
-	private $post_type;
+	protected $post_type;
 
 	/**
 	 * @var $direction 
 	 * @desc ASC or DESC
 	 * @access private
 	 */
-	private $direction;
+	protected $direction;
 
 	/**
 	 * @var $heading 
 	 * @desc Admin page heading
 	 * @access private
 	 */
-	private $heading;
+	protected $heading;
 
 	/**
 	 * @var $initial 
 	 * @desc HTML outputted at end of admin page
 	 * @access private
 	 */
-	private $initial;
+	protected $initial;
 
 	/**
 	 * @var $final 
 	 * @desc HTML outputted at end of admin page
 	 * @access private
 	 */
-	private $final;
+	protected $final;
 
 	/**
 	 * @var $post_statush
 	 * @desc The post status of posts to be reordered
 	 * @access private
 	 */
-	private $post_status;
+	protected $post_status;
 
 	/**
 	 * @var $menu_label 
 	 * @desc Admin page menu label
 	 * @access private
 	 */
-	private $menu_label;
+	protected $menu_label;
 
 	/**
 	 * Class constructor
@@ -143,7 +143,7 @@ class MN_Reorder {
 	 * @access public
 	 * @global object $wpdb  The primary global database object used internally by WordPress
 	 */
-	private function update_posts( $post_data, $parent_id ) {
+	protected function update_posts( $post_data, $parent_id ) {
 		global $wpdb;
 		$count = 0;
 		
@@ -173,13 +173,7 @@ class MN_Reorder {
 	 * @global string $pagenow Used internally by WordPress to designate what the current page is in the admin panel
 	 */
 	public function print_styles() {
-		global $pagenow;
-
-		$pages = array( 'edit.php' );
-
-		if ( in_array( $pagenow, $pages ) )
-			wp_enqueue_style( 'reorderpages_style', REORDER_URL . '/css/admin.css' );
-
+		wp_enqueue_style( 'reorderpages_style', REORDER_URL . '/css/admin.css' );
 	}
 
 	/**
@@ -191,19 +185,14 @@ class MN_Reorder {
 	 * @global string $pagenow Used internally by WordPress to designate what the current page is in the admin panel
 	 */
 	public function print_scripts() {
-		global $pagenow, $hook_suffix;
-		$pages = array( 'edit.php' );
-		
-		if ( in_array( $pagenow, $pages ) ) {
-			wp_register_script( 'reorder_nested', REORDER_URL . '/scripts/jquery.mjs.nestedSortable.js', array( 'jquery-ui-sortable' ), '1.3.5', true );
-			wp_enqueue_script( 'reorder_posts', REORDER_URL . '/scripts/sort.js', array( 'reorder_nested' ) );
-			wp_localize_script( 'reorder_posts', 'reorder_posts', array(
-				'expand' => esc_js( __( 'Expand', 'reorder' ) ),
-				'collapse' => esc_js( __( 'Collapse', 'reorder' ) ),
-				'sortnonce' =>  wp_create_nonce( 'sortnonce' ),
-				'hierarchical' => is_post_type_hierarchical( $this->post_type ) ? 'true' : 'false',
-			) );
-		}
+		wp_register_script( 'reorder_nested', REORDER_URL . '/scripts/jquery.mjs.nestedSortable.js', array( 'jquery-ui-sortable' ), '1.3.5', true );
+		wp_enqueue_script( 'reorder_posts', REORDER_URL . '/scripts/sort.js', array( 'reorder_nested' ) );
+		wp_localize_script( 'reorder_posts', 'reorder_posts', array(
+			'expand' => esc_js( __( 'Expand', 'metronet-reorder-posts' ) ),
+			'collapse' => esc_js( __( 'Collapse', 'metronet-reorder-posts' ) ),
+			'sortnonce' =>  wp_create_nonce( 'sortnonce' ),
+			'hierarchical' => is_post_type_hierarchical( $this->post_type ) ? 'true' : 'false',
+		) );
 	}
 
 	/**
@@ -247,12 +236,12 @@ class MN_Reorder {
 	* @access private
 	* @param stdclass $post object to post
 	*/
-	private function output_row( $the_post ) {
+	protected function output_row( $the_post ) {
 		global $post;
 		$post = $the_post;
 		setup_postdata( $post );
 		?>
-		<li id="list_<?php the_id(); ?>"><div><?php the_title(); ?></div></li>
+		<li id="list_<?php the_id(); ?>" data-id="<?php the_id(); ?>" data-menu-order="<?php echo absint( $post->menu_order ); ?>" data-parent="<?php echo absint( $post->post_parent ); ?>"><div><?php the_title(); ?></div></li>
 		<?php
 	} //end output_row
 	
@@ -265,15 +254,15 @@ class MN_Reorder {
 	* @param stdclass $post object to post
 	* @param array $all_children - array of children 
 	*/
-	private function output_row_hierarchical( $the_post, $post_children, $all_children ) {
+	protected function output_row_hierarchical( $the_post, $post_children, $all_children ) {
 		global $post;
 		$post = $the_post;
 		$post_id = $the_post->ID;
 		
 		setup_postdata( $post );
 		?>
-		<li id="list_<?php the_id(); ?>">
-			<div><?php the_title(); ?> <a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+		<li id="list_<?php the_id(); ?>" data-id="<?php the_id(); ?>" data-menu-order="<?php echo absint( $post->menu_order ); ?>" data-parent="<?php echo absint( $post->post_parent ); ?>">
+			<div><?php the_title(); ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
 			<ul class='children'>
 			<?php $this->output_row_children( $post_children, $all_children ); ?>
 			</ul>
@@ -293,7 +282,7 @@ class MN_Reorder {
 	* @param stdclass $post object to post
 	* @param array $children_pages - array of children 
 	*/
-	private function output_row_children( $children_pages, $all_children ) {
+	protected function output_row_children( $children_pages, $all_children ) {
 		foreach( $children_pages as $child ) {
 			$post_id = $child->ID;
 			if ( isset( $all_children[ $post_id ] ) && !empty( $all_children[ $post_id ] ) ) {

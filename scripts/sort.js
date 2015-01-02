@@ -26,6 +26,9 @@ jQuery(document).ready(function($) {
 				$('#loading-animation').hide()
 			}, 'json' );
 			
+		},
+		relocate: function( event, ui ) {
+			alert( "blah");
 		}
 	});
 	$( "#post-list a" ).toggle( function() {
