@@ -85,6 +85,13 @@ class MN_Reorder {
 	 * @access protected
 	 */
 	protected $menu_label;
+	
+	/**
+	 * @var $reorder_page 
+	 * @desc Where the reorder interface is being added
+	 * @access protected
+	 */
+	protected $reorder_page = '';
 
 	/**
 	 * Class constructor
@@ -132,6 +139,7 @@ class MN_Reorder {
 		// Add actions
 		add_action( 'wp_ajax_post_sort',   array( $this, 'ajax_save_post_order'  ) );
 		add_action( 'admin_menu',          array( $this, 'enable_post_sort' ), 10, 'page' );
+		add_action( 'metronet_reorder_posts_interface_' . $this->post_type, array( $this, 'output_interface' ) );
 	}
 	/**
 	 * Adjust the found posts for the offset
@@ -284,6 +292,7 @@ class MN_Reorder {
 				'reorder-' . $post_type,            // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
 			);
+			$this->reorder_page = add_query_arg( array( 'page' => 'reorder-' . $post_type ), admin_url( $menu_location ) );
 		}
 		else {
 			$hook = add_posts_page(
@@ -293,86 +302,30 @@ class MN_Reorder {
 				'reorder-posts',                    // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
 			);
+			$this->reorder_page = add_query_arg( array( 'page' => 'reorder-' . $post_type ), admin_url( 'edit.php' ) );
 		}
+		do_action( 'metronet_reorder_posts_add_menu', $hook, $post_type ); //Allow other plugin authors to add scripts/styles to our menu items
 		add_action( 'admin_print_styles-' . $hook,  array( $this, 'print_styles'     ) );
 		add_action( 'admin_print_scripts-' . $hook, array( $this, 'print_scripts'    ) );
 	}
 	
 	/**
-	* Post Row Output
-	*
-	* @author Ronald Huereca <ronalfy@gmail.com>
-	* @since Reorder 2.1.0
-	* @access private
-	* @param stdclass $post object to post
-	*/
-	protected function output_row( $post ) {
-		global $post;
-		setup_postdata( $post );
-		?>
-		<li id="list_<?php the_id(); ?>" data-id="<?php the_id(); ?>" data-menu-order="<?php echo absint( $post->menu_order ); ?>" data-parent="<?php echo absint( $post->post_parent ); ?>" data-post-type="<?php echo esc_attr( $post->post_type ); ?>">
-			<?php
-			//Get the children
-			$args = array(
-				'post_type' => $this->post_type,
-				'post_status' => $this->post_status,
-				'posts_per_page' => 100, /*hope there's never more than 100 children*/
-				'post_parent' => get_the_ID(),
-				'orderby'        => 'menu_order',
-				'order'          => $this->order,
-			);
-			$children = new WP_Query( $args );
-			//Output parent title
-			if( $children->have_posts() ) {
-				?>
-				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
-				<?php
-			} else {
-				?>
-				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?></div>
-				<?php
-			}
-			
-			if( $children->have_posts() ) {
-				echo '<ul class="children">';
-				while( $children->have_posts() ) {
-					global $post;
-					$children->the_post();
-					$this->output_row( $post );
-				}
-				echo '</ul>';
-			}	
-			?>
-		</li>
-		<?php
-	} //end output_row
-	
-	/**
-	 * HTML output
+	 * Output the main Reorder Interface
 	 *
-	 * @author Ryan Hellyer <ryan@metronet.no>
-	 * @since Reorder 1.0
+	 * @author Ryan Hellyer <ryan@metronet.no> and Ronald Huereca <ronalfy@gmail.com>
+	 * @since Reorder 2.1.0
 	 * @access public
 	 * @global string $post_type
 	 */
-	public function sort_posts() {
-		$has_posts = false;
+	public function output_interface() {
+		$post_count_obj = wp_count_posts( $this->post_type );
+		$post_count = isset( $post_count_obj->{$this->post_status} )  ?absint( $post_count_obj->{$this->post_status} ) : absint( $post_count_obj[ 'publish' ] );
+		if ( $post_count >= 1000 ) {
+			printf( '<div class="error"><p>%s</p></div>', sprintf( __( 'There are over %s posts found.  We do not recommend you sort these posts for performance reasons.', 'metronet_reorder_posts' ), number_format( $post_count ) ) );
+		}
 		?>
-		</style>
-		<div class="wrap">
-			<h2>
-				<?php echo esc_html( $this->heading ); ?>
-				<img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" />
-			</h2>
-			<?php
-				$post_count_obj = wp_count_posts( $this->post_type );
-				$post_count = isset( $post_count_obj->{$this->post_status} )  ?absint( $post_count_obj->{$this->post_status} ) : absint( $post_count_obj[ 'publish' ] );
-				if ( $post_count >= 1000 ) {
-					printf( '<div class="error"><p>%s</p></div>', sprintf( __( 'There are over %s posts found.  We do not recommend you sort these posts for performance reasons.', 'metronet_reorder_posts' ), number_format( $post_count ) ) );
-				}
-			?>
-			<div id="reorder-error"></div>
-			<?php echo esc_html( $this->initial ); ?>
+		<div id="reorder-error"></div>
+		<?php echo esc_html( $this->initial ); ?>
 		<?php
 		//Output non hierarchical posts
 		$page = isset( $_GET[ 'paged' ] ) ? absint( $_GET[ 'paged' ] ) : 0;
@@ -420,8 +373,112 @@ class MN_Reorder {
 		} else {
 			echo sprintf( '<h3>%s</h3>	', esc_html__( 'There is nothing to sort at this time', 'metronet-reorder-posts' ) );	
 		}
-		echo esc_html( $this->final ); 
+		echo esc_html( $this->final ); 	
+	}
+	/**
+	* Post Row Output
+	*
+	* @author Ronald Huereca <ronalfy@gmail.com>
+	* @since Reorder 2.1.0
+	* @access protected
+	* @param stdclass $post object to post
+	*/
+	protected function output_row( $post ) {
+		global $post;
+		setup_postdata( $post );
 		?>
+		<li id="list_<?php the_id(); ?>" data-id="<?php the_id(); ?>" data-menu-order="<?php echo absint( $post->menu_order ); ?>" data-parent="<?php echo absint( $post->post_parent ); ?>" data-post-type="<?php echo esc_attr( $post->post_type ); ?>">
+			<?php
+			//Get the children
+			$args = array(
+				'post_type' => $this->post_type,
+				'post_status' => $this->post_status,
+				'posts_per_page' => 100, /*hope there's never more than 100 children*/
+				'post_parent' => get_the_ID(),
+				'orderby'        => 'menu_order',
+				'order'          => $this->order,
+			);
+			$children = new WP_Query( $args );
+			//Output parent title
+			if( $children->have_posts() ) {
+				?>
+				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+				<?php
+			} else {
+				?>
+				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?></div>
+				<?php
+			}
+			
+			if( $children->have_posts() ) {
+				echo '<ul class="children">';
+				while( $children->have_posts() ) {
+					global $post;
+					$children->the_post();
+					$this->output_row( $post );
+				}
+				echo '</ul>';
+			}	
+			?>
+		</li>
+		<?php
+	} //end output_row
+	
+	/**
+	 * Initial HTML output
+	 *
+	 * @author Ryan Hellyer <ryan@metronet.no> and Ronald Huereca <ronalfy@gmail.com>
+	 * @since Reorder 2.1.0
+	 * @access public
+	 * @global string $post_type
+	 */
+	public function sort_posts() {
+		//Dev note - Settings API not used here because there are no options to save.
+		?>
+		<div class="wrap">
+			<h2>
+				<?php echo esc_html( $this->heading ); ?>
+				<img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" />
+			</h2>
+			<?php
+			$tabs = 
+			array(
+				array(
+					'url' => $this->reorder_page /* URL to the tab */,
+					'label' => $this->heading,
+					'get' => 'main' /*$_GET variable*/,
+					'action' => 'metronet_reorder_posts_interface_' . $this->post_type /* action variable in do_action */
+				)
+			);
+			$tabs = apply_filters( 'metronet_reorder_posts_tabs_' . $this->post_type, (array)$tabs );
+			$tabs_count = count( $tabs );
+			
+			//Output tabs
+			$tab_html = '';
+			if ( $tabs && !empty( $tabs ) )  {
+				$tab_html .=  '<h2 class="nav-tab-wrapper">';
+				$active_tab = isset( $_GET[ 'tab' ] ) ? sanitize_text_field( $_GET[ 'tab' ] ) : 'main';
+				$do_action = false;
+				foreach( $tabs as $tab ) {
+					$classes = array( 'nav-tab' );
+					$tab_get = isset( $tab[ 'get' ] ) ? $tab[ 'get' ] : '';
+					if ( $active_tab == $tab_get ) {
+						$classes[] = 'nav-tab-active';
+						$do_action = isset( $tab[ 'action' ] ) ? $tab[ 'action' ] : false;
+					}
+					$tab_url = isset( $tab[ 'url' ] ) ? $tab[ 'url' ] : '';
+					$tab_label = isset( $tab[ 'label' ] ) ? $tab[ 'label' ] : ''; 
+					$tab_html .= sprintf( '<a href="%s" class="%s">%s</a>', esc_url( $tab_url ), esc_attr( implode( ' ', $classes ) ), esc_html( $tab[ 'label' ] ) );
+				}
+				$tab_html .= '</h2>';
+				if ( $tabs_count > 1 ) {
+					echo $tab_html;	
+				}
+				if ( $do_action ) {
+					do_action( $do_action );	
+				}
+			}	
+			?>
 		</div><!-- .wrap -->
 		<?php
 	} //end sort_posts
