@@ -153,7 +153,7 @@ class MN_Reorder {
 	/**
 	 * Saving the post oder for later use
 	 *
-	 * @author Ryan Hellyer <ryan@metronet.no> and Ronald Huereca <ronald@metronet.no>
+	 * @author Ronald Huereca <ronalfy@gmail.com>
 	 * @since Reorder 1.0
 	 * @access public
 	 * @global object $wpdb  The primary global database object used internally by WordPress
@@ -301,8 +301,8 @@ class MN_Reorder {
 	/**
 	* Post Row Output
 	*
-	* @author Ronald Huereca <ronald@metronet.no>
-	* @since Reorder 2.0.2
+	* @author Ronald Huereca <ronalfy@gmail.com>
+	* @since Reorder 2.1.0
 	* @access private
 	* @param stdclass $post object to post
 	*/
@@ -420,62 +420,6 @@ class MN_Reorder {
 		} else {
 			echo sprintf( '<h3>%s</h3>	', esc_html__( 'There is nothing to sort at this time', 'metronet-reorder-posts' ) );	
 		}
-		/*die( '<pre>' . print_r( $post_query, true ) );
-		if ( is_post_type_hierarchical( $this->post_type ) ) {
-			$pages = get_pages( array( 
-				'sort_column' => 'menu_order',
-				'post_type' => $this->post_type,
-			) );
-			if( $pages ) {
-				$has_posts = true;
-				echo '<ul id="post-list">';
-				//Get hiearchy of children/parents
-				$top_level_pages = array();
-				$children_pages = array();
-				foreach( $pages as $page ) {
-					if ( $page->post_parent == 0 ) {
-						//Parent page
-						$top_level_pages[] = $page;
-					} else {
-						$children_pages[ $page->post_parent ][] = $page;
-					}
-				} //end foreach
-							 
-				foreach( $top_level_pages as $page ) {
-					$page_id = $page->ID;
-					if ( isset( $children_pages[ $page_id ] ) && !empty( $children_pages[ $page_id ] ) ) {
-						//If page has children, output page and its children
-						$this->output_row_hierarchical( $page, $children_pages[ $page_id ], $children_pages );
-					} else {
-						$this->output_row( $page );
-					}
-				}
-				echo '</ul>';	 
-			}		 
-		} else {
-			//Output non hierarchical posts
-			$post_query = new WP_Query(
-				array(
-					'post_type'      => $this->post_type,
-					'posts_per_page' => -1,
-					'orderby'        => 'menu_order',
-					'order'          => $this->order,
-					'post_status'    => $this->post_status,
-				)
-			);
-			$posts = $post_query->get_posts();
-			if( $posts && !empty( $posts ) ) {
-				$has_posts = true;
-				echo '<ul id="post-list">';
-				foreach( $posts as $post ) {
-					$this->output_row( $post );
-				} //end foreach
-				echo '</ul>';
-			}
-		}
-		if ( false === $has_posts ) {
-			echo sprintf( '<h3>%s</h3>	', esc_html__( 'There is nothing to sort at this time', 'metronet-reorder-posts' ) );
-		}*/
 		echo esc_html( $this->final ); 
 		?>
 		</div><!-- .wrap -->
