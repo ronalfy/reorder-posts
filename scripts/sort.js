@@ -44,16 +44,19 @@ jQuery(document).ready(function($) {
 			sort_end.next = ui.item.next( ':not(".placeholder")' );
 			
 			//Get starting post parent
-			var start_post_parent = sort_start.item.attr( 'data-parent' );
+			var start_post_parent = parseInt( sort_start.item.attr( 'data-parent' ) );
 			
 			//Get ending post parent
 			var end_post_parent = 0;
 			if( sort_end.prev.length > 0 || sort_end.next.length > 0 ) {
 				if ( sort_end.prev.length > 0 ) {
-					end_post_parent = sort_end.prev.attr( 'data-parent' );
+					end_post_parent = parseInt( sort_end.prev.attr( 'data-parent' ) );
 				} else if ( sort_end.next.length > 0 ) {
-					end_post_parent = sort_end.next.attr( 'data-parent' );
+					end_post_parent = parseInt( sort_end.next.attr( 'data-parent' ) );
 				} 	
+			} else if ( sort_end.prev.length == 0 && sort_end.next.length == 0 ) {
+				//We're the only child :(
+				end_post_parent = ui.item.parents( 'li:first' ).attr( 'data-id' );	
 			}
 			
 			//Update post parent in DOM
@@ -91,20 +94,18 @@ jQuery(document).ready(function($) {
 			//Determine if we need to sort child nodes - if post_parent ids don't match and there are any remaining child nodes, we need to reorder those
 			if ( start_post_parent != end_post_parent ) {
 				//Determine if there are any remaining child nodes
-				if( sort_start.prev.length > 0 || sort_start.next.length > 0 ) {
-					var child_ajax_args = {
-						action: 'post_sort',
-						post_parent: start_post_parent,
-						start: 0,
-						nonce: reorder_posts.sortnonce,
-						post_id: 0,
-						menu_order: 0,
-						excluded: {},
-						post_type: sort_start.item.attr( 'data-post-type' ),
-						remove_loading: false
-					};
-					$.post( ajaxurl, child_ajax_args, reorder_ajax_callback );
-				}
+				var child_ajax_args = {
+					action: 'post_sort',
+					post_parent: start_post_parent,
+					start: 0,
+					nonce: reorder_posts.sortnonce,
+					post_id: 0,
+					menu_order: 0,
+					excluded: {},
+					post_type: sort_start.item.attr( 'data-post-type' ),
+					remove_loading: false
+				};
+				$.post( ajaxurl, child_ajax_args, reorder_ajax_callback );
 			}
 			
 		},
