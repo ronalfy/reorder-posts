@@ -187,7 +187,7 @@ class MN_Reorder {
 		$return[ 'menu_order' ] = $post_menu_order;
 		$return[ 'post_type' ] = $post_type;
 		
-		//Update post if passed
+		//Update post if passed - Should run only on beginning of first iteration
 		if( $post_id > 0 && !isset( $_POST[ 'more_posts' ] ) ) {
 			wp_update_post( array( 'ID' => $post_id, 'post_parent' => $post_parent, 'menu_order' => $post_menu_order ) );	
 			$posts_to_exclude[] = $post_id;
