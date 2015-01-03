@@ -5,6 +5,7 @@ jQuery(document).ready(function($) {
 	if ( reorder_posts.hierarchical == 'false' ) {
 		max_levels = 1;
 	}
+	var callback = false;
 	var sort_start = {};
 	var sort_end = {};
 	postList.nestedSortable( {
@@ -27,16 +28,17 @@ jQuery(document).ready(function($) {
 				if ( true == response.more_posts ) {
 					$.post( ajaxurl, response, reorder_ajax_callback );
 				} else {
-					if( response.remove_loading == true ) {
+					if ( false != callback ) {
+						var callback_ajax_args = callback;
+						callback = false;
+						$.post( ajaxurl, callback_ajax_args, reorder_ajax_callback );
+					} else {
 						$('#loading-animation').hide();
-					} 
+					}
 				}
 			};
 			
 			$('#loading-animation').show();
-			
-			//Set ajax to synchronous
-			$.ajaxSetup( { async: false } );
 			
 			//Get the end items where the post was placed
 			sort_end.item = ui.item;
@@ -85,16 +87,12 @@ jQuery(document).ready(function($) {
 				post_id: sort_end.item.attr( 'data-id' ),
 				menu_order: sort_end.item.attr( 'data-menu-order' ),
 				excluded: {},
-				post_type: sort_start.item.attr( 'data-post-type' ),
-				remove_loading: true
+				post_type: sort_start.item.attr( 'data-post-type' )
 			};
-			
-			$.post( ajaxurl, parent_ajax_args, reorder_ajax_callback );
-			
 			//Determine if we need to sort child nodes - if post_parent ids don't match and there are any remaining child nodes, we need to reorder those
 			if ( start_post_parent != end_post_parent ) {
 				//Determine if there are any remaining child nodes
-				var child_ajax_args = {
+				callback = {
 					action: 'post_sort',
 					post_parent: start_post_parent,
 					start: 0,
@@ -102,12 +100,11 @@ jQuery(document).ready(function($) {
 					post_id: 0,
 					menu_order: 0,
 					excluded: {},
-					post_type: sort_start.item.attr( 'data-post-type' ),
-					remove_loading: false
+					post_type: sort_start.item.attr( 'data-post-type' )
 				};
-				$.post( ajaxurl, child_ajax_args, reorder_ajax_callback );
 			}
 			
+			$.post( ajaxurl, parent_ajax_args, reorder_ajax_callback );			
 		},
 		start: function( event, ui ) {
 			sort_start.item = ui.item;

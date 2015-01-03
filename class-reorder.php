@@ -171,7 +171,6 @@ class MN_Reorder {
 		$post_menu_order = isset( $_POST[ 'menu_order' ] ) ? absint( $_POST[ 'menu_order' ] ) : 0;
 		$posts_to_exclude = isset( $_POST[ 'excluded' ] ) ? array_filter( $_POST[ 'excluded' ], 'absint' ) : array();
 		$post_type = isset( $_POST[ 'post_type' ] ) ? sanitize_text_field( $_POST[ 'post_type' ] ) : false;
-		$remove_loading = isset( $_POST[ 'remove_loading' ] ) ? (bool)$_POST[ 'remove_loading' ] : false;
 		
 		if ( !$post_type ) die( '' );
 		
@@ -187,7 +186,6 @@ class MN_Reorder {
 		$return[ 'post_id'] = $post_id;
 		$return[ 'menu_order' ] = $post_menu_order;
 		$return[ 'post_type' ] = $post_type;
-		$return[ 'remove_loading' ] = $remove_loading;
 		
 		//Update post if passed
 		if( $post_id > 0 && !isset( $_POST[ 'more_posts' ] ) ) {
@@ -200,7 +198,7 @@ class MN_Reorder {
 			'post_type' => $post_type,
 			'orderby' => 'menu_order title',
 			'order' => $this->order,
-			'posts_per_page' => 2,
+			'posts_per_page' => 50,
 			'suppress_filters' => true,
 			'ignore_sticky_posts' => true,
 			'post_status' => $this->post_status,
@@ -327,11 +325,11 @@ class MN_Reorder {
 			//Output parent title
 			if( $children->have_posts() ) {
 				?>
-				<div><?php the_title(); ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
 				<?php
 			} else {
 				?>
-				<div><?php the_title(); ?></div>
+				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?></div>
 				<?php
 			}
 			
