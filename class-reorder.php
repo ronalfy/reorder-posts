@@ -21,77 +21,77 @@
  * @author Ryan Hellyer <ryan@metronet.no>
  * @since 1.0
  */
-final class MN_Reorder {
+class MN_Reorder {
 
 	/**
 	 * @var $post_type 
 	 * @desc Post type to be reordered
-	 * @access private
+	 * @access protected
 	 */
-	private $post_type;
+	protected $post_type;
 	
 	/**
 	 * @var $posts_per_page 
 	 * @desc How many posts to show
-	 * @access private
+	 * @access protected
 	 */
-	private $posts_per_page;
+	protected $posts_per_page;
 	
 	/**
 	 * @var $offset 
 	 * @desc How many posts to offset by
-	 * @access private
+	 * @access protected
 	 */
-	private $offset;
+	protected $offset;
 
 	/**
 	 * @var $direction 
 	 * @desc ASC or DESC
-	 * @access private
+	 * @access protected
 	 */
-	private $direction;
+	protected $direction;
 
 	/**
 	 * @var $heading 
 	 * @desc Admin page heading
-	 * @access private
+	 * @access protected
 	 */
-	private $heading;
+	protected $heading;
 
 	/**
 	 * @var $initial 
 	 * @desc HTML outputted at end of admin page
-	 * @access private
+	 * @access protected
 	 */
-	private $initial;
+	protected $initial;
 
 	/**
 	 * @var $final 
 	 * @desc HTML outputted at end of admin page
-	 * @access private
+	 * @access protected
 	 */
-	private $final;
+	protected $final;
 
 	/**
 	 * @var $post_statush
 	 * @desc The post status of posts to be reordered
-	 * @access private
+	 * @access protected
 	 */
-	private $post_status;
+	protected $post_status;
 
 	/**
 	 * @var $menu_label 
 	 * @desc Admin page menu label
-	 * @access private
+	 * @access protected
 	 */
-	private $menu_label;
+	protected $menu_label;
 	
 	/**
 	 * @var $reorder_page 
 	 * @desc Where the reorder interface is being added
-	 * @access private
+	 * @access protected
 	 */
-	private $reorder_page = '';
+	protected $reorder_page = '';
 
 	/**
 	 * Class constructor
@@ -380,10 +380,10 @@ final class MN_Reorder {
 	*
 	* @author Ronald Huereca <ronalfy@gmail.com>
 	* @since Reorder 2.1.0
-	* @access private
+	* @access protected
 	* @param stdclass $post object to post
 	*/
-	private function output_row( $post ) {
+	protected function output_row( $post ) {
 		global $post;
 		setup_postdata( $post );
 		?>
