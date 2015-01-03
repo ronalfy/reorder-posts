@@ -85,17 +85,19 @@ function mn_reorder_posts_init() {
 		$heading = sprintf( __( 'Reorder %s', 'metronet-reorder-posts' ), $post_type_label );
 		
 		// Instantiate new reordering
-		new MN_Reorder(
-			array(
-				'post_type'   => $post_type,
-				'order'       => 'ASC',
-				'heading'     => $heading,
-				'final'       => '',
-				'initial'     => '',
-				'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
-				'post_status' => 'publish',
-			)
+		$mn_reorder_args = array(
+			'post_type'   => $post_type,
+			'order'       => 'ASC',
+			'heading'     => $heading,
+			'final'       => '',
+			'initial'     => '',
+			'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
+			'post_status' => 'publish',
 		);
+		new MN_Reorder(
+			$mn_reorder_args
+		);
+		do_action( 'metronet_reorder_class_args_' . $post_type, $mn_reorder_args );
 	}
 } //end mt_reorder_posts_init
 
