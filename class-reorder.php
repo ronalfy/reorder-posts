@@ -21,77 +21,77 @@
  * @author Ryan Hellyer <ryan@metronet.no>
  * @since 1.0
  */
-class MN_Reorder {
+final class MN_Reorder {
 
 	/**
 	 * @var $post_type 
 	 * @desc Post type to be reordered
-	 * @access protected
+	 * @access private
 	 */
-	protected $post_type;
+	private $post_type;
 	
 	/**
 	 * @var $posts_per_page 
 	 * @desc How many posts to show
-	 * @access protected
+	 * @access private
 	 */
-	protected $posts_per_page;
+	private $posts_per_page;
 	
 	/**
 	 * @var $offset 
 	 * @desc How many posts to offset by
-	 * @access protected
+	 * @access private
 	 */
-	protected $offset;
+	private $offset;
 
 	/**
 	 * @var $direction 
 	 * @desc ASC or DESC
-	 * @access protected
+	 * @access private
 	 */
-	protected $direction;
+	private $direction;
 
 	/**
 	 * @var $heading 
 	 * @desc Admin page heading
-	 * @access protected
+	 * @access private
 	 */
-	protected $heading;
+	private $heading;
 
 	/**
 	 * @var $initial 
 	 * @desc HTML outputted at end of admin page
-	 * @access protected
+	 * @access private
 	 */
-	protected $initial;
+	private $initial;
 
 	/**
 	 * @var $final 
 	 * @desc HTML outputted at end of admin page
-	 * @access protected
+	 * @access private
 	 */
-	protected $final;
+	private $final;
 
 	/**
 	 * @var $post_statush
 	 * @desc The post status of posts to be reordered
-	 * @access protected
+	 * @access private
 	 */
-	protected $post_status;
+	private $post_status;
 
 	/**
 	 * @var $menu_label 
 	 * @desc Admin page menu label
-	 * @access protected
+	 * @access private
 	 */
-	protected $menu_label;
+	private $menu_label;
 	
 	/**
 	 * @var $reorder_page 
 	 * @desc Where the reorder interface is being added
-	 * @access protected
+	 * @access private
 	 */
-	protected $reorder_page = '';
+	private $reorder_page = '';
 
 	/**
 	 * Class constructor
@@ -266,6 +266,7 @@ class MN_Reorder {
 		wp_register_script( 'reorder_nested', REORDER_URL . '/scripts/jquery.mjs.nestedSortable.js', array( 'jquery-ui-sortable' ), '1.3.5', true );
 		wp_enqueue_script( 'reorder_posts', REORDER_URL . '/scripts/sort.js', array( 'reorder_nested' ) );
 		wp_localize_script( 'reorder_posts', 'reorder_posts', array(
+			'action' => 'post_sort',
 			'expand' => esc_js( __( 'Expand', 'metronet-reorder-posts' ) ),
 			'collapse' => esc_js( __( 'Collapse', 'metronet-reorder-posts' ) ),
 			'sortnonce' =>  wp_create_nonce( 'sortnonce' ),
@@ -302,9 +303,10 @@ class MN_Reorder {
 				'reorder-posts',                    // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
 			);
-			$this->reorder_page = add_query_arg( array( 'page' => 'reorder-' . $post_type ), admin_url( 'edit.php' ) );
+			$this->reorder_page = add_query_arg( array( 'page' => 'reorder-posts' ), admin_url( 'edit.php' ) );
 		}
-		do_action( 'metronet_reorder_posts_add_menu', $hook, $post_type ); //Allow other plugin authors to add scripts/styles to our menu items
+		do_action( 'metronet_reorder_posts_add_menu_' . $post_type, $hook ); //Allow other plugin authors to add scripts/styles to our menu items
+		do_action( 'metronet_reorder_menu_url_' . $post_type, $this->reorder_page );
 		add_action( 'admin_print_styles-' . $hook,  array( $this, 'print_styles'     ) );
 		add_action( 'admin_print_scripts-' . $hook, array( $this, 'print_scripts'    ) );
 	}
@@ -380,10 +382,10 @@ class MN_Reorder {
 	*
 	* @author Ronald Huereca <ronalfy@gmail.com>
 	* @since Reorder 2.1.0
-	* @access protected
+	* @access private
 	* @param stdclass $post object to post
 	*/
-	protected function output_row( $post ) {
+	private function output_row( $post ) {
 		global $post;
 		setup_postdata( $post );
 		?>

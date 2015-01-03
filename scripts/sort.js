@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
 			
 			//Perform Ajax Call
 			var parent_ajax_args = {
-				action: 'post_sort',
+				action: reorder_posts.action,
 				post_parent: end_post_parent,
 				start: 0,
 				nonce: reorder_posts.sortnonce,
@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
 			if ( start_post_parent != end_post_parent ) {
 				//Determine if there are any remaining child nodes
 				callback = {
-					action: 'post_sort',
+					action: reorder_posts.action,
 					post_parent: start_post_parent,
 					start: 0,
 					nonce: reorder_posts.sortnonce,

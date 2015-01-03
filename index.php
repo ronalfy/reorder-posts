@@ -77,6 +77,7 @@ function mn_reorder_posts_init() {
 	
 	// Add filter to allow users to control which post-types the plugin is used with via their theme
 	$post_types = array_unique( apply_filters( 'metronet_reorder_post_types', $post_types ) );
+	do_action( 'metronet_reorder_post_types_loaded', $post_types );
 		
 	foreach ( $post_types as $post_type ) {
 		//Generate heading
@@ -97,7 +98,6 @@ function mn_reorder_posts_init() {
 		new MN_Reorder(
 			$mn_reorder_args
 		);
-		do_action( 'metronet_reorder_class_args_' . $post_type, $mn_reorder_args );
 	}
 } //end mt_reorder_posts_init
 
