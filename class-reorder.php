@@ -216,7 +216,8 @@ final class MN_Reorder {
 	 */
 	public function ajax_save_post_order() {
 		global $wpdb;
-
+		
+		if ( !current_user_can( 'edit_pages' ) ) die( '' );
 		// Verify nonce value, for security purposes
 		if ( !wp_verify_nonce( $_POST['nonce'], 'sortnonce' ) ) die( '' );
 		
@@ -337,7 +338,7 @@ final class MN_Reorder {
 				$menu_location, // Parent slug
 				$this->heading,                     // Page title (unneeded since specified directly)
 				apply_filters( 'metronet_reorder_menu_label_' . $post_type, $this->menu_label , $post_type ),                  // Menu title
-				'edit_posts',                       // Capability
+				'edit_pages',                       // Capability
 				'reorder-' . $post_type,            // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
 			);
@@ -347,7 +348,7 @@ final class MN_Reorder {
 			$hook = add_posts_page(
 				$this->heading,                     // Page title (unneeded since specified directly)
 				apply_filters( 'metronet_reorder_menu_label_' . $post_type, $this->menu_label ),                  // Menu title
-				'edit_posts',                       // Capability
+				'edit_pages',                       // Capability
 				'reorder-posts',                    // Menu slug
 				array( $this, 'sort_posts' )        // Callback function
 			);
