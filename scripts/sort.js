@@ -78,6 +78,12 @@ jQuery(document).ready(function($) {
 			}
 			sort_end.item.attr( 'data-menu-order', list_offset );
 			
+			//Get attributes
+			var attributes = {};
+			$.each(  sort_end.item[0].attributes, function() {
+				attributes [ this.name ] = this.value;
+			} );
+			
 			//Perform Ajax Call
 			var parent_ajax_args = {
 				action: reorder_posts.action,
@@ -87,7 +93,8 @@ jQuery(document).ready(function($) {
 				post_id: sort_end.item.attr( 'data-id' ),
 				menu_order: sort_end.item.attr( 'data-menu-order' ),
 				excluded: {},
-				post_type: sort_start.item.attr( 'data-post-type' )
+				post_type: sort_start.item.attr( 'data-post-type' ),
+				attributes: attributes
 			};
 			//Determine if we need to sort child nodes - if post_parent ids don't match and there are any remaining child nodes, we need to reorder those
 			if ( start_post_parent != end_post_parent ) {
@@ -100,7 +107,8 @@ jQuery(document).ready(function($) {
 					post_id: 0,
 					menu_order: 0,
 					excluded: {},
-					post_type: sort_start.item.attr( 'data-post-type' )
+					post_type: sort_start.item.attr( 'data-post-type' ),
+					attributes: attributes
 				};
 			}
 			
