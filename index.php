@@ -63,6 +63,7 @@ define( 'REORDER_BASENAME', plugin_basename(__FILE__) ); //Plugin basename
  */
 add_action( 'wp_loaded', 'mn_reorder_posts_init', 100 ); //Load low priority in init for other plugins to generate their post types
 function mn_reorder_posts_init() {
+	global $mn_reorder_instances;
 	$post_types = get_post_types( array(), 'names' );
 	
 	//Get plugin options for post types and exclude as necessary
@@ -95,7 +96,8 @@ function mn_reorder_posts_init() {
 			'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
 			'post_status' => 'publish',
 		);
-		new MN_Reorder(
+	
+		$mn_reorder_instances[ $post_type ] = new MN_Reorder(
 			$mn_reorder_args
 		);
 	}
@@ -106,4 +108,8 @@ function mn_reorder_init_language() {
 	//* Localization Code */
 	load_plugin_textdomain( 'metronet-reorder-posts', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
+
+/* Global variable for storing class instances */
+global $mn_reorder_instances;
+$mn_reorder_instances = array();
 
