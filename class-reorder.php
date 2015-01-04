@@ -93,15 +93,50 @@ final class MN_Reorder {
 	 */
 	private $reorder_page = '';
 	
+	/**
+	 * Get method for post status
+	 *
+	 * @author Ronald Huereca <ronald@gmail.com>
+	 * @since Reorder 2.1.0
+	 * @access public
+	 * @returns string $post_status Post Status of Posts
+	 */
 	public function get_post_status() {
 		return $this->post_status;	
 	}
+	
+	/**
+	 * Get method for post order
+	 *
+	 * @author Ronald Huereca <ronald@gmail.com>
+	 * @since Reorder 2.1.0
+	 * @access public
+	 * @returns string $order Order of posts (ASC or DESC)
+	 */
 	public function get_post_order() {
 		return $this->order;	
 	}
+	
+	/**
+	 * Get method for posts per page
+	 *
+	 * @author Ronald Huereca <ronald@gmail.com>
+	 * @since Reorder 2.1.0
+	 * @access public
+	 * @returns int $posts_per_page How many posts to display
+	 */
 	public function get_posts_per_page() {
 		return $this->posts_per_page;	
 	}
+	
+	/**
+	 * Get method for post offset used in pagination
+	 *
+	 * @author Ronald Huereca <ronald@gmail.com>
+	 * @since Reorder 2.1.0
+	 * @access public
+	 * @returns int $offset Offset of posts
+	 */
 	public function get_offset() {
 		return $this->offset;	
 	}
