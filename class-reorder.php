@@ -340,6 +340,7 @@ final class MN_Reorder {
 		}
 		?>
 		<div id="reorder-error"></div>
+		<div><img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" /></div>
 		<?php echo esc_html( $this->initial ); ?>
 		<?php
 		//Output non hierarchical posts
@@ -375,7 +376,6 @@ final class MN_Reorder {
 			//Show pagination links
 			if( $post_query->max_num_pages > 1 ) {
 				echo '<div id="reorder-pagination">';
-				global $wp;
 				$current_url = add_query_arg( array( 'paged' => '%#%' ) );
 				$pagination_args = array(
 					'base' => $current_url,
@@ -453,7 +453,6 @@ final class MN_Reorder {
 		<div class="wrap">
 			<h2>
 				<?php echo esc_html( $this->heading ); ?>
-				<img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" />
 			</h2>
 			<?php
 			$tabs = 
