@@ -50,6 +50,7 @@ require( 'class-reorder-admin.php' );
  * @since 1.0
  * @author Ryan Hellyer <ryan@metronet.no>
  */
+define( 'REORDER_ALLOW_ADDONS', true ); // Plugin folder DIR
 define( 'REORDER_DIR', rtrim( plugin_dir_path(__FILE__), '/' ) ); // Plugin folder DIR
 define( 'REORDER_URL', rtrim( plugin_dir_url(__FILE__), '/' ) ); // Plugin folder URL
 define( 'REORDER_BASENAME', plugin_basename(__FILE__) ); //Plugin basename
