@@ -45,13 +45,6 @@ final class MN_Reorder {
 	private $offset;
 
 	/**
-	 * @var $direction 
-	 * @desc ASC or DESC
-	 * @access private
-	 */
-	private $direction;
-
-	/**
 	 * @var $heading 
 	 * @desc Admin page heading
 	 * @access private
@@ -87,12 +80,32 @@ final class MN_Reorder {
 	private $menu_label;
 	
 	/**
+	 * @var $order 
+	 * @desc ASC or DESC
+	 * @access private
+	 */
+	private $order;
+	
+	/**
 	 * @var $reorder_page 
 	 * @desc Where the reorder interface is being added
 	 * @access private
 	 */
 	private $reorder_page = '';
-
+	
+	public function get_post_status() {
+		return $this->post_status;	
+	}
+	public function get_post_order() {
+		return $this->order;	
+	}
+	public function get_posts_per_page() {
+		return $this->posts_per_page;	
+	}
+	public function get_offset() {
+		return $this->offset;	
+	}
+	
 	/**
 	 * Class constructor
 	 * 
