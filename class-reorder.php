@@ -453,11 +453,11 @@ final class MN_Reorder {
 			//Output parent title
 			if( $children->have_posts() ) {
 				?>
-				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+				<div><?php the_title(); ?><?php echo ( defined( 'REORDER_DEBUG' ) && REORDER_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
 				<?php
 			} else {
 				?>
-				<div><?php the_title(); ?><?php echo ( defined( 'WP_DEBUG' ) && WP_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?></div>
+				<div><?php the_title(); ?><?php echo ( defined( 'REORDER_DEBUG' ) && REORDER_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?></div>
 				<?php
 			}
 			
