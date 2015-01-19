@@ -6,8 +6,8 @@ Requires at Least: 3.7
 Tested up to: 4.1
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
 Stable tag: 2.1.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 A simple and easy way to reorder your custom post-type posts in WordPress.
 
