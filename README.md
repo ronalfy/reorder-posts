@@ -84,4 +84,4 @@ Credits
 ----------------------
 This plugin was originally developed for <a href="https://metronet.no/">Metronet AS in Norway</a>.
 
-The plugin is now independently developed by <a href="https://hellyer.kiwi/">Ryan Hellyer</a> and <a href="http://www.ronalfy.com">Ronald Huereca</a>.
+The plugin is now independently developed by <a href="https://hellyer.kiwi/">Ryan Hellyer</a>, <a href="http://www.ronalfy.com">Ronald Huereca</a> and <a href="https://scottbasgaard.com">Scott Basgaard</a>
