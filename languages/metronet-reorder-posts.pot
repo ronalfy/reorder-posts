@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Metronet Reorder Posts v1.0.0\n"
 "Report-Msgid-Bugs-To: Ronald Huereca <ronalfy@gmail.com>\n"
-"POT-Creation-Date: 2015-01-04 16:53-0600\n"
+"POT-Creation-Date: 2015-01-19 19:30-0600\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ronald Huereca <ron@ronalfy.com>\n"
 "Language-Team: Ronald Huereca <ronalfy@gmail.com>\n"
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Reorder"
 msgstr ""
 
-#: class-reorder.php:319 class-reorder.php:456
+#: class-reorder.php:319 class-reorder.php:462
 msgid "Expand"
 msgstr ""
 
@@ -108,14 +108,22 @@ msgstr ""
 msgid "Collapse"
 msgstr ""
 
-#: class-reorder.php:375
+#: class-reorder.php:376
 #, php-format
 msgid ""
 "There are over %s posts found.  We do not recommend you sort these posts for "
 "performance reasons."
 msgstr ""
 
-#: class-reorder.php:425
+#: class-reorder.php:383
+#, php-format
+msgid ""
+"Note:  reordering here does not change the order on your website without "
+"some code modifications.  Please see our <a target=\"_blank\" href=\"%s"
+"\">Wiki</a>."
+msgstr ""
+
+#: class-reorder.php:431
 msgid "There is nothing to sort at this time"
 msgstr ""
 
