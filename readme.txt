@@ -117,7 +117,7 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 == Changelog ==
 
 = 2.1.0 =
-* Released 2015-01-09
+* Released 2015-01-19
 * Added add-on support
 * Make sure reordering can only be done by those with edit_pages privileges
 * Added pagination for performance reasons
@@ -178,6 +178,9 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 * Initial plugin release
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+Some capability fixes, pagination for post types with a lot of posts, improved query performance, and add-on capability.
 
 = 2.0.2 =
 Bug fixes with PHP error notices.  Highly recommend you upgrade.
