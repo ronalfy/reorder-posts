@@ -279,8 +279,6 @@ final class MN_Reorder {
 				
 				if ( $post_id != $post->ID ) {
 					//Update post and counts
-					global $wpdb;
-					//Update the posts
 					$wpdb->update(
 						$wpdb->posts,
 						array( 'menu_order' => $start, 'post_parent' => $post_parent ),
