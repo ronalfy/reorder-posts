@@ -200,7 +200,7 @@ final class MN_Reorder {
 	public function adjust_offset_pagination( $found_posts, $query ) {
 		//This sometimes will have a bug of showing an extra page, but it doesn't break anything, so leaving it for now.
 		if( $found_posts > $this->posts_per_page ) {
-			$num_pages = round($found_posts / $this->offset);
+			$num_pages = $found_posts / $this->offset;
 			$found_posts = (string)round( $num_pages * $this->posts_per_page );
 		}
 		return $found_posts;
