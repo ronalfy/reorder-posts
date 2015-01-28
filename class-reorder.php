@@ -388,11 +388,6 @@ final class MN_Reorder {
 		?>
 		<div id="reorder-error"></div>
 		<div><img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" /></div>
-		<div class="updated">
-			<p><strong>
-			<?php echo sprintf( __( 'Note:  reordering here does not change the order on your website without some code modifications.  Please see our <a target="_blank" href="%s">Wiki</a>.', 'metronet-reorder-posts' ), 'https://github.com/ronalfy/reorder-posts/wiki' ); ?>
-			</strong></p>
-		</div>
 		<?php echo esc_html( $this->initial ); ?>
 		<?php
 		//Output non hierarchical posts
