@@ -5,7 +5,7 @@ Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
 Tested up to: 4.1
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -109,12 +109,20 @@ Yes, but be wary that the plugin now allows you to re-nest hierarchical items ea
 
 This plugin requires WordPress 3.7 or above.  We urge you, however, to always use the latest version of WordPress.
 
+= Does this sort posts within a category (i.e., a term)? =
+
+No, but there is an add-on for this plugin called <a href="https://wordpress.org/plugins/reorder-by-term/">Reorder by Term</a> you should check out.
+
 == Screenshots ==
 
 1. Reorder Posts allows you to easily drag and drop posts to change their order
 2.  Admin panel settings
 
 == Changelog ==
+
+= 2.1.2 =
+* Released 2015-01-28
+* Removed developer notice from Reorder pages
 
 = 2.1.1 =
 * Released 2015-01-21
@@ -184,17 +192,11 @@ This plugin requires WordPress 3.7 or above.  We urge you, however, to always us
 
 == Upgrade Notice ==
 
+= 2.1.2 =
+Removed developer notice from Reorder pages
+
 = 2.1.1 =
 Fixed pagination issue.  Improved Reorder save query performance significantly
 
 = 2.1.0 =
 Some capability fixes, pagination for post types with a lot of posts, improved query performance, and add-on capability.
-
-= 2.0.2 =
-Bug fixes with PHP error notices.  Highly recommend you upgrade.
-
-= 2.0.1 =
-Filter additions, and several bug fixes.
-
-= 2.0.0 =
-New admin panel settings for setting Reorder for post types, and advanced options for modifying the menu order of post type queries.
