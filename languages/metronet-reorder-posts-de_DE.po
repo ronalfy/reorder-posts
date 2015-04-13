@@ -1,0 +1,139 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: Ronald Huereca <ronalfy@gmail.com>\n"
+"POT-Creation-Date: 2015-01-19 19:30-0600\n"
+"PO-Revision-Date: 2015-04-13 19:25+0100\n"
+"Last-Translator: Nico Hauser <me@tyratox.ch>\n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: class-reorder-admin.php:82 class-reorder-admin.php:360
+msgctxt "Plugin Name - Settings Page Title"
+msgid "Reorder Posts"
+msgstr "Reorder Posts"
+
+#: class-reorder-admin.php:82
+msgctxt "Plugin Name - Menu Item"
+msgid "Reorder Posts"
+msgstr "Reorder Posts"
+
+#: class-reorder-admin.php:123
+msgid "Sort by:"
+msgstr "Sortieren nach:"
+
+#: class-reorder-admin.php:125
+msgid "None"
+msgstr "Nichts"
+
+#: class-reorder-admin.php:126
+msgid "Menu Order"
+msgstr "Menüreihenfolge"
+
+#: class-reorder-admin.php:132
+msgid "Sort Order:"
+msgstr "Sortierreihenfolge"
+
+#: class-reorder-admin.php:134
+msgid "ASC"
+msgstr "Auftsteigend (Grösstes Element zuletzt)"
+
+#: class-reorder-admin.php:135
+msgid "DESC"
+msgstr "Absteigend (Grösstes Element zuerst)"
+
+#: class-reorder-admin.php:185
+msgid ""
+"These are advanced options and you should only use these if you know what "
+"you are doing.  These can overwrite the menu orders of custom queries (using "
+"get_posts or WP_Query), custom post type archives, and even the order your "
+"blog posts display."
+msgstr ""
+"Dies sind erweiterte Optionen welche Sie nur ändern sollten, wenn Sie wissen "
+"was Sie tun. Dies können die Menüreihenfolge von eigenen Queries "
+"(get_posts() oder WP_Query), Archiven eigener Post Typen und sogar die "
+"Reihenfolge der Blogeinträge ändern."
+
+#: class-reorder-admin.php:201
+msgctxt "Plugin settings link on the plugins page"
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: class-reorder-admin.php:251
+msgctxt "plugin settings heading"
+msgid "Enable Post Types"
+msgstr "Für folgende Posttypen aktivieren"
+
+#: class-reorder-admin.php:253
+msgctxt "plugin settings heading"
+msgid "Advanced"
+msgstr "Erweiterte Einstellungen"
+
+#: class-reorder-admin.php:255
+msgid "Post Types"
+msgstr "Posttypen"
+
+#: class-reorder-admin.php:255
+msgid "Select the post types you would like this plugin enabled for."
+msgstr ""
+"Wählen Sie die Posttypen an, für welche dieses Plugin einen Menüeintrag "
+"anzeigen soll."
+
+#: class-reorder-admin.php:257
+msgid "Select the menu order arguments."
+msgstr "Wählen Sie die Argumente für Menüreihenfolge."
+
+#: class-reorder-admin.php:257
+msgid "Select the menu order for the post types."
+msgstr "Wählen Sie die Reihenfolge für die Posttypen an."
+
+#: class-reorder.php:161 class-reorder.php:165 index.php:97
+msgid "Reorder"
+msgstr "Neu anordnen"
+
+#: class-reorder.php:319 class-reorder.php:462
+msgid "Expand"
+msgstr "Öffnen"
+
+#: class-reorder.php:320
+msgid "Collapse"
+msgstr "Schliessen"
+
+#: class-reorder.php:376
+#, php-format
+msgid ""
+"There are over %s posts found.  We do not recommend you sort these posts for "
+"performance reasons."
+msgstr ""
+"Es wurden über %s Posts gefunden. Wir empfehlen Ihnen aus Performance "
+"Gründen dieses Posts nicht zu sortieren."
+
+#: class-reorder.php:383
+#, php-format
+msgid ""
+"Note:  reordering here does not change the order on your website without "
+"some code modifications.  Please see our <a target=\"_blank\" href=\"%s"
+"\">Wiki</a>."
+msgstr ""
+"Notitz: Ohne Modifikationen an Ihrem Code wird das Neuanordnen nicht die "
+"Reihenfolge der Posts auf ihrer Webseite ändern. Bitte sehen Sie in unserem "
+"<a target=\"_blank\" href=\"%s\">Wiki</a> nach."
+
+#: class-reorder.php:431
+msgid "There is nothing to sort at this time"
+msgstr "Es gibt hier im Moment nichts zu sortieren."
+
+#: index.php:87
+msgid "Posts"
+msgstr "Posts"
+
+#: index.php:88
+#, php-format
+msgid "Reorder %s"
+msgstr "%s neu anordnen"
