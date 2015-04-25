@@ -250,6 +250,7 @@ final class MN_Reorder {
 				$wpdb->posts,
 				array( 'menu_order' => $post_menu_order, 'post_parent' => $post_parent ), array( 'ID' => $post_id )
 			);
+			clean_post_cache( $post_id );
 			$posts_to_exclude[] = $post_id;
 		}
 		
@@ -284,6 +285,7 @@ final class MN_Reorder {
 						array( 'menu_order' => $start, 'post_parent' => $post_parent ),
 						array( 'ID'         => $post->ID )
 					);
+					clean_post_cache( $post );
 				}
 				$posts_to_exclude[] = $post->ID;
 				$start++;
