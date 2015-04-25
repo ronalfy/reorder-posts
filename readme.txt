@@ -33,7 +33,10 @@ We consider Reorder Posts a <strong>developer tool</strong>. If you do not know 
 If you like this plugin, please help spread the word.  Rate the plugin.  Write about the plugin.  Something :)
 
 <h3>Translations</h3>
- None so far.
+ 
+ <ul>
+ <li>German</li>
+ </ul>
 
 If you would like to contribute a translation, please leave a support request with a link to your translation.
 
