@@ -126,6 +126,7 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 = 2.1.4 =
 * Released 2015-04-24
 * Added cache-busting when re-ordering
+* Added German translation
 * Ensuring WordPress 4.2 compatibility
 
 = 2.1.2 =
