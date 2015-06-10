@@ -1,0 +1,128 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: Ronald Huereca <ronalfy@gmail.com>\n"
+"POT-Creation-Date: 2015-01-19 19:30-0600\n"
+"PO-Revision-Date: 2015-06-10 16:38+0100\n"
+"Last-Translator: Nico Hauser <me@tyratox.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.1\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_FR\n"
+
+#: class-reorder-admin.php:82 class-reorder-admin.php:360
+msgctxt "Plugin Name - Settings Page Title"
+msgid "Reorder Posts"
+msgstr ""
+
+#: class-reorder-admin.php:82
+msgctxt "Plugin Name - Menu Item"
+msgid "Reorder Posts"
+msgstr ""
+
+#: class-reorder-admin.php:123
+msgid "Sort by:"
+msgstr ""
+
+#: class-reorder-admin.php:125
+msgid "None"
+msgstr ""
+
+#: class-reorder-admin.php:126
+msgid "Menu Order"
+msgstr ""
+
+#: class-reorder-admin.php:132
+msgid "Sort Order:"
+msgstr ""
+
+#: class-reorder-admin.php:134
+msgid "ASC"
+msgstr ""
+
+#: class-reorder-admin.php:135
+msgid "DESC"
+msgstr ""
+
+#: class-reorder-admin.php:185
+msgid ""
+"These are advanced options and you should only use these if you know what "
+"you are doing.  These can overwrite the menu orders of custom queries (using "
+"get_posts or WP_Query), custom post type archives, and even the order your "
+"blog posts display."
+msgstr ""
+
+#: class-reorder-admin.php:201
+msgctxt "Plugin settings link on the plugins page"
+msgid "Settings"
+msgstr ""
+
+#: class-reorder-admin.php:251
+msgctxt "plugin settings heading"
+msgid "Enable Post Types"
+msgstr ""
+
+#: class-reorder-admin.php:253
+msgctxt "plugin settings heading"
+msgid "Advanced"
+msgstr ""
+
+#: class-reorder-admin.php:255
+msgid "Post Types"
+msgstr ""
+
+#: class-reorder-admin.php:255
+msgid "Select the post types you would like this plugin enabled for."
+msgstr ""
+
+#: class-reorder-admin.php:257
+msgid "Select the menu order arguments."
+msgstr ""
+
+#: class-reorder-admin.php:257
+msgid "Select the menu order for the post types."
+msgstr ""
+
+#: class-reorder.php:161 class-reorder.php:165 index.php:97
+msgid "Reorder"
+msgstr "Réorganiser"
+
+#: class-reorder.php:319 class-reorder.php:462
+msgid "Expand"
+msgstr ""
+
+#: class-reorder.php:320
+msgid "Collapse"
+msgstr ""
+
+#: class-reorder.php:376
+#, php-format
+msgid ""
+"There are over %s posts found.  We do not recommend you sort these posts for "
+"performance reasons."
+msgstr ""
+
+#: class-reorder.php:383
+#, php-format
+msgid ""
+"Note:  reordering here does not change the order on your website without "
+"some code modifications.  Please see our <a target=\"_blank\" href=\"%s"
+"\">Wiki</a>."
+msgstr ""
+
+#: class-reorder.php:431
+msgid "There is nothing to sort at this time"
+msgstr ""
+
+#: index.php:87
+msgid "Posts"
+msgstr ""
+
+#: index.php:88
+#, php-format
+msgid "Reorder %s"
+msgstr ""
