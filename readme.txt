@@ -5,7 +5,7 @@ Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
 Tested up to: 4.3
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -123,6 +123,11 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Changelog ==
 
+= 2.1.5 =
+
+* Released 2015-10-02
+* Fixing paging offset error in the backend.
+
 = 2.1.4 =
 * Updated 2015-08-20 for WordPress 4.3
 * Released 2015-04-24
@@ -201,6 +206,9 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 * Initial plugin release
 
 == Upgrade Notice ==
+
+= 2.1.5 =
+Fixing paging offset error in the backend.
 
 = 2.1.4 =
 Added cache-busting when re-ordering
