@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
 		toleranceElement: '> div',
 		listType: 'ul',
 		update: function( event, ui ) {
-			
+			$loading_animation = jQuery( '#loading-animation' );
 			var reorder_ajax_callback = function( response ) {
 				response = jQuery.parseJSON( response );
 				if ( true == response.more_posts ) {
@@ -33,12 +33,14 @@ jQuery(document).ready(function($) {
 						callback = false;
 						$.post( ajaxurl, callback_ajax_args, reorder_ajax_callback );
 					} else {
+    					
 						$('#loading-animation').hide();
 					}
 				}
-			};
+			};			
+			ui.item.find( 'div' ).append( $loading_animation );
 			
-			$('#loading-animation').show();
+			$loading_animation.show();
 			
 			//Get the end items where the post was placed
 			sort_end.item = ui.item;
