@@ -1,5 +1,5 @@
 === Reorder Posts ===
-Contributors: ryanhellyer, metronet, ronalfy, scottbasgaard
+Contributors: ryanhellyer, ronalfy, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
