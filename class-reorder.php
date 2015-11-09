@@ -394,7 +394,7 @@ final class MN_Reorder {
 		<?php
 		//Output non hierarchical posts
 		$page = isset( $_GET[ 'paged' ] ) ? absint( $_GET[ 'paged' ] ) : 0;
-		if ( $page == 0 || $page = 1 ) {
+		if ( $page == 0 || $page == 1 ) {
 			$offset = 0;	
 		} elseif ( $page > 1 ) {
 			$offset = $this->offset * ( $page - 1 );
