@@ -123,7 +123,7 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Changelog ==
 
-= 2.2.1 =
+= 2.2.2 =
 * Released 2015-12-04
 * Fixed loading animation that displays out of nowhere
 
