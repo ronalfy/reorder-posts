@@ -312,7 +312,7 @@ final class MN_Reorder {
 	 * @global string $pagenow Used internally by WordPress to designate what the current page is in the admin panel
 	 */
 	public function print_styles() {
-		wp_enqueue_style( 'reorderpages_style', REORDER_URL . '/css/admin.css', array(), '20151101' );
+		wp_enqueue_style( 'reorderpages_style', REORDER_URL . '/css/admin.css', array(), '20151204' );
 	}
 
 	/**
