@@ -44,7 +44,6 @@
 #loading-animation {
 	display: none;
 	float: right;
-    display: inline;
     border: 0 !important;
 }
 #post-list .children {
