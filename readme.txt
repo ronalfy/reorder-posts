@@ -3,7 +3,7 @@ Contributors: ryanhellyer, ronalfy, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
-Tested up to: 4.5
+Tested up to: 4.6
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
 Stable tag: 2.2.2
 License: GPLv3 or later
@@ -50,8 +50,6 @@ Please feel free to leave a support request here or create an <a href="https://g
 This plugin was originally developed for <a href="https://metronet.no/">Metronet AS in Norway</a>.
 
 The plugin is now independently developed by <a href="https://geek.hellyer.kiwi/">Ryan Hellyer</a>, <a href="http://www.ronalfy.com">Ronald Huereca</a> and <a href="http://scottbasgaard.com/">Scott Basgaard</a>.
-
-Banner image courtesy of <a href="https://www.flickr.com/photos/pagedooley">Kevin Dooley</a>.
 
 == Installation ==
 
