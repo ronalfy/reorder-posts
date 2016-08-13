@@ -506,11 +506,33 @@ final class MN_Reorder {
 			//Output parent title
 			if( $children->have_posts() ) {
 				?>
-				<div><?php the_title(); ?><?php echo ( defined( 'REORDER_DEBUG' ) && REORDER_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?><a href='#' style="float: right"><?php esc_html_e( 'Expand', 'metronet-reorder-posts' ); ?></a></div>
+				<div class="row">
+					<div class="expand row-action">
+						<span class="dashicons dashicons-arrow-right"></span>
+					</div><!-- .row-action -->
+					<div class="row-content">
+						<?php the_title(); ?><?php echo ( defined( 'REORDER_DEBUG' ) && REORDER_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?>
+					</div><!-- .row-content -->
+				</div><!-- .row -->
 				<?php
 			} else {
 				?>
-				<div><?php the_title(); ?><?php echo ( defined( 'REORDER_DEBUG' ) && REORDER_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?></div>
+				<div class="row">
+					<?php
+					$is_hierarchical = true;	
+					if( is_post_type_hierarchical( $post->post_type ) ) {
+						?>
+						<div class="row-action">
+						</div><!-- .row-action -->
+						<?php
+					} else {
+						$is_hierarchical = false;
+					}
+					?>
+					<div class="row-content <?php echo $is_hierarchical ? '' : 'non-hierarchical'; ?>">
+						<?php the_title(); ?><?php echo ( defined( 'REORDER_DEBUG' ) && REORDER_DEBUG == true ) ? ' - Menu Order:' . absint( $post->menu_order ) : ''; ?>
+					</div><!-- .row-content -->
+				</div><!-- .row -->
 				<?php
 			}
 			
