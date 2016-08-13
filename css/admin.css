@@ -50,6 +50,10 @@
     margin-top: 7px;
     cursor: pointer;
 }
+.expand.row-action span:hover,
+.collapse.row-action span:hover {
+	border-color: #c0c0c0;
+}
 .row-content {
 	padding: 10px 0;
 	font-weight: 700;
