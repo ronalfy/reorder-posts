@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
 					}
 				}
 			};			
-			ui.item.find( 'div.row-content' ).append( $loading_animation );
+			ui.item.find( 'div.row-content:first' ).append( $loading_animation );
 			
 			$loading_animation.show();
 			
