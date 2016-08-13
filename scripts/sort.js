@@ -22,6 +22,7 @@ jQuery(document).ready(function($) {
 		toleranceElement: '> div',
 		listType: 'ul',
 		update: function( event, ui ) {
+			reorder_row_nesting();
 			$loading_animation = jQuery( '#loading-animation' );
 			var reorder_ajax_callback = function( response ) {
 				response = jQuery.parseJSON( response );
@@ -123,16 +124,21 @@ jQuery(document).ready(function($) {
 		}
 	});
 	
-	// Add Nesting capabilities
-	$( '.row-content' ).each( function() {
-		var parents_count = $( this ).parents( 'ul' ).length;
-		var padding = 30;
-		if ( parents_count > 1 ) {
-			var padding = parents_count * 20 + padding;
-			$( this ).css('padding-left', padding + 'px');
-		}
-	} );
+	function reorder_row_nesting() {
+		// Add Nesting capabilities
+		$( '.row-content' ).each( function() {
+			var parents_count = $( this ).parents( 'ul' ).length;
+			var padding = 30;
+			if ( parents_count > 1 ) {
+				var new_padding = parents_count * 20 + padding;
+				$( this ).css('padding-left', new_padding + 'px');
+			} else {
+				$( this ).css('padding-left', padding + 'px');
+			}
+		} );
+	}
 	
+	reorder_row_nesting()
 	
 	$( "#post-list .expand span" ).toggle( function() {
 		$( this ).removeClass( 'dashicons-arrow-right' ).addClass( 'dashicons-arrow-down' );
