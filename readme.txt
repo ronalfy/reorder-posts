@@ -5,7 +5,7 @@ Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
 Tested up to: 4.6
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
-Stable tag: 2.3.0
+Stable tag: 2.4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -120,6 +120,10 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 2.  Admin panel settings
 
 == Changelog ==
+= 2.4.0 =
+* Released 2016-08-14
+* Major CSS overhaul inspired by the Nested Pages plugin
+* The sorting is now mobile friendly
 
 = 2.3.0 =
 * Released 2016-08-12
@@ -221,29 +225,8 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Upgrade Notice ==
 
+= 2.4.0 =
+Major CSS overhaul inspired by the Nested Pages plugin and the plugin is now mobile friendly.
+
 = 2.3.0 =
 Added screen options to set the number of posts displayed
-
-= 2.2.2 =
-Fixing loading animation CSS issue
-
-= 2.2.1 = 
-Fixing pagination issue.
-
-= 2.2.0 =
-Adding loading animation in better context
-
-= 2.1.5 =
-Fixing paging offset error in the backend.
-
-= 2.1.4 =
-Added cache-busting when re-ordering
-
-= 2.1.2 =
-Removed developer notice from Reorder pages
-
-= 2.1.1 =
-Fixed pagination issue.  Improved Reorder save query performance significantly
-
-= 2.1.0 =
-Some capability fixes, pagination for post types with a lot of posts, improved query performance, and add-on capability.
