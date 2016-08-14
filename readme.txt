@@ -17,6 +17,8 @@ A simple and easy way to reorder your custom post-type posts in WordPress. Adds 
 
 We consider Reorder Posts a <strong>developer tool</strong>. If you do not know what `menu_order` or custom queries are, then this plugin is likely not for you.
 
+[youtube https://www.youtube.com/watch?v=qDa6Q6mDPbo]
+
 <h3>Features</h3>
 <ul>
 <li>Adds "Reorder" sub-menu to all post types by default</li>
