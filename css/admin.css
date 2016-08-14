@@ -59,6 +59,9 @@
 	font-weight: 700;
 	cursor: move;
 }
+.row-content:hover {
+	background: #FBFBFB;
+}
 .ui-sortable-placeholder {
 	border-radius: 0 !important;
 	background: transparent !important;
