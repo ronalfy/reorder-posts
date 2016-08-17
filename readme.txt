@@ -29,6 +29,12 @@ We consider Reorder Posts a <strong>developer tool</strong>. If you do not know 
 <li>Advanced settings panel for overriding the menu order of custom post type queries</li>
 </ul>
 
+<h3>Add-ons</h3>
+<ul>
+<li><a href="https://wordpress.org/plugins/reorder-by-term/">Reorder by Term</a></li>
+<li><a href="https://wordpress.org/plugins/reorder-terms/">Reorder Terms</a></li>
+</ul>
+
 
 
 <h3>Spread the Word</h3>
