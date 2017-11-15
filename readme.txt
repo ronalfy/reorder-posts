@@ -3,7 +3,7 @@ Contributors: ryanhellyer, ronalfy, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
-Tested up to: 4.8
+Tested up to: 4.9
 Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
 Stable tag: 2.4.0
 License: GPLv3 or later
