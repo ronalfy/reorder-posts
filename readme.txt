@@ -3,9 +3,9 @@ Contributors: ryanhellyer, ronalfy, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
-Tested up to: 4.9
-Tags: reorder, re-order, posts, wordpress, post-type, ajax, admin, hierarchical, menu_order, ordering
-Stable tag: 2.4.0
+Tested up to: 5.1
+Tags: reorder, reorder posts
+Stable tag: 2.4.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,7 +13,7 @@ A simple and easy way to reorder your custom post types in WordPress.
 
 == Description ==
 
-A simple and easy way to reorder your custom post-type posts in WordPress. Adds drag and drop functionality for post ordering in the WordPress admin panel. Works with custom post-types and regular posts.  
+A simple and easy way to reorder your custom post-type posts in WordPress. Adds drag and drop functionality for post ordering in the WordPress admin panel. Works with custom post-types and regular posts.
 
 We consider Reorder Posts a <strong>developer tool</strong>. If you do not know what `menu_order` or custom queries are, then this plugin is likely not for you.
 
@@ -41,7 +41,7 @@ We consider Reorder Posts a <strong>developer tool</strong>. If you do not know 
 If you like this plugin, please help spread the word.  Rate the plugin.  Write about the plugin.  Something :)
 
 <h3>Translations</h3>
- 
+
  <ul>
  <li>German</li>
  </ul>
@@ -61,14 +61,14 @@ The plugin is now independently developed by <a href="https://geek.hellyer.kiwi/
 
 == Installation ==
 
-Either install the plugin via the WordPress admin panel, or ... 
+Either install the plugin via the WordPress admin panel, or ...
 
 1. Upload `metronet-reorder-posts` to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
-For each post type, you will see a new "Reorder" submenu.  Simply navigate to "Reorder" to change the order of your post types. Changes are saved immediately, there is no need to click a save or update button.  
+For each post type, you will see a new "Reorder" submenu.  Simply navigate to "Reorder" to change the order of your post types. Changes are saved immediately, there is no need to click a save or update button.
 
-By default, ordering is enabled for all post types.  A settings panel is available for determining which post types to enable ordering for.  
+By default, ordering is enabled for all post types.  A settings panel is available for determining which post types to enable ordering for.
 
 Advanced customization is allowed via hooks.  See the <a  href="https://github.com/ronalfy/reorder-posts#plugin-filters">Plugin Filters on GitHub</a>.
 
@@ -94,7 +94,7 @@ There isn't one. The changes are saved automatically.
 
 Yes, and no.  There are many ways to retrieve posts using the WordPress API, and if the code has a `menu_order` sort property, the changes should be reflected immediately.
 
-Often, however, there is no `menu_order` argument.  In the plugin's settings, there is an "Advanced" section which will attempt to override the `menu_order` property.  Please use this with caution. 
+Often, however, there is no `menu_order` argument.  In the plugin's settings, there is an "Advanced" section which will attempt to override the `menu_order` property.  Please use this with caution.
 
 = Can I use this on a single post type? =
 
@@ -128,6 +128,12 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 2.  Admin panel settings
 
 == Changelog ==
+
+= 2.4.1 =
+* Released 2019-02-16
+* Added query to reorder posts for an example
+* Option to turn off query output
+
 = 2.4.0 =
 * Released 2016-08-14
 * Major CSS overhaul inspired by the Nested Pages plugin
@@ -192,10 +198,10 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 * Changed class names to be more unique.
 
 = 2.0.0 =
-* Released 2014-12-12 
+* Released 2014-12-12
 * Added settings panel for enabling/disabling the Reorder plugin for post types.
 * Added advanced settings for overriding the menu order of post types.
-* Added internationalization capabilities. 
+* Added internationalization capabilities.
 * Slightly adjusted the styles of the Reordering interface.
 
 = 1.0.6 =
@@ -232,6 +238,9 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 * Initial plugin release
 
 == Upgrade Notice ==
+
+= 2.4.1 =
+Added query to reorder posts for an example. Option to turn off query output.
 
 = 2.4.0 =
 Major CSS overhaul inspired by the Nested Pages plugin and the plugin is now mobile friendly.

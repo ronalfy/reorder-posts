@@ -3,7 +3,7 @@
 Plugin Name: Reorder Posts
 Plugin URI: https://wordpress.org/plugins/metronet-reorder-posts/
 Description: Easily reorder posts and pages in WordPress
-Version: 2.4.0
+Version: 2.4.1
 Author: Ryan Hellyer, Ronald Huereca, Scott Basgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Text Domain: metronet-reorder-posts
@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
 /**
  * Do not continue processing since file was called directly
- * 
+ *
  * @since 1.0
  * @author Ryan Hellyer <ryan@metronet.no>
  */
@@ -37,7 +37,7 @@ if ( !defined( 'ABSPATH' ) )
 
 /**
  * Load classes
- * 
+ *
  * @since 1.0
  * @author Ryan Hellyer <ryan@metronet.no>
  */
@@ -46,7 +46,7 @@ require( 'class-reorder-admin.php' );
 
 /**
  * Define constants
- * 
+ *
  * @since 1.0
  * @author Ryan Hellyer <ryan@metronet.no>
  */
@@ -58,7 +58,7 @@ define( 'REORDER_BASENAME', plugin_basename(__FILE__) ); //Plugin basename
 /**
  * Instantiate admin panel
  * Iterate through each specified post type and instantiate it's organiser
- * 
+ *
  * @since 1.0
  * @author Ryan Hellyer <ryan@metronet.no>
  */
@@ -66,27 +66,27 @@ add_action( 'wp_loaded', 'mn_reorder_posts_init', 100 ); //Load low priority in 
 function mn_reorder_posts_init() {
 	global $mn_reorder_instances;
 	$post_types = get_post_types( array(), 'names' );
-	
+
 	//Get plugin options for post types and exclude as necessary
 	$plugin_options = get_option( 'metronet-reorder-posts', false );
 	if ( $plugin_options && isset( $plugin_options[ 'post_types' ] ) && is_array( $plugin_options[ 'post_types' ] )  ) {
 		foreach( $plugin_options[ 'post_types' ]  as $post_type => $value ) {
 			if( $value === 'off' ) {
-				unset( $post_types[ $post_type ] );	
+				unset( $post_types[ $post_type ] );
 			}
 		}
 	}
-	
+
 	// Add filter to allow users to control which post-types the plugin is used with via their theme
 	$post_types = array_unique( apply_filters( 'metronet_reorder_post_types', $post_types ) );
 	do_action( 'metronet_reorder_post_types_loaded', $post_types );
-		
+
 	foreach ( $post_types as $post_type ) {
 		//Generate heading
 		$post_type_object = get_post_type_object( $post_type );
 		$post_type_label = isset( $post_type_object->label ) ? $post_type_object->label : __( 'Posts', 'metronet-reorder-posts' );
 		$heading = sprintf( __( 'Reorder %s', 'metronet-reorder-posts' ), $post_type_label );
-		
+
 		// Instantiate new reordering
 		$mn_reorder_args = array(
 			'post_type'   => $post_type,
@@ -97,7 +97,7 @@ function mn_reorder_posts_init() {
 			'menu_label'  => __( 'Reorder', 'metronet-reorder-posts' ),
 			'post_status' => 'publish',
 		);
-	
+
 		$mn_reorder_instances[ $post_type ] = new MN_Reorder(
 			$mn_reorder_args
 		);
@@ -113,4 +113,3 @@ function mn_reorder_init_language() {
 /* Global variable for storing class instances */
 global $mn_reorder_instances;
 $mn_reorder_instances = array();
-
