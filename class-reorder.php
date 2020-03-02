@@ -344,6 +344,7 @@ final class MN_Reorder {
 			'sortnonce' =>  wp_create_nonce( 'sortnonce' ),
 			'hierarchical' => is_post_type_hierarchical( $this->post_type ) ? 'true' : 'false',
 		) );
+		wp_enqueue_script( 'reorder_posts_quick_sort', REORDER_URL . '/scripts/quicksort.js', array( 'reorder_posts', 'jquery' ), '20200301', true );
 	}
 
 	/**
@@ -430,6 +431,16 @@ final class MN_Reorder {
 			printf( '<div class="error"><p>%s</p></div>', sprintf( __( 'There are over %s posts found.  We do not recommend you sort these posts for performance reasons.', 'metronet_reorder_posts' ), number_format( $post_count ) ) );
 		}
 		?>
+		<hr />
+		<select id="mn-reorder-quick-sort-options" data-post-type="<?php echo esc_attr( $this->post_type ); ?>">
+			<option value="title-desc">Title Descending</option>
+			<option value="title-asc">Title Ascending</option>
+			<option value="date-desc">Date Descending</option>
+			<option value="date-asc">Date Ascending</option>
+		</select>
+		<button class="button button-primary" id="mn-reorder-quick-sort-button"><?php esc_html_e( 'Quick Sort', 'metronet-reorder-posts' ); ?></button>
+		<hr />
+
 		<div id="reorder-error"></div>
 		<div><img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" /></div>
 		<?php echo esc_html( $this->initial ); ?>
