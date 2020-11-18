@@ -3,9 +3,9 @@ Contributors: ryanhellyer, ronalfy, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
-Tested up to: 5.4
+Tested up to: 5.6
 Tags: reorder, reorder posts
-Stable tag: 2.4.1
+Stable tag: 2.5.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -129,6 +129,10 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Changelog ==
 
+= 2.5.0 =
+* Released 2020-11-18
+* Fixing sortable script with newer versions of jQuery.
+
 = 2.4.1 =
 * Released 2019-02-16
 * Added query to reorder posts for an example
@@ -239,11 +243,5 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Upgrade Notice ==
 
-= 2.4.1 =
-Added query to reorder posts for an example. Option to turn off query output.
-
-= 2.4.0 =
-Major CSS overhaul inspired by the Nested Pages plugin and the plugin is now mobile friendly.
-
-= 2.3.0 =
-Added screen options to set the number of posts displayed
+= 2.5.0 =
+Fixing sortable script with newer versions of jQuery.
