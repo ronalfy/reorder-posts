@@ -336,7 +336,7 @@ final class MN_Reorder {
 		wp_enqueue_script( 'jquery-ui-touch-punch', REORDER_URL . '/scripts/jquery.ui.touch-punch.js', array( 'jquery-ui-sortable' ), '0.2.3', true );
 		wp_register_script( 'reorder_nested', REORDER_URL . '/scripts/jquery.mjs.nestedSortable.js', array( 'jquery-ui-touch-punch' ), '2.0.0', true );
 
-		wp_enqueue_script( 'reorder_posts', REORDER_URL . '/scripts/sort.js', array( 'reorder_nested' ), '20160813', true );
+		wp_enqueue_script( 'reorder_posts', REORDER_URL . '/scripts/sort.js', array( 'reorder_nested' ), '20201118', true );
 		wp_localize_script( 'reorder_posts', 'reorder_posts', array(
 			'action' => 'post_sort',
 			'expand' => esc_js( __( 'Expand', 'metronet-reorder-posts' ) ),
