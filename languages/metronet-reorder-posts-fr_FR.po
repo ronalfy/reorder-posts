@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: Ronald Huereca <ronalfy@gmail.com>\n"
 "POT-Creation-Date: 2015-01-19 19:30-0600\n"
-"PO-Revision-Date: 2015-06-10 16:38+0100\n"
+"PO-Revision-Date: 2020-06-21 11:07+0200\n"
 "Last-Translator: Nico Hauser <me@tyratox.ch>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr_FR\n"
@@ -26,19 +26,19 @@ msgstr ""
 
 #: class-reorder-admin.php:123
 msgid "Sort by:"
-msgstr ""
+msgstr "Trier par :"
 
 #: class-reorder-admin.php:125
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: class-reorder-admin.php:126
 msgid "Menu Order"
-msgstr ""
+msgstr "Tri du menu"
 
 #: class-reorder-admin.php:132
 msgid "Sort Order:"
-msgstr ""
+msgstr "Ordre de tri :"
 
 #: class-reorder-admin.php:134
 msgid "ASC"
@@ -55,37 +55,43 @@ msgid ""
 "get_posts or WP_Query), custom post type archives, and even the order your "
 "blog posts display."
 msgstr ""
+"Il s'agit d'options avancées et vous ne devez les modifier que si vous savez "
+"ce que vous faites. Cela peut écraser l'ordre des requêtes personnalisées "
+"(avec get_posts ou WP_Query), des archives de custom post type et même "
+"l'ordre d'affichage des articles."
 
 #: class-reorder-admin.php:201
 msgctxt "Plugin settings link on the plugins page"
 msgid "Settings"
-msgstr ""
+msgstr "Réglages"
 
 #: class-reorder-admin.php:251
 msgctxt "plugin settings heading"
 msgid "Enable Post Types"
-msgstr ""
+msgstr "Activer les Type de Contenus"
 
 #: class-reorder-admin.php:253
 msgctxt "plugin settings heading"
 msgid "Advanced"
-msgstr ""
+msgstr "Avancée"
 
 #: class-reorder-admin.php:255
 msgid "Post Types"
-msgstr ""
+msgstr "Types de Contenus"
 
 #: class-reorder-admin.php:255
 msgid "Select the post types you would like this plugin enabled for."
 msgstr ""
+"Sélectionnez les types de contenus pour lesquels vous souhaitez activer ce "
+"plugin."
 
 #: class-reorder-admin.php:257
 msgid "Select the menu order arguments."
-msgstr ""
+msgstr "Sélectionnez les paramètres de tri."
 
 #: class-reorder-admin.php:257
 msgid "Select the menu order for the post types."
-msgstr ""
+msgstr "Sélectionnez l'ordre pour ce type de contenu."
 
 #: class-reorder.php:161 class-reorder.php:165 index.php:97
 msgid "Reorder"
@@ -93,11 +99,11 @@ msgstr "Réorganiser"
 
 #: class-reorder.php:319 class-reorder.php:462
 msgid "Expand"
-msgstr ""
+msgstr "Ouvrir"
 
 #: class-reorder.php:320
 msgid "Collapse"
-msgstr ""
+msgstr "Fermer"
 
 #: class-reorder.php:376
 #, php-format
@@ -105,6 +111,8 @@ msgid ""
 "There are over %s posts found.  We do not recommend you sort these posts for "
 "performance reasons."
 msgstr ""
+"Il y a plus de %s éléments trouvés. Nous ne recommendons par de trier ces "
+"éléments pour des raisons de performances."
 
 #: class-reorder.php:383
 #, php-format
@@ -113,16 +121,19 @@ msgid ""
 "some code modifications.  Please see our <a target=\"_blank\" href=\"%s"
 "\">Wiki</a>."
 msgstr ""
+"Note :  réorganiser ici ne changera pas l'ordre sur votre site sans quelques "
+"modifications. Merci de consulter notre <a target=\"_blank\" href=\"%s"
+"\">Wiki</a>."
 
 #: class-reorder.php:431
 msgid "There is nothing to sort at this time"
-msgstr ""
+msgstr "Il n'y a rien à trier pour le moment"
 
 #: index.php:87
 msgid "Posts"
-msgstr ""
+msgstr "Contenus"
 
 #: index.php:88
 #, php-format
 msgid "Reorder %s"
-msgstr ""
+msgstr "Réorganiser %s"
