@@ -1,3 +1,5 @@
+// From: https://github.com/ilikenwf/nestedSortable/blob/master/jquery.mjs.nestedSortable.js
+
 (function( factory ) {
 	"use strict";
 
