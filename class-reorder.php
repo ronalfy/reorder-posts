@@ -380,7 +380,7 @@ final class MN_Reorder {
 			$menu_location  = apply_filters( 'metronet_reorder_menu_location_' . $post_type, 'edit.php?post_type=' . $post_type, $post_type );
 			$post_type_args = get_post_type_object( $post_type );
 			// IF show_ui is false, add it to a hidden parent menu.
-			if ( ! $post_type_args->show_ui || false === $post_type_args->show_in_menu ) {
+			if ( ! $post_type_args->show_ui || false === $post_type_args->show_in_menu || false === $post_type_args->public ) {
 				$menu_location = '';
 				$hook          = add_submenu_page(
 					'',

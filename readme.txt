@@ -1,11 +1,11 @@
 === Reorder Posts ===
-Contributors: ryanhellyer, ronalfy, scottbasgaard
+Contributors: ronalfy, ryanhellyer, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 3.7
-Tested up to: 6.7
-Tags: reorder, reorder posts
-Stable tag: 2.5.3
+Tested up to: 7.0
+Tags: reorder, reorder posts, menu order, ordering, re-order
+Stable tag: 2.6.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -129,6 +129,13 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Changelog ==
 
+= 2.6.0 =
+* Released 2026-03-23
+* Fix: Default post types that are enabled are only post and page. The rest should be opt-in.
+* Fix: All post types were having menus registered, even when they weren't explicitly enabled.
+* New: Reorder Posts shortcut shows up next to each post type in admin settings (if enabled).
+* New: Post types with no top-level menu now are visible at the root level and can be accessed via the admin shortcuts.
+
 = 2.5.3 =
 * Released 2022-05-27
 * Cache busting for people who are receiving script errors around Nested Sortable.
@@ -251,5 +258,5 @@ No, but there is an add-on for this plugin called <a href="https://wordpress.org
 
 == Upgrade Notice ==
 
-= 2.5.3 =
-Cache busting for people who are receiving script errors around Nested Sortable.
+= 2.6.0 =
+New: shortcuts to reorder each post type are present in the admin settings. Fix: Post types only load when explicitly enabled for performance (defaults are post and page).

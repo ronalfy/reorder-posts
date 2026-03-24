@@ -229,7 +229,7 @@ class MN_Reorder_Admin {
 					),
 					admin_url( $edit_path )
 				);
-				if ( ! $post_type_object->show_in_menu || false === $post_type_object->show_in_menu ) {
+				if ( ! $post_type_object->show_in_menu || false === $post_type_object->show_in_menu || false === $post_type_object->public ) {
 					$edit_path = add_query_arg(
 						array(
 							'page' => $reorder_path_name,
