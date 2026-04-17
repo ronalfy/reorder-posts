@@ -1,63 +1,71 @@
-=== Reorder Posts ===
+=== Reorder Posts - Quick Post Type and Page Ordering ===
 Contributors: ronalfy, ryanhellyer, scottbasgaard
 Author URI: https://github.com/ronalfy/reorder-posts
 Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
-Requires at Least: 3.7
+Requires at Least: 6.5
 Tested up to: 7.0
 Tags: reorder, reorder posts, menu order, ordering, re-order
 Stable tag: 2.6.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A simple and easy way to reorder your custom post types in WordPress.
+Quickly reorder posts, pages, and custom post types using an intuitive drag-and-drop interface. Reordering supports auto-sorting and nested pages.
 
 == Description ==
 
-A simple and easy way to reorder your custom post-type posts in WordPress. Adds drag and drop functionality for post ordering in the WordPress admin panel. Works with custom post-types and regular posts.
-
-We consider Reorder Posts a <strong>developer tool</strong>. If you do not know what `menu_order` or custom queries are, then this plugin is likely not for you.
+Reorder Posts is a simple and flexible way to reorder posts, pages, and custom post types in WordPress using drag and drop. This plugin gives you full control over post ordering by leveraging WordPress's built-in `menu_order` functionality, while keeping the interface fast, and intuitive. For those not familiar with code, the admin settings allows for auto-sorting based on post type. For hierarchical post types, the plugin supports nested pages.
 
 [youtube https://www.youtube.com/watch?v=qDa6Q6mDPbo]
 
-<h3>Features</h3>
-<ul>
-<li>Adds "Reorder" sub-menu to all post types by default</li>
-<li>Hierarchical post type support (i.e., supports nested posts)</li>
-<li>Allows you to re-nest hierarchical posts</li>
-<li>Auto-saves order without having to click an update button</li>
-<li>Dedicated settings panel for determining which post types can be reordered</li>
-<li>Advanced settings panel for overriding the menu order of custom post type queries</li>
-</ul>
+=== Who is Reorder Posts For? ===
 
-<h3>Add-ons</h3>
-<ul>
-<li><a href="https://wordpress.org/plugins/reorder-by-term/">Reorder by Term</a></li>
-<li><a href="https://wordpress.org/plugins/reorder-terms/">Reorder Terms</a></li>
-</ul>
+Reorder Posts is designed for developers and site builders who need precise control over how content is displayed. Whether you're organizing landing pages, structuring custom post type archives, or manually controlling query output, this plugin provides a reliable way to define ordering without relying on publish dates or titles.
 
+Once activated, the plugin adds a "Reorder" submenu to supported post types in the WordPress dashboard. For custom post types that do not have an interface, you can click a shortcut to reorder the post type from within the admin settings. From there, you can drag and drop posts, pages, and post types into the exact order you need. Changes are saved automatically, so there's no need for a save button or extra clicks.
 
+=== What Post Types and Queries Does Reordering Support? ===
 
-<h3>Spread the Word</h3>
-If you like this plugin, please help spread the word.  Rate the plugin.  Write about the plugin.  Something :)
+This plugin works seamlessly with both standard posts, pages, and custom post types. It also supports hierarchical post types, allowing you to reorder and re-nest items like pages or nested content structures. This makes it especially useful for sites that rely on structured content, such as documentation, courses, or directories. For hidden post types (post types that expose no UI), you can reorder these post types from a shortcut within the Reorder Posts admin settings.
 
-<h3>Translations</h3>
+Because the plugin uses the native `menu_order` field, it integrates cleanly with WordPress queries. If your queries already support ordering by `menu_order`, your changes will appear instantly on the front-end. If not, the plugin includes advanced options in the Reorder admin settings to help override default query behavior when needed.
 
- <ul>
- <li>German</li>
- </ul>
+Reorder Posts does not auto-sort your post types on the front-end automatically unless explicitly enabled in the admin settings. Instead, it gives you the tools to define ordering while leaving implementation decisions in your hands. This makes it ideal for developers who want flexibility without unnecessary abstraction. The admin settings for auto-sorting are completely optional.
 
-If you would like to contribute a translation, please leave a support request with a link to your translation.
+=== Choosing Which Post Types to Reorder ===
+
+A dedicated settings panel allows you to control which post types support reordering. By default, common post types like posts and pages are enabled, while others can be toggled on as needed. If a post type is hidden, with no visibile editing interface, you can still reorder it by enabling it and clicking the Reorder shortcut next to the post type.
+
+For more advanced use cases, developers can hook into filters to customize behavior programmatically. This includes defining which post types are reorderable or adjusting how ordering is applied across queries.
+
+=== Reordering Categories, Terms, and Posts Within Categories ===
+
+If you need to reorder posts within taxonomies such as categories or terms, companion add-ons are available to extend functionality even further.
+
+* <a href="https://wordpress.org/plugins/reorder-by-term/">Reorder by Term</a> - Reorders posts/pages/post types by which category they are in.
+* <a href="https://wordpress.org/plugins/reorder-terms/">Reorder Terms</a> - Reorders categories, terms, and any other public taxonomy.
+
+=== Major Features ===
+
+Key features include:
+
+* Drag and drop post ordering in the WordPress admin
+* Support for posts, pages, and custom post types
+* Hierarchical post type support with support for nested pages
+* Automatic saving with no manual update required
+* Developer-friendly approach using `menu_order`
+* Advanced settings for query overrides and post type auto-sorting
+
+Reorder Posts is best suited for users who understand how WordPress queries work or are comfortable working with `WP_Query`, `get_posts`, or `pre_get_posts`. If you need full control over content ordering without sacrificing performance or simplicity, this plugin provides a clean and reliable solution.
+
+=== Development ===
 
 You are welcome to help us out and <a href="https://github.com/ronalfy/reorder-posts">contribute on GitHub</a>.
 
-<h3>Support</h3>
+=== Credits ===
 
-Please feel free to leave a support request here or create an <a href="https://github.com/ronalfy/reorder-posts/issues">issue on GitHub</a>.  If you require immediate feedback, feel free to @reply us on Twitter with your support link:  (<a href="https://twitter.com/ryanhellyer">@ryanhellyer</a> or <a href="https://twitter.com/ronalfy">@ronalfy</a>).  Support is always free unless you require some advanced customization out of the scope of the plugin's existing features.  We'll do our best to get with you when we can.  Please rate/review the plugin if we have helped you to show thanks for the support.
-
-<h3>Credits</h3>
 This plugin was originally developed for <a href="https://metronet.no/">Metronet AS in Norway</a>.
 
-The plugin is now independently developed by <a href="https://geek.hellyer.kiwi/">Ryan Hellyer</a>, <a href="http://www.ronalfy.com">Ronald Huereca</a> and <a href="http://scottbasgaard.com/">Scott Basgaard</a>.
+The plugin is now independently developed by <a href="https://geek.hellyer.kiwi/">Ryan Hellyer</a>, <a href="http://www.ronaldhuereca.com">Ronald Huereca</a> and <a href="http://scottbasgaard.com/">Scott Basgaard</a>.
 
 == Installation ==
 
@@ -68,15 +76,13 @@ Either install the plugin via the WordPress admin panel, or ...
 
 For each post type, you will see a new "Reorder" submenu.  Simply navigate to "Reorder" to change the order of your post types. Changes are saved immediately, there is no need to click a save or update button.
 
-By default, ordering is enabled for all post types.  A settings panel is available for determining which post types to enable ordering for.
+By default, ordering is enabled for only posts and pages.  A settings panel is available for determining which post types to enable ordering for.
 
 Advanced customization is allowed via hooks.  See the <a  href="https://github.com/ronalfy/reorder-posts#plugin-filters">Plugin Filters on GitHub</a>.
 
-This tool allows you to easily reorder post types in the back-end of WordPress. How the posts are sorted in the front-end is entirely up to you, as it should be.
+This tool allows you to easily reorder post types in the back-end of WordPress. Auto-sorting is available through the admin panel settings.
 
-We do have advanced settings under `Settings->Reorder Posts`, but these should only be used for testing purposes.
-
-You'll want to make use of <a href="http://codex.wordpress.org/Class_Reference/WP_Query">WP_Query</a>, <a href="http://codex.wordpress.org/Template_Tags/get_posts">get_posts</a>, or <a href="http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts">pre_get_posts</a> to modify query behavior on the front-end of your site.
+You'll want to make use of <a href="https://developer.wordpress.org/reference/classes/wp_query/">WP_Query</a>, <a href="https://developer.wordpress.org/reference/functions/get_posts/">get_posts</a>, or <a href="https://developer.wordpress.org/reference/hooks/pre_get_posts/">pre_get_posts</a> to modify query behavior on the front-end of your site.
 
 Examples of each are on the respective pages above.  You are welcome to leave a support request if you need help with a query and we'll do our best to get back with you.
 
@@ -84,21 +90,38 @@ Examples of each are on the respective pages above.  You are welcome to leave a 
 
 = Where's the settings page? =
 
-The settings are located under Settings->Reorder Posts.  Settings are optional, of course, as the plugin will work with no configuration.  We consider the settings useful for only advanced users (i.e., users with coding experience).
+You can find the settings under Settings → Reorder Posts. The plugin works out of the box with no configuration, but the settings allow you to control which post types are enabled and access advanced options such as auto-sorting post types on the frontend.
+
 
 = Where is the "save" button when re-ordering? =
 
-There isn't one. The changes are saved automatically.
+There isn’t one. Changes are saved automatically as you drag and drop items. This keeps the workflow fast and eliminates unnecessary steps.
 
-= Do I need to add custom code to get this to work? =
+If you are using nested pages or hierarchical post types, you can even drag pages from one area to another, and have it saved automatically.
 
-Yes, and no.  There are many ways to retrieve posts using the WordPress API, and if the code has a `menu_order` sort property, the changes should be reflected immediately.
+= How does this plugin reorder posts in WordPress? =
 
-Often, however, there is no `menu_order` argument.  In the plugin's settings, there is an "Advanced" section which will attempt to override the `menu_order` property.  Please use this with caution.
+The plugin updates the built-in `menu_order` field for each post. WordPress supports ordering by this field, which means you can control display order when your queries use `orderby => menu_order`.
 
-= Can I use this on a single post type? =
+= Do I need to modify my queries for this to work? =
 
-You are able to override the post types used via a filter (see below) or navigate to the plugin's settings and enable which post types you would like to use.
+In many cases, yes. Your queries need to support `menu_order` sorting. If they already do, your changes will appear immediately. If not, you may need to adjust your query arguments or use the plugin's advanced settings to override behavior.
+
+If you are using query blocks or custom queries, just change the `orderby` parameter to work with "Menu Order."
+
+= Does this work with custom post types? =
+
+Yes. The plugin fully supports custom post types. You can enable or disable reordering per post type in the settings panel or via filters.
+
+= Can I reorder hierarchical content like pages? =
+
+Yes. The plugin supports hierarchical post types and allows you to re-nest items. This means you can change both order and parent-child relationships visually.
+
+= Can I limit reordering to specific post types? =
+
+Yes. You can either use the settings screen or apply a filter to define exactly which post types should support reordering.
+
+Here's an example:
 
 `<?php
 
@@ -110,17 +133,21 @@ function slug_set_reorder( $post_types ) {
 
 ?>`
 
-= Does the plugin work with hierarchical post types? =
+= Does this affect front-end display automatically or support auto-sorting? =
 
-Yes, but be wary that the plugin now allows you to re-nest hierarchical items easily.
+No, the plugin doesn't automatically enable itself to sort on the frontend. There are per-post-type settings for setting a global sort, but manually doing queries or using a query block is much more flexible.
 
-= Does it work in older versions of WordPress? =
+= Is this plugin beginner-friendly? =
 
-This plugin requires WordPress 3.7 or above.  We urge you, however, to always use the latest version of WordPress.
+This plugin is best suited for developers or users familiar with WordPress queries. If you are not comfortable working with `menu_order` or query arguments, you may need some additional guidance to get the most out of it.
 
-= Does this sort posts within a category (i.e., a term)? =
+= Does it support large sites with many posts? =
 
-No, but there is an add-on for this plugin called <a href="https://wordpress.org/plugins/reorder-by-term/">Reorder by Term</a> you should check out.
+Yes, but for very large datasets, pagination and performance considerations apply. We don't recommmend reordering post types that have over 1,000 items.
+
+= Where can I get help or report issues? =
+
+You can open a support request on WordPress.org or submit an issue on GitHub.
 
 == Screenshots ==
 
