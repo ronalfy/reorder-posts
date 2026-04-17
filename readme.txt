@@ -151,8 +151,9 @@ You can open a support request on WordPress.org or submit an issue on GitHub.
 
 == Screenshots ==
 
-1. Reorder Posts allows you to easily drag and drop posts to change their order
-2.  Admin panel settings
+1. Reorder items like posts, pages, and hierarchical post types with simple drag and drop.
+2. Use the admin settings to enable post types to reorder, and perform any auto-sorting needed on the frontend.
+3. Example Reorder menu showing up for pages.
 
 == Changelog ==
 
