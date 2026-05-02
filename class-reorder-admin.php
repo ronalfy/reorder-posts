@@ -485,11 +485,11 @@ class MN_Reorder_Admin {
 	 */
 	public function sanitization( $input = array() ) {
 		//Get post type options
-		$post_types = $input['post_types'];
+		$post_types = $input['post_types'] ?? array();
 		if ( ! empty( $post_types ) ) {
 			foreach ( $post_types as $post_type_name => &$value ) {
-				if ( $value !== 'on' ) {
-					$value == 'off';
+				if ( 'on' !== $value ) {
+					$value = 'off';
 				}
 			}
 			$input['post_types'] = $post_types;
@@ -499,14 +499,14 @@ class MN_Reorder_Admin {
 		$menu_order = $input['menu_order'];
 		if ( ! empty( $menu_order ) ) {
 			foreach ( $post_types as $post_type_name => &$values ) {
-				$orderby = isset( $menu_order[ $post_type_name ]['orderby'] ) ? $menu_order[ $post_type_name ] : 'none';
-				if ( $orderby !== 'menu_order' ) {
-					$menu_order[ $post_type_name ]['orderby'] == 'none';
+				$orderby = isset( $menu_order[ $post_type_name ]['orderby'] ) ? $menu_order[ $post_type_name ]['orderby'] : 'none';
+				if ( 'menu_order' !== $orderby ) {
+					$menu_order[ $post_type_name ]['orderby'] = 'none';
 				}
 
-				$order = isset( $menu_order[ $post_type_name ]['order'] ) ? $menu_order[ $post_type_name ] : 'DESC';
-				if ( $orderby !== 'ASC' ) {
-					$menu_order[ $post_type_name ]['order'] == 'DESC';
+				$order = isset( $menu_order[ $post_type_name ]['order'] ) ? $menu_order[ $post_type_name ]['order'] : 'DESC';
+				if ( 'ASC' !== $order ) {
+					$menu_order[ $post_type_name ]['order'] = 'DESC';
 				}
 			}
 			$input['menu_order'] = $menu_order;
