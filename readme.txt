@@ -5,7 +5,7 @@ Plugin URL: https://wordpress.org/plugins/metronet-reorder-posts/
 Requires at Least: 6.5
 Tested up to: 7.0
 Tags: reorder, reorder posts, menu order, ordering, re-order
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -157,6 +157,10 @@ You can open a support request on WordPress.org or submit an issue on GitHub.
 
 == Changelog ==
 
+= 2.6.1 =
+* Released 2026-05-02
+* Fix: Resolving PHP error notices for undefined indexes when saving admin settings.
+
 = 2.6.0 =
 * Released 2026-03-23
 * Fix: Default post types that are enabled are only post and page. The rest should be opt-in.
@@ -286,5 +290,5 @@ You can open a support request on WordPress.org or submit an issue on GitHub.
 
 == Upgrade Notice ==
 
-= 2.6.0 =
-New: shortcuts to reorder each post type are present in the admin settings. Fix: Post types only load when explicitly enabled for performance (defaults are post and page).
+= 2.6.1 =
+Fix: resolving undefined array indexes when saving admin settings.
