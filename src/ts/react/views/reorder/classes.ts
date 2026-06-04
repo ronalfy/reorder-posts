@@ -10,6 +10,8 @@ export const reorderClasses = {
 	nodeTypeIcon: "reorder-posts-node-type-icon",
 	nodeLabelWrap: "reorder-posts-node-label-wrap",
 	nodeLabel: "reorder-posts-node-label",
+	nodeIsDropTarget: "is-drop-target",
+	nodeIsDragging: "is-dragging",
 	placeholder: "reorder-posts-placeholder",
 	dragPreview: "reorder-posts-drag-preview",
 	dragPreviewIcon: "reorder-posts-drag-preview-icon",

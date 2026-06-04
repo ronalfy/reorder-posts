@@ -54,11 +54,13 @@ const List = ( {
 					rootId={ 0 }
 					sort={ false }
 					onDrop={ handleDrop }
-					render={ ( node, { depth, isOpen, onToggle } ) => (
+					render={ ( node, { depth, isOpen, onToggle, isDropTarget, isDragging } ) => (
 						<CustomNode
 							node={ node }
 							depth={ depth }
 							isOpen={ isOpen }
+							isDropTarget={ isDropTarget }
+							isDragging={ isDragging }
 							onToggle={ onToggle }
 						/>
 					) }
@@ -69,6 +71,7 @@ const List = ( {
 						root: reorderClasses.treeRoot,
 						draggingSource: reorderClasses.draggingSource,
 						placeholder: reorderClasses.placeholderContainer,
+						dropTarget: reorderClasses.dropTarget,
 					} }
 					canDrop={ ( tree, { dragSource, dropTargetId } ) => {
 						if ( dragSource?.parent === dropTargetId ) {

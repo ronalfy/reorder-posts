@@ -3561,18 +3561,21 @@ div.components-toolbar > div + div.has-left-divider::before {
   \*******************************************************************************************************************************************************************************************************************************************************************/
 .reorder-posts-tree-root {
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.reorder-posts-tree-root li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .reorder-posts-tree-dragging-source {
-  opacity: 0.3;
+  opacity: 0.35;
 }
 
 .reorder-posts-tree-placeholder {
   position: relative;
-}
-
-.reorder-posts-tree-drop-target {
-  background-color: #e8f0fe;
 }
 
 .reorder-posts-node {
@@ -3582,6 +3585,15 @@ div.components-toolbar > div + div.has-left-divider::before {
   grid-template-columns: auto auto 1fr auto;
   height: 36px;
   padding-inline-end: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.reorder-posts-node.is-drop-target {
+  background-color: #f0f6fc;
+}
+
+.reorder-posts-node.is-dragging {
+  opacity: 0.35;
 }
 
 .reorder-posts-node-expand-wrap {
@@ -3639,6 +3651,11 @@ div.components-toolbar > div + div.has-left-divider::before {
   right: 0;
   top: 0;
   transform: translateY(-50%);
+  color: #fff;
+}
+.reorder-posts-placeholder svg {
+  color: #fff;
+  fill: #fff;
 }
 
 .reorder-posts-drag-preview {
@@ -3663,6 +3680,11 @@ div.components-toolbar > div + div.has-left-divider::before {
 
 .reorder-posts-drag-preview-icon {
   color: #fff;
+}
+.reorder-posts-drag-preview-icon .components-icon,
+.reorder-posts-drag-preview-icon svg,
+.reorder-posts-drag-preview-icon path {
+  fill: currentColor;
 }
 
 .reorder-posts-interface {

@@ -1,8 +1,8 @@
 .reorder-posts-drag-preview {
 	align-items: center;
-	background-color: var( --wp-admin-theme-color, #2271b1 );
+	background-color: var(--wp-admin-theme-color, #2271b1);
 	border-radius: 2px;
-	box-shadow: 0 2px 6px rgba( 0, 0, 0, 0.15 );
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 	color: #fff;
 	display: inline-grid;
 	font-size: 13px;
@@ -20,4 +20,10 @@
 
 .reorder-posts-drag-preview-icon {
 	color: #fff;
+
+	.components-icon,
+	svg,
+	path {
+		fill: currentColor;
+	}
 }

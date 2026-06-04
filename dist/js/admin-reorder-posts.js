@@ -975,17 +975,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/chevron-right.mjs");
-/* harmony import */ var _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @minoru/react-dnd-treeview */ "./node_modules/@minoru/react-dnd-treeview/dist/index.js");
-/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
-/* harmony import */ var _TypeIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TypeIcon */ "./src/ts/react/views/reorder/TypeIcon.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @minoru/react-dnd-treeview */ "./node_modules/@minoru/react-dnd-treeview/dist/index.js");
+/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
+/* harmony import */ var _TypeIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TypeIcon */ "./src/ts/react/views/reorder/TypeIcon.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -1002,31 +1005,36 @@ var CustomNode = function CustomNode(props) {
     e.stopPropagation();
     props.onToggle(props.node.id);
   };
-  var dragOverProps = (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_3__.useDragOver)(id, props.isOpen, props.onToggle);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", _objectSpread(_objectSpread({
-    className: "tree-node ".concat(_classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.node),
+  var dragOverProps = (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_4__.useDragOver)(id, props.isOpen, props.onToggle);
+  var nodeClassName = ["tree-node", _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.node, props.isDropTarget ? _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeIsDropTarget : "", props.isDragging ? _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeIsDragging : ""].filter(Boolean).join(" ");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", _objectSpread(_objectSpread({
+    className: nodeClassName,
     style: {
       paddingInlineStart: indent
     }
   }, dragOverProps), {}, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: "".concat(_classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpandWrap, " ").concat(props.isOpen ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpandOpen : ""),
-      children: props.node.droppable && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeExpandWrap,
+      children: props.node.droppable && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        type: "button",
+        className: "".concat(_classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeExpand, " ").concat(props.isOpen ? _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeExpandOpen : ""),
         onClick: handleToggle,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+        "aria-expanded": props.isOpen,
+        "aria-label": props.isOpen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Collapse", "metronet-reorder-posts") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Expand", "metronet-reorder-posts"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
           icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["default"],
           size: 20
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeTypeIcon,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TypeIcon__WEBPACK_IMPORTED_MODULE_5__.TypeIcon, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeTypeIcon,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_TypeIcon__WEBPACK_IMPORTED_MODULE_6__.TypeIcon, {
         droppable: droppable || false
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-      className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeLabelWrap,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-        className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeLabel,
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabelWrap,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+        className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabel,
         children: props.node.text
       })
     })]
@@ -1124,6 +1132,8 @@ var reorderClasses = {
   nodeTypeIcon: "reorder-posts-node-type-icon",
   nodeLabelWrap: "reorder-posts-node-label-wrap",
   nodeLabel: "reorder-posts-node-label",
+  nodeIsDropTarget: "is-drop-target",
+  nodeIsDragging: "is-dragging",
   placeholder: "reorder-posts-placeholder",
   dragPreview: "reorder-posts-drag-preview",
   dragPreviewIcon: "reorder-posts-drag-preview-icon",
@@ -1210,11 +1220,15 @@ var List = function List(_ref) {
         render: function render(node, _ref2) {
           var depth = _ref2.depth,
             isOpen = _ref2.isOpen,
-            onToggle = _ref2.onToggle;
+            onToggle = _ref2.onToggle,
+            isDropTarget = _ref2.isDropTarget,
+            isDragging = _ref2.isDragging;
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CustomNode__WEBPACK_IMPORTED_MODULE_4__.CustomNode, {
             node: node,
             depth: depth,
             isOpen: isOpen,
+            isDropTarget: isDropTarget,
+            isDragging: isDragging,
             onToggle: onToggle
           });
         },
@@ -1226,7 +1240,8 @@ var List = function List(_ref) {
         classes: {
           root: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.treeRoot,
           draggingSource: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.draggingSource,
-          placeholder: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.placeholderContainer
+          placeholder: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.placeholderContainer,
+          dropTarget: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.dropTarget
         },
         canDrop: function canDrop(tree, _ref3) {
           var dragSource = _ref3.dragSource,

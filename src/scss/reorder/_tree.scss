@@ -1,15 +1,19 @@
 .reorder-posts-tree-root {
 	height: 100%;
+	margin: 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 }
 
 .reorder-posts-tree-dragging-source {
-	opacity: 0.3;
+	opacity: 0.35;
 }
 
 .reorder-posts-tree-placeholder {
 	position: relative;
-}
-
-.reorder-posts-tree-drop-target {
-	background-color: #e8f0fe;
 }

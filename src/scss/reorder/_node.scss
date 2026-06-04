@@ -5,6 +5,15 @@
 	grid-template-columns: auto auto 1fr auto;
 	height: 36px;
 	padding-inline-end: 8px;
+	transition: background-color 0.15s ease;
+}
+
+.reorder-posts-node.is-drop-target {
+	background-color: #f0f6fc;
+}
+
+.reorder-posts-node.is-dragging {
+	opacity: 0.35;
 }
 
 .reorder-posts-node-expand-wrap {
@@ -25,17 +34,17 @@
 	justify-content: center;
 	margin: 0;
 	padding: 0;
-	transform: rotate( 0deg );
+	transform: rotate(0deg);
 	transition: transform linear 0.1s;
 	width: 24px;
 }
 
 .reorder-posts-node-expand.is-open {
-	transform: rotate( 90deg );
+	transform: rotate(90deg);
 }
 
 .reorder-posts-node-expand:focus {
-	box-shadow: 0 0 0 1px var( --wp-admin-theme-color, #2271b1 );
+	box-shadow: 0 0 0 1px var(--wp-admin-theme-color, #2271b1);
 	outline: 2px solid transparent;
 }
 
