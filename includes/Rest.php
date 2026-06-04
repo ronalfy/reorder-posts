@@ -94,9 +94,11 @@ class Rest {
 		$response = array();
 		foreach ( $posts->posts as $post ) {
 			$response[] = array(
-				'id'    => $post->ID,
-				'title' => $post->post_title,
-				'url'   => get_permalink( $post->ID ),
+				'id'         => $post->ID,
+				'title'      => $post->post_title,
+				'url'        => get_permalink( $post->ID ),
+				'menu_order' => $post->menu_order,
+				'parent'     => $post->post_parent,
 			);
 		}
 		return rest_ensure_response( array( 'posts' => $response ) );

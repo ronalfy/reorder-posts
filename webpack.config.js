@@ -7,7 +7,7 @@ module.exports = (env) => {
   return [
     {
       entry: {
-        // "admin-reorder-posts": "./src/scss/admin-reorder-posts.scss",
+        "admin-reorder": "./src/scss/admin-reorder.scss",
       },
       // With webpack `mode: "production"`, css-loader resolves `tailwindcss/theme.css` / `preflight.css` as separate modules that skip PostCSS, so output diverges from `npm run start` and admin styles break. Use `development` for this compiler when `appMode` is `production`. Do not pass `--mode` on the CLI for the whole run; it overrides this and reproduces the bug (see package.json `build` script).
       mode: "production" === appMode ? "development" : appMode,
@@ -114,7 +114,6 @@ module.exports = (env) => {
       },
       plugins: [
         new RemoveEmptyScriptsPlugin(),
-        new MiniCssExtractPlugin(),
         new DependencyExtractionWebpackPlugin(),
       ],
     },

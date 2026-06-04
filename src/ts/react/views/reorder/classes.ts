@@ -1,0 +1,17 @@
+export const reorderClasses = {
+	treeRoot: "reorder-posts-tree-root",
+	draggingSource: "reorder-posts-tree-dragging-source",
+	placeholderContainer: "reorder-posts-tree-placeholder",
+	dropTarget: "reorder-posts-tree-drop-target",
+	node: "reorder-posts-node",
+	nodeExpandWrap: "reorder-posts-node-expand-wrap",
+	nodeExpand: "reorder-posts-node-expand",
+	nodeExpandOpen: "is-open",
+	nodeTypeIcon: "reorder-posts-node-type-icon",
+	nodeLabelWrap: "reorder-posts-node-label-wrap",
+	nodeLabel: "reorder-posts-node-label",
+	placeholder: "reorder-posts-placeholder",
+	dragPreview: "reorder-posts-drag-preview",
+	dragPreviewIcon: "reorder-posts-drag-preview-icon",
+	dragPreviewLabel: "reorder-posts-drag-preview-label",
+} as const;

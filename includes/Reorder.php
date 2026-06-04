@@ -310,7 +310,8 @@ class Reorder {
 	public function print_scripts() {
 
 		$deps = require_once REORDER_DIR . '/dist/js/admin-reorder-posts.asset.php';
-		wp_enqueue_script( 'dlx-reorder-posts', REORDER_URL . '/dist/js/admin-reorder-posts.js', $deps['dependencies'], $deps['version'], true );
+		wp_enqueue_script( 'dlx-reorder-posts', Functions::get_plugin_url( '/dist/js/admin-reorder-posts.js' ), $deps['dependencies'], $deps['version'], true );
+		wp_enqueue_style( 'dlx-reorder-posts-styles', Functions::get_plugin_url( '/dist/css/admin-reorder.css' ), array(), $deps['version'] );
 	}
 
 	/**

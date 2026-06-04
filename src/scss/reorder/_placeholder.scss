@@ -1,0 +1,8 @@
+.reorder-posts-placeholder {
+	background-color: var( --wp-admin-theme-color, #2271b1 );
+	height: 2px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: translateY( -50% );
+}
