@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0
  * @author Ryan Hellyer <ryan@metronet.no>
  */
-require 'class-reorder.php';
+// require 'class-reorder.php';
 require 'class-reorder-admin.php';
 
 

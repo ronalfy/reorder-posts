@@ -22,7 +22,7 @@ class Rest {
 	 * Initialize the REST routes
 	 */
 	public function init_routes() {
-		add_action( 'rest_api_init', array( self::class, 'rest_api_init' ) );
+		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Rest {
 			'reorder-posts/v1',
 			'/posts',
 			array(
-				'methods'             => WP_REST_Server::READABLE,
+				'methods'             => \WP_REST_Server::READABLE,
 				'callback'            => array( $this, 'get_posts' ),
 				'permission_callback' => function () {
 					return current_user_can( 'edit_others_posts' );
@@ -99,6 +99,6 @@ class Rest {
 				'url'   => get_permalink( $post->ID ),
 			);
 		}
-		return rest_ensure_response( $response );
+		return rest_ensure_response( array( 'posts' => $response ) );
 	}
 }

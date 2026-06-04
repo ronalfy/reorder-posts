@@ -309,8 +309,8 @@ class Reorder {
 	 */
 	public function print_scripts() {
 
-		$deps = require_once REORDER_DIR . '/dist/dlx-reorder-posts.asset.php';
-		wp_enqueue_script( 'dlx-reorder-posts', REORDER_URL . '/dist/dlx-reorder-posts.js', $deps['dependencies'], $deps['version'], true );
+		$deps = require_once REORDER_DIR . '/dist/js/admin-reorder-posts.asset.php';
+		wp_enqueue_script( 'dlx-reorder-posts', REORDER_URL . '/dist/js/admin-reorder-posts.js', $deps['dependencies'], $deps['version'], true );
 	}
 
 	/**
@@ -373,14 +373,15 @@ class Reorder {
 	 */
 	public function output_interface() {
 		echo '<br />';
-		$post_count = Functions::get_post_count( $this->post_type, $this->post_status );
+		$post_count       = Functions::get_post_count( $this->post_type, $this->post_status );
+		$user_preferences = User::get_preferences( get_current_user_id(), $this->post_type );
 		if ( $post_count >= 1000 ) {
 			printf( '<div class="error"><p>%s</p></div>', sprintf( __( 'There are over %s posts found.  We do not recommend you sort these posts for performance reasons.', 'metronet_reorder_posts' ), number_format( $post_count ) ) );
 		}
 		?>
 		<div id="reorder-error"></div>
 		<div><img src="<?php echo esc_url( admin_url( 'images/loading.gif' ) ); ?>" id="loading-animation" /></div>
-		<div id="reorder-posts-interface" data-posts-per-page="50" data-debug="false" data-post-type="<?php echo esc_attr( $this->post_type ); ?>" data-nonce="<?php echo esc_html( wp_create_nonce( 'reorder-sort-nonce-' . $this->post_type ) ); ?>" data-hierarchical="<?php echo esc_attr( is_post_type_hierarchical( $this->post_type ) ? 'true' : 'false' ); ?>"></div>
+		<div id="reorder-posts-interface" data-posts-per-page="<?php echo esc_attr( $user_preferences['posts_per_page'] ); ?>" data-debug="false" data-post-type="<?php echo esc_attr( $this->post_type ); ?>" data-nonce="<?php echo esc_html( wp_create_nonce( 'reorder-sort-nonce-' . $this->post_type ) ); ?>" data-hierarchical="<?php echo esc_attr( is_post_type_hierarchical( $this->post_type ) ? 'true' : 'false' ); ?>" data-post-status="<?php echo esc_attr( implode( ',', $user_preferences['post_status'] ) ); ?>"></div>
 		<?php echo esc_html( $this->initial ); ?>
 		<?php
 		echo esc_html( $this->final );
