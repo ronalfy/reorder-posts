@@ -85,8 +85,10 @@ class Rest {
 				'offset'           => $offset,
 				'order'            => $order,
 				'suppress_filters' => true,
+				'orderby'          => 'menu_order title',
 			)
 		);
+
 		if ( ! $posts->have_posts() ) {
 			return rest_ensure_response( array() );
 		}

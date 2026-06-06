@@ -11,6 +11,7 @@ type Props = {
 	node: NodeModel<PostData>;
 	depth: number;
 	isOpen: boolean;
+	hasChild: boolean;
 	isDropTarget: boolean;
 	isDragging: boolean;
 	onToggle: ( id: NodeModel[ "id" ] ) => void;
@@ -39,11 +40,10 @@ export const CustomNode: React.FC<Props> = ( props ) => {
 	return (
 		<div
 			className={ nodeClassName }
-			style={ { paddingInlineStart: indent } }
 			{ ...dragOverProps }
 		>
 			<div className={ reorderClasses.nodeExpandWrap }>
-				{ props.node.droppable && (
+				{ props.hasChild && (
 					<button
 						type="button"
 						className={ `${ reorderClasses.nodeExpand } ${ props.isOpen ? reorderClasses.nodeExpandOpen : "" }` }
@@ -55,15 +55,17 @@ export const CustomNode: React.FC<Props> = ( props ) => {
 								: __( "Expand", "metronet-reorder-posts" )
 						}
 					>
-						<Icon icon={ chevronRight } size={ 20 } />
+						<Icon icon="arrow-right" size={ 20 } />
 					</button>
 				) }
 			</div>
-			<div className={ reorderClasses.nodeTypeIcon }>
-				<TypeIcon droppable={ droppable || false } />
-			</div>
-			<div className={ reorderClasses.nodeLabelWrap }>
-				<span className={ reorderClasses.nodeLabel }>{ props.node.text }</span>
+			<div className={ reorderClasses.nodeContent } style={ { paddingInlineStart: indent } }>
+				<div className={ reorderClasses.nodeTypeIcon }>
+					<TypeIcon droppable={ droppable || false } />
+				</div>
+				<div className={ reorderClasses.nodeLabelWrap }>
+					<span className={ reorderClasses.nodeLabel }>{ props.node.text }</span>
+				</div>
 			</div>
 		</div>
 	);

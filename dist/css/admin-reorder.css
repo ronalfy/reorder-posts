@@ -3583,9 +3583,9 @@ div.components-toolbar > div + div.has-left-divider::before {
   border-bottom: solid 1px #dcdcde;
   display: grid;
   grid-template-columns: auto auto 1fr auto;
-  height: 36px;
   padding-inline-end: 8px;
   transition: background-color 0.15s ease;
+  font-weight: 700;
 }
 
 .reorder-posts-node.is-drop-target {
@@ -3594,29 +3594,37 @@ div.components-toolbar > div + div.has-left-divider::before {
 
 .reorder-posts-node.is-dragging {
   opacity: 0.35;
+  cursor: move !important;
 }
 
 .reorder-posts-node-expand-wrap {
   align-items: center;
   display: flex;
-  height: 24px;
+  height: 100%;
   justify-content: center;
-  width: 24px;
+  width: 40px;
+  background: #f0f0f0;
 }
 
 .reorder-posts-node-expand {
+  display: inline-flex;
   align-items: center;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  height: 24px;
   justify-content: center;
-  margin: 0;
-  padding: 0;
-  transform: rotate(0deg);
-  transition: transform linear 0.1s;
   width: 24px;
+  height: 24px;
+  background: #FFF;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid #e1e1e1;
+  font-size: 24px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+
+.reorder-posts-node-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .reorder-posts-node-expand.is-open {
@@ -3632,16 +3640,15 @@ div.components-toolbar > div + div.has-left-divider::before {
   align-items: center;
   color: #646970;
   display: flex;
-}
-
-.reorder-posts-node-label-wrap {
-  padding-inline-start: 8px;
+  padding-left: 12px;
 }
 
 .reorder-posts-node-label {
+  display: inline-flex;
   color: #1d2327;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4;
+  padding: 10px 15px 10px 0px;
 }
 
 .reorder-posts-placeholder {

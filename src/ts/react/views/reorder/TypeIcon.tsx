@@ -1,6 +1,6 @@
 import React from "react";
-import { Icon } from "@wordpress/components";
-import { file, page } from "@wordpress/icons";
+import PageIcon from "./icons/page";
+import PostIcon from "./icons/post";
 
 type Props = {
 	droppable: boolean;
@@ -8,8 +8,8 @@ type Props = {
 
 export const TypeIcon: React.FC<Props> = (props) => {
 	if (props.droppable) {
-		return <Icon icon={file} size={20} />;
+		return <PageIcon />;
 	}
 
-	return <Icon icon={page} size={20} />;
+	return <PostIcon />;
 };

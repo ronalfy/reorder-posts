@@ -4,6 +4,7 @@ export const reorderClasses = {
 	placeholderContainer: "reorder-posts-tree-placeholder",
 	dropTarget: "reorder-posts-tree-drop-target",
 	node: "reorder-posts-node",
+	nodeContent: "reorder-posts-node-content",
 	nodeExpandWrap: "reorder-posts-node-expand-wrap",
 	nodeExpand: "reorder-posts-node-expand",
 	nodeExpandOpen: "is-open",

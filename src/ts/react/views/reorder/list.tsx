@@ -54,11 +54,12 @@ const List = ( {
 					rootId={ 0 }
 					sort={ false }
 					onDrop={ handleDrop }
-					render={ ( node, { depth, isOpen, onToggle, isDropTarget, isDragging } ) => (
+					render={ ( node, { depth, isOpen, onToggle, isDropTarget, isDragging, hasChild } ) => (
 						<CustomNode
 							node={ node }
 							depth={ depth }
 							isOpen={ isOpen }
+							hasChild={ hasChild }
 							isDropTarget={ isDropTarget }
 							isDragging={ isDragging }
 							onToggle={ onToggle }
