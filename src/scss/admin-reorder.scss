@@ -1,8 +1,8 @@
-@use 'admin-common.scss';
-@use 'reorder/tree';
-@use 'reorder/node';
-@use 'reorder/placeholder';
-@use 'reorder/drag-preview';
+@use "admin-common.scss";
+@use "reorder/tree";
+@use "reorder/node";
+@use "reorder/placeholder";
+@use "reorder/drag-preview";
 
 .reorder-posts-interface {
 	margin-top: 1rem;
@@ -20,5 +20,4 @@
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 2px;
-	max-width: 800px;
 }

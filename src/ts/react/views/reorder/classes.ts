@@ -1,8 +1,10 @@
 export const reorderClasses = {
 	treeRoot: "reorder-posts-tree-root",
+	treeDragging: "reorder-posts-tree-is-dragging",
 	draggingSource: "reorder-posts-tree-dragging-source",
 	placeholderContainer: "reorder-posts-tree-placeholder",
 	dropTarget: "reorder-posts-tree-drop-target",
+	canDrop: "reorder-posts-tree-can-drop",
 	node: "reorder-posts-node",
 	nodeContent: "reorder-posts-node-content",
 	nodeExpandWrap: "reorder-posts-node-expand-wrap",

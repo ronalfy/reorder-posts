@@ -4,11 +4,17 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-	transform: translateY(-50%);
+	padding: 0;
+	margin: 0;
+	padding-inline-start: 0;
 	color: #fff;
 
 	svg {
 		color: #fff;
 		fill: #fff;
 	}
+}
+.reorder-posts-tree-placeholder:has( + .reorder-posts-tree-dragging-source),
+.reorder-posts-tree-dragging-source + .reorder-posts-tree-placeholder {
+	display: none !important;
 }

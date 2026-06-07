@@ -7,12 +7,12 @@ type Props = {
 	depth: number;
 };
 
-export const Placeholder: React.FC<Props> = ( props ) => {
-	const left = props.depth * 24;
+export const Placeholder: React.FC<Props> = (props) => {
+	const left = props.depth * 40;
 	return (
 		<div
-			className={ reorderClasses.placeholder }
-			style={ { left } }
+			className={reorderClasses.placeholder}
+			style={{ left }}
 		></div>
 	);
 };

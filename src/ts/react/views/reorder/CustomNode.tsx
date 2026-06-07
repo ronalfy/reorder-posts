@@ -14,19 +14,33 @@ type Props = {
 	hasChild: boolean;
 	isDropTarget: boolean;
 	isDragging: boolean;
-	onToggle: ( id: NodeModel[ "id" ] ) => void;
+	onToggle: (id: NodeModel["id"]) => void;
 };
 
-export const CustomNode: React.FC<Props> = ( props ) => {
-	const { id, droppable } = props.node;
-	const indent = props.depth * 24;
+const calculateIndent = (depth: number, hasChild: boolean) => {
+	let calculatedIndent = 0;
+	let calculatedDepth = 0;
+	calculatedDepth = depth + 1;
+	if ( depth === 0 && ! hasChild ) {
+		calculatedDepth = 0;
+	}
+	calculatedIndent = calculatedDepth * 30;
+	if ( hasChild ) {
+		calculatedIndent -= 40;
+	}
+	return calculatedIndent;
+};
 
-	const handleToggle = ( e: React.MouseEvent ) => {
+export const CustomNode: React.FC<Props> = (props) => {
+	const { id, droppable } = props.node;
+	const indent = calculateIndent( props.depth, props.hasChild );
+
+	const handleToggle = (e: React.MouseEvent) => {
 		e.stopPropagation();
-		props.onToggle( props.node.id );
+		props.onToggle(props.node.id);
 	};
 
-	const dragOverProps = useDragOver( id, props.isOpen, props.onToggle );
+	const dragOverProps = useDragOver(id, props.isOpen, props.onToggle);
 
 	const nodeClassName = [
 		"tree-node",
@@ -34,37 +48,45 @@ export const CustomNode: React.FC<Props> = ( props ) => {
 		props.isDropTarget ? reorderClasses.nodeIsDropTarget : "",
 		props.isDragging ? reorderClasses.nodeIsDragging : "",
 	]
-		.filter( Boolean )
-		.join( " " );
+		.filter(Boolean)
+		.join(" ");
 
 	return (
 		<div
-			className={ nodeClassName }
-			{ ...dragOverProps }
+			className={nodeClassName}
+			{...dragOverProps}
 		>
-			<div className={ reorderClasses.nodeExpandWrap }>
-				{ props.hasChild && (
+			{props.hasChild && (
+				<div className={reorderClasses.nodeExpandWrap}>
 					<button
 						type="button"
-						className={ `${ reorderClasses.nodeExpand } ${ props.isOpen ? reorderClasses.nodeExpandOpen : "" }` }
-						onClick={ handleToggle }
-						aria-expanded={ props.isOpen }
+						className={`${reorderClasses.nodeExpand} ${
+							props.isOpen ? reorderClasses.nodeExpandOpen : ""
+						}`}
+						onClick={handleToggle}
+						aria-expanded={props.isOpen}
 						aria-label={
 							props.isOpen
-								? __( "Collapse", "metronet-reorder-posts" )
-								: __( "Expand", "metronet-reorder-posts" )
+								? __("Collapse", "metronet-reorder-posts")
+								: __("Expand", "metronet-reorder-posts")
 						}
 					>
-						<Icon icon="arrow-right" size={ 20 } />
+						<Icon
+							icon="arrow-right"
+							size={20}
+						/>
 					</button>
-				) }
-			</div>
-			<div className={ reorderClasses.nodeContent } style={ { paddingInlineStart: indent } }>
-				<div className={ reorderClasses.nodeTypeIcon }>
-					<TypeIcon droppable={ droppable || false } />
 				</div>
-				<div className={ reorderClasses.nodeLabelWrap }>
-					<span className={ reorderClasses.nodeLabel }>{ props.node.text }</span>
+			)}
+
+			<div
+				className={reorderClasses.nodeContent}
+				style={{ paddingInlineStart: indent }}
+			>
+				<div className={reorderClasses.nodeLabelWrap}>
+					<span className={reorderClasses.nodeLabel}>
+						{props.node.text}
+					</span>
 				</div>
 			</div>
 		</div>

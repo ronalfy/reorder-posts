@@ -978,9 +978,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @minoru/react-dnd-treeview */ "./node_modules/@minoru/react-dnd-treeview/dist/index.js");
 /* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
-/* harmony import */ var _TypeIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TypeIcon */ "./src/ts/react/views/reorder/TypeIcon.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -993,51 +992,58 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 
 
-
+var calculateIndent = function calculateIndent(depth, hasChild) {
+  var calculatedIndent = 0;
+  var calculatedDepth = 0;
+  calculatedDepth = depth + 1;
+  if (depth === 0 && !hasChild) {
+    calculatedDepth = 0;
+  }
+  calculatedIndent = calculatedDepth * 30;
+  if (hasChild) {
+    calculatedIndent -= 40;
+  }
+  return calculatedIndent;
+};
 var CustomNode = function CustomNode(props) {
   var _props$node = props.node,
     id = _props$node.id,
     droppable = _props$node.droppable;
-  var indent = props.depth * 24;
+  var indent = calculateIndent(props.depth, props.hasChild);
   var handleToggle = function handleToggle(e) {
     e.stopPropagation();
     props.onToggle(props.node.id);
   };
   var dragOverProps = (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_3__.useDragOver)(id, props.isOpen, props.onToggle);
   var nodeClassName = ["tree-node", _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.node, props.isDropTarget ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeIsDropTarget : "", props.isDragging ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeIsDragging : ""].filter(Boolean).join(" ");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", _objectSpread(_objectSpread({
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", _objectSpread(_objectSpread({
     className: nodeClassName
   }, dragOverProps), {}, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    children: [props.hasChild && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpandWrap,
-      children: props.hasChild && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         type: "button",
         className: "".concat(_classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpand, " ").concat(props.isOpen ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpandOpen : ""),
         onClick: handleToggle,
         "aria-expanded": props.isOpen,
         "aria-label": props.isOpen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Collapse", "metronet-reorder-posts") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Expand", "metronet-reorder-posts"),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
           icon: "arrow-right",
           size: 20
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeContent,
       style: {
         paddingInlineStart: indent
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-        className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeTypeIcon,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TypeIcon__WEBPACK_IMPORTED_MODULE_5__.TypeIcon, {
-          droppable: droppable || false
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeLabelWrap,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeLabel,
           children: props.node.text
         })
-      })]
+      })
     })]
   }));
 };
@@ -1063,7 +1069,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Placeholder = function Placeholder(props) {
-  var left = props.depth * 24;
+  var left = props.depth * 40;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     className: _classes__WEBPACK_IMPORTED_MODULE_1__.reorderClasses.placeholder,
     style: {
@@ -1115,9 +1121,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var reorderClasses = {
   treeRoot: "reorder-posts-tree-root",
+  treeDragging: "reorder-posts-tree-is-dragging",
   draggingSource: "reorder-posts-tree-dragging-source",
   placeholderContainer: "reorder-posts-tree-placeholder",
   dropTarget: "reorder-posts-tree-drop-target",
+  canDrop: "reorder-posts-tree-can-drop",
   node: "reorder-posts-node",
   nodeContent: "reorder-posts-node-content",
   nodeExpandWrap: "reorder-posts-node-expand-wrap",
@@ -1271,11 +1279,16 @@ var List = function List(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     treeData = _useState2[0],
     setTreeData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isDragging = _useState4[0],
+    setIsDragging = _useState4[1];
   var handleDrop = function handleDrop(newTree) {
     setTreeData(newTree);
   };
+  var listClassName = ["reorder-posts-list", isDragging ? _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.treeDragging : ""].filter(Boolean).join(" ");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-    className: "reorder-posts-list",
+    className: listClassName,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_dnd__WEBPACK_IMPORTED_MODULE_2__.DndProvider, {
       backend: _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.MultiBackend,
       options: (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.getBackendOptions)(),
@@ -1284,6 +1297,12 @@ var List = function List(_ref) {
         rootId: 0,
         sort: false,
         onDrop: handleDrop,
+        onDragStart: function onDragStart() {
+          return setIsDragging(true);
+        },
+        onDragEnd: function onDragEnd() {
+          return setIsDragging(false);
+        },
         render: function render(node, _ref2) {
           var depth = _ref2.depth,
             isOpen = _ref2.isOpen,
@@ -1310,7 +1329,7 @@ var List = function List(_ref) {
           root: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.treeRoot,
           draggingSource: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.draggingSource,
           placeholder: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.placeholderContainer,
-          dropTarget: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.dropTarget
+          dropTarget: "".concat(_classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.dropTarget, " ").concat(_classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.canDrop)
         },
         canDrop: function canDrop(tree, _ref3) {
           var dragSource = _ref3.dragSource,
@@ -1424,7 +1443,7 @@ var Reorder = function Reorder(_ref) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "loading",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Loading posts...', 'metronet-reorder-posts')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Loading posts...", "metronet-reorder-posts")
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mediaron_react_spinners__WEBPACK_IMPORTED_MODULE_2__.ReactSpinner1, {
         size: 100,
         speedMultiplier: 1.2
