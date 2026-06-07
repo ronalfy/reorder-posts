@@ -103,6 +103,13 @@ class Rest {
 				'parent'     => $post->post_parent,
 			);
 		}
-		return rest_ensure_response( array( 'posts' => $response ) );
-	}
-}
+		$return = array(
+			'posts'      => $response,
+			'total'      => $posts->found_posts,
+			'pages'      => $posts->max_num_pages,
+			'more_posts' => $posts->max_num_pages > 1,
+			'offset'     => $offset + $posts_per_page,
+		);
+		return rest_ensure_response( $return );
+	} //end get_posts
+}//end class
