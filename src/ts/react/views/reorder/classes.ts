@@ -19,4 +19,6 @@ export const reorderClasses = {
 	dragPreview: "reorder-posts-drag-preview",
 	dragPreviewIcon: "reorder-posts-drag-preview-icon",
 	dragPreviewLabel: "reorder-posts-drag-preview-label",
+	loadMoreWrap: "reorder-posts-load-more",
+	loadMoreButton: "reorder-posts-load-more-button",
 } as const;

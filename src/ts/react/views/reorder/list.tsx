@@ -1,51 +1,160 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import {
 	Tree,
 	getBackendOptions,
+	isAncestor,
 	MultiBackend,
 	type NodeModel,
 } from "@minoru/react-dnd-treeview";
 import { DndProvider } from "react-dnd";
+import { Button } from "@wordpress/components";
+import { useDispatch, useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 import { reorderClasses } from "./classes";
 import { PostData } from "./types";
 import { CustomNode } from "./CustomNode";
 import { Placeholder } from "./Placeholder";
 import { CustomDragPreview } from "./CustomDragPreview";
+import {
+	getBoundSelectors,
+	loadMoreRoots,
+	store,
+	type ReorderStoreDispatch,
+} from "./store";
 
-const postsToTreeNodes = (
-	posts: PostData[],
-	hierarchical: boolean
-): NodeModel<PostData>[] => {
-	const childCounts = posts.reduce<Record<number, number>>((counts, post) => {
-		const parentId = post.parent ?? 0;
-		counts[parentId] = (counts[parentId] || 0) + 1;
-		return counts;
-	}, {});
+const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
+	const reorderDispatch = useDispatch(store) as ReorderStoreDispatch;
 
-	return posts.map((post) => ({
-		id: post.id,
-		parent: post.parent ?? 0,
-		text: post.title,
-		data: post,
-		droppable: hierarchical || (childCounts[post.id] ?? 0) > 0,
-	}));
-};
+	const { treeModels, openIds, isDragging, hasMoreRoots, isLoadingMore } =
+		useSelect((selectStore) => {
+			const store = getBoundSelectors(selectStore);
+			return {
+				treeModels: store.getTreeModels(),
+				openIds: store.getOpenIds(),
+				isDragging: store.getIsDragging(),
+				hasMoreRoots: store.getHasMoreRoots(),
+				isLoadingMore: store.getIsLoadingMore(),
+			};
+		}, []);
 
-const List = ({
-	data,
-	hierarchical = false,
-}: {
-	data: PostData[];
-	hierarchical?: boolean;
-}) => {
-	const [treeData, setTreeData] = useState<NodeModel<PostData>[]>(() =>
-		postsToTreeNodes(data, hierarchical)
+	const handleDrop = useCallback(
+		(newTree: NodeModel<PostData>[]) => {
+			reorderDispatch.applyTreeDrop(newTree);
+		},
+		[reorderDispatch]
 	);
-	const [isDragging, setIsDragging] = useState(false);
 
-	const handleDrop = (newTree: NodeModel<PostData>[]) => {
-		setTreeData(newTree);
-	};
+	const handleDragStart = useCallback(() => {
+		reorderDispatch.setDragging(true);
+	}, [reorderDispatch]);
+
+	const handleDragEnd = useCallback(() => {
+		reorderDispatch.setDragging(false);
+	}, [reorderDispatch]);
+
+	const handleChangeOpen = useCallback(
+		(ids: NodeModel["id"][]) => {
+			reorderDispatch.setOpenIds(ids.map(Number));
+		},
+		[reorderDispatch]
+	);
+
+	const handleLoadMore = useCallback(() => {
+		void loadMoreRoots();
+	}, []);
+
+	const renderNode = useCallback(
+		(
+			node: NodeModel<PostData>,
+			{
+				depth,
+				isOpen,
+				onToggle,
+				isDropTarget,
+				isDragging: nodeIsDragging,
+				hasChild,
+			}: {
+				depth: number;
+				isOpen: boolean;
+				onToggle: () => void;
+				isDropTarget: boolean;
+				isDragging: boolean;
+				hasChild: boolean;
+			}
+		) => (
+			<CustomNode
+				node={node}
+				depth={depth}
+				isOpen={isOpen}
+				hasChild={hasChild}
+				isDropTarget={isDropTarget}
+				isDragging={nodeIsDragging}
+				onToggle={onToggle}
+			/>
+		),
+		[]
+	);
+
+	const dragPreviewRender = useCallback(
+		(
+			monitorProps: Parameters<
+				typeof CustomDragPreview
+			>[0]["monitorProps"]
+		) => <CustomDragPreview monitorProps={monitorProps} />,
+		[]
+	);
+
+	const canDrop = useCallback(
+		(
+			tree: NodeModel<PostData>[],
+			{
+				dragSource,
+				dropTargetId,
+			}: {
+				dragSource?: NodeModel<PostData>;
+				dropTargetId: NodeModel["id"];
+			}
+		) => {
+			if (!dragSource) {
+				return false;
+			}
+
+			const dragId = Number(dragSource.id);
+			const targetId = Number(dropTargetId);
+			const dragParentId = Number(dragSource.parent ?? 0);
+
+			if (dragId === targetId) {
+				return false;
+			}
+
+			if (isAncestor(tree, dragId, targetId)) {
+				return false;
+			}
+
+			if (!hierarchical) {
+				return dragParentId === targetId;
+			}
+
+			// Reorder among siblings (dropTargetId is the shared parent, including root).
+			if (dragParentId === targetId) {
+				return true;
+			}
+
+			// Move to top level or nest under another page.
+			return true;
+		},
+		[hierarchical]
+	);
+
+	const placeholderRender = useCallback(
+		(node: NodeModel<PostData>, { depth }: { depth: number }) => (
+			<Placeholder
+				node={node}
+				depth={depth}
+			/>
+		),
+		[]
+	);
 
 	const listClassName = [
 		"reorder-posts-list",
@@ -61,56 +170,41 @@ const List = ({
 				options={getBackendOptions()}
 			>
 				<Tree<PostData>
-					tree={treeData}
+					tree={treeModels}
 					rootId={0}
 					sort={false}
+					insertDroppableFirst={false}
+					initialOpen={openIds}
+					onChangeOpen={handleChangeOpen}
 					onDrop={handleDrop}
-					onDragStart={() => setIsDragging(true)}
-					onDragEnd={() => setIsDragging(false)}
-					render={(
-						node,
-						{
-							depth,
-							isOpen,
-							onToggle,
-							isDropTarget,
-							isDragging,
-							hasChild,
-						}
-					) => (
-						<CustomNode
-							node={node}
-							depth={depth}
-							isOpen={isOpen}
-							hasChild={hasChild}
-							isDropTarget={isDropTarget}
-							isDragging={isDragging}
-							onToggle={onToggle}
-						/>
-					)}
-					dragPreviewRender={(monitorProps) => (
-						<CustomDragPreview monitorProps={monitorProps} />
-					)}
+					onDragStart={handleDragStart}
+					onDragEnd={handleDragEnd}
+					render={renderNode}
+					dragPreviewRender={dragPreviewRender}
 					classes={{
 						root: reorderClasses.treeRoot,
 						draggingSource: reorderClasses.draggingSource,
 						placeholder: reorderClasses.placeholderContainer,
 						dropTarget: `${reorderClasses.dropTarget} ${reorderClasses.canDrop}`,
 					}}
-					canDrop={(tree, { dragSource, dropTargetId }) => {
-						if (dragSource?.parent === dropTargetId) {
-							return true;
-						}
-					}}
+					canDrop={canDrop}
 					dropTargetOffset={10}
-					placeholderRender={(node, { depth }) => (
-						<Placeholder
-							node={node}
-							depth={depth}
-						/>
-					)}
+					placeholderRender={placeholderRender}
 				/>
 			</DndProvider>
+			{hasMoreRoots && (
+				<div className={reorderClasses.loadMoreWrap}>
+					<Button
+						variant="secondary"
+						className={reorderClasses.loadMoreButton}
+						onClick={handleLoadMore}
+						disabled={isLoadingMore || isDragging}
+						isBusy={isLoadingMore}
+					>
+						{__("Load More", "metronet-reorder-posts")}
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 };

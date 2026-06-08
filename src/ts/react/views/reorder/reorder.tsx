@@ -1,57 +1,32 @@
-import React, { useEffect, useState } from "react";
-import apiFetch from "@wordpress/api-fetch";
+import React, { useEffect } from "react";
+import { useSelect } from "@wordpress/data";
+import { Notice } from "@wordpress/components";
 import { ReactSpinner1 } from "@mediaron/react-spinners";
 import { __ } from "@wordpress/i18n";
 import List from "./list";
-import { PostData } from "./types";
+import { initializeReorderStore, getBoundSelectors, STORE_NAME } from "./store";
+import type { ReorderConfig } from "./types";
 
-type Response = {
-	posts: PostData[];
-};
+type Props = ReorderConfig;
 
-type Props = {
-	postsPerPage: number;
-	postType: string;
-	nonce: string;
-	hierarchical: boolean;
-	postStatus: string[];
-};
-
-const Reorder = ({
-	postsPerPage,
-	postType,
-	nonce,
-	hierarchical,
-	postStatus,
-}: Props) => {
-	const [posts, setPosts] = useState<PostData[]>([]);
-	const [loading, setLoading] = useState(true);
+const Reorder = (props: Props) => {
+	const { hierarchical } = props;
 
 	useEffect(() => {
-		const getPosts = async () => {
-			const response = await apiFetch<Response>({
-				path: `/reorder-posts/v1/posts?post_type=${postType}&posts_per_page=${postsPerPage}&offset=0&order=ASC&nonce=${nonce}&hierarchical=${hierarchical}&post_status=${postStatus.join(
-					","
-				)}`,
-				method: "GET",
-			})
-				.then((response) => {
-					return response as Response;
-				})
-				.catch((error) => {
-					console.error(error);
-					return { posts: [] } as Response;
-				})
-				.finally(() => {
-					setLoading(false);
-				});
-			setPosts(response.posts || []);
-		};
-		getPosts();
+		void initializeReorderStore(props);
 	}, []);
-	const getLoading = () => {
+
+	const { isLoading, error } = useSelect((selectStore) => {
+		const store = getBoundSelectors(selectStore);
+		return {
+			isLoading: store.getIsInitialLoading(),
+			error: store.getError(),
+		};
+	}, []);
+
+	if (isLoading) {
 		return (
-			<div className="loading">
+			<div className="reorder-posts-loading">
 				<h2>{__("Loading posts...", "metronet-reorder-posts")}</h2>
 				<ReactSpinner1
 					size={100}
@@ -59,17 +34,19 @@ const Reorder = ({
 				/>
 			</div>
 		);
-	};
-	if (loading) {
-		return getLoading();
 	}
+
 	return (
-		<div>
-			<h1>Reorder</h1>
-			<List
-				data={posts}
-				hierarchical={hierarchical}
-			/>
+		<div className="reorder-posts-interface">
+			{error && (
+				<Notice
+					status="error"
+					isDismissible={false}
+				>
+					{error}
+				</Notice>
+			)}
+			<List hierarchical={hierarchical} />
 		</div>
 	);
 };

@@ -3602,17 +3602,21 @@ div.components-toolbar > div + div.has-left-divider::before {
 
 .reorder-posts-node.is-drop-target {
   background-color: var(--wp-admin-theme-color, #2271b1);
-  color: #FFF;
+  color: #fff;
 }
 .reorder-posts-node.is-drop-target .reorder-posts-node-label {
-  color: #FFF;
+  color: #fff;
 }
 
-.reorder-posts-node {
+.reorder-posts-list:not(.reorder-posts-tree-is-dragging) .reorder-posts-node {
   cursor: grab !important;
 }
 
-.reorder-posts-tree-is-dragging .reorder-posts-tree-root:not(:has(> .is-drop-target)) .reorder-posts-node {
+.reorder-posts-list.reorder-posts-tree-is-dragging .reorder-posts-node {
+  cursor: move !important;
+}
+
+.reorder-posts-tree-is-dragging .reorder-posts-tree-root:not(:has(.is-drop-target, .reorder-posts-tree-placeholder)) .reorder-posts-node {
   cursor: no-drop !important;
 }
 
@@ -3685,8 +3689,8 @@ div.components-toolbar > div + div.has-left-divider::before {
 }
 
 .reorder-posts-placeholder {
-  background-color: var(--wp-admin-theme-color, #2271b1);
-  height: 2px;
+  background-color: #22B133;
+  height: 4px;
   position: absolute;
   right: 0;
   top: 0;
@@ -3707,15 +3711,15 @@ div.components-toolbar > div + div.has-left-divider::before {
 
 .reorder-posts-drag-preview {
   align-items: center;
-  background-color: var(--wp-admin-theme-color, #2271b1);
-  border-radius: 2px;
+  background-color: #333;
+  border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   color: #fff;
   display: inline-grid;
   font-size: 13px;
   gap: 8px;
   grid-template-columns: auto auto;
-  padding: 4px 8px;
+  padding: 8px 12px;
   pointer-events: none;
 }
 
@@ -3732,6 +3736,17 @@ div.components-toolbar > div + div.has-left-divider::before {
 .reorder-posts-drag-preview-icon svg,
 .reorder-posts-drag-preview-icon path {
   fill: currentColor;
+}
+
+.reorder-posts-load-more {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  border-top: 1px solid #c3c4c7;
+}
+
+.reorder-posts-load-more-button {
+  min-width: 120px;
 }
 
 .reorder-posts-interface {

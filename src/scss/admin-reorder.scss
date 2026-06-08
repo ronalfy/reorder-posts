@@ -3,6 +3,7 @@
 @use "reorder/node";
 @use "reorder/placeholder";
 @use "reorder/drag-preview";
+@use "reorder/load-more";
 
 .reorder-posts-interface {
 	margin-top: 1rem;

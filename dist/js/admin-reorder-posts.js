@@ -976,16 +976,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @minoru/react-dnd-treeview */ "./node_modules/@minoru/react-dnd-treeview/dist/index.js");
-/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @minoru/react-dnd-treeview */ "./node_modules/@minoru/react-dnd-treeview/dist/index.js");
+/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./src/ts/react/views/reorder/store.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+
+
 
 
 
@@ -1006,41 +1015,73 @@ var calculateIndent = function calculateIndent(depth, hasChild) {
   return calculatedIndent;
 };
 var CustomNode = function CustomNode(props) {
-  var _props$node = props.node,
-    id = _props$node.id,
-    droppable = _props$node.droppable;
-  var indent = calculateIndent(props.depth, props.hasChild);
-  var handleToggle = function handleToggle(e) {
-    e.stopPropagation();
-    props.onToggle(props.node.id);
-  };
-  var dragOverProps = (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_3__.useDragOver)(id, props.isOpen, props.onToggle);
-  var nodeClassName = ["tree-node", _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.node, props.isDropTarget ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeIsDropTarget : "", props.isDragging ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeIsDragging : ""].filter(Boolean).join(" ");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", _objectSpread(_objectSpread({
+  var _props$node$data;
+  var nodeId = Number(props.node.id);
+  var showExpand = props.hasChild || Boolean((_props$node$data = props.node.data) === null || _props$node$data === void 0 ? void 0 : _props$node$data.has_children);
+  var isChildrenLoading = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.useSelect)(function (selectStore) {
+    var store = (0,_store__WEBPACK_IMPORTED_MODULE_6__.getBoundSelectors)(selectStore);
+    return store.isNodeChildrenLoading(nodeId);
+  }, [nodeId]);
+  var indent = calculateIndent(props.depth, showExpand);
+  var handleToggle = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.n) {
+        case 0:
+          _context.n = 1;
+          return (0,_store__WEBPACK_IMPORTED_MODULE_6__.ensureChildrenLoaded)(nodeId);
+        case 1:
+          props.onToggle();
+        case 2:
+          return _context.a(2);
+      }
+    }, _callee);
+  })), [nodeId, props.onToggle]);
+  var handleDragOverOpen = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (targetId) {
+    void _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.n) {
+          case 0:
+            _context2.n = 1;
+            return (0,_store__WEBPACK_IMPORTED_MODULE_6__.ensureChildrenLoaded)(Number(targetId));
+          case 1:
+            props.onToggle();
+          case 2:
+            return _context2.a(2);
+        }
+      }, _callee2);
+    }))();
+  }, [props.onToggle]);
+  var dragOverProps = (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_4__.useDragOver)(nodeId, props.isOpen, handleDragOverOpen);
+  var nodeClassName = ["tree-node", _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.node, props.isDropTarget ? _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeIsDropTarget : "", props.isDragging ? _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeIsDragging : ""].filter(Boolean).join(" ");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", _objectSpread(_objectSpread({
     className: nodeClassName
   }, dragOverProps), {}, {
-    children: [props.hasChild && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpandWrap,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+    children: [showExpand && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeExpandWrap,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         type: "button",
-        className: "".concat(_classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpand, " ").concat(props.isOpen ? _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeExpandOpen : ""),
-        onClick: handleToggle,
+        className: "".concat(_classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeExpand, " ").concat(props.isOpen ? _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeExpandOpen : ""),
+        onClick: function onClick(e) {
+          e.stopPropagation();
+          void handleToggle();
+        },
+        disabled: isChildrenLoading,
         "aria-expanded": props.isOpen,
         "aria-label": props.isOpen ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Collapse", "metronet-reorder-posts") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Expand", "metronet-reorder-posts"),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
+        children: isChildrenLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Spinner, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Icon, {
           icon: "arrow-right",
           size: 20
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeContent,
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeContent,
       style: {
         paddingInlineStart: indent
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeLabelWrap,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          className: _classes__WEBPACK_IMPORTED_MODULE_4__.reorderClasses.nodeLabel,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabelWrap,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabel,
           children: props.node.text
         })
       })
@@ -1139,7 +1180,9 @@ var reorderClasses = {
   placeholder: "reorder-posts-placeholder",
   dragPreview: "reorder-posts-drag-preview",
   dragPreviewIcon: "reorder-posts-drag-preview-icon",
-  dragPreviewLabel: "reorder-posts-drag-preview-label"
+  dragPreviewLabel: "reorder-posts-drag-preview-label",
+  loadMoreWrap: "reorder-posts-load-more",
+  loadMoreButton: "reorder-posts-load-more-button"
 };
 
 /***/ },
@@ -1231,18 +1274,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @minoru/react-dnd-treeview */ "./node_modules/@minoru/react-dnd-treeview/dist/index.js");
 /* harmony import */ var react_dnd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dnd */ "./node_modules/react-dnd/dist/core/DndProvider.js");
-/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
-/* harmony import */ var _CustomNode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CustomNode */ "./src/ts/react/views/reorder/CustomNode.tsx");
-/* harmony import */ var _Placeholder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Placeholder */ "./src/ts/react/views/reorder/Placeholder.tsx");
-/* harmony import */ var _CustomDragPreview__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CustomDragPreview */ "./src/ts/react/views/reorder/CustomDragPreview.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _classes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./classes */ "./src/ts/react/views/reorder/classes.ts");
+/* harmony import */ var _CustomNode__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CustomNode */ "./src/ts/react/views/reorder/CustomNode.tsx");
+/* harmony import */ var _Placeholder__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Placeholder */ "./src/ts/react/views/reorder/Placeholder.tsx");
+/* harmony import */ var _CustomDragPreview__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CustomDragPreview */ "./src/ts/react/views/reorder/CustomDragPreview.tsx");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store */ "./src/ts/react/views/reorder/store.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -1251,103 +1295,140 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var postsToTreeNodes = function postsToTreeNodes(posts, hierarchical) {
-  var childCounts = posts.reduce(function (counts, post) {
-    var _post$parent;
-    var parentId = (_post$parent = post.parent) !== null && _post$parent !== void 0 ? _post$parent : 0;
-    counts[parentId] = (counts[parentId] || 0) + 1;
-    return counts;
-  }, {});
-  return posts.map(function (post) {
-    var _post$parent2, _childCounts$post$id;
-    return {
-      id: post.id,
-      parent: (_post$parent2 = post.parent) !== null && _post$parent2 !== void 0 ? _post$parent2 : 0,
-      text: post.title,
-      data: post,
-      droppable: hierarchical || ((_childCounts$post$id = childCounts[post.id]) !== null && _childCounts$post$id !== void 0 ? _childCounts$post$id : 0) > 0
-    };
-  });
-};
+
+
+
+
 var List = function List(_ref) {
-  var data = _ref.data,
-    _ref$hierarchical = _ref.hierarchical,
+  var _ref$hierarchical = _ref.hierarchical,
     hierarchical = _ref$hierarchical === void 0 ? false : _ref$hierarchical;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      return postsToTreeNodes(data, hierarchical);
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    treeData = _useState2[0],
-    setTreeData = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isDragging = _useState4[0],
-    setIsDragging = _useState4[1];
-  var handleDrop = function handleDrop(newTree) {
-    setTreeData(newTree);
-  };
-  var listClassName = ["reorder-posts-list", isDragging ? _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.treeDragging : ""].filter(Boolean).join(" ");
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+  var reorderDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_store__WEBPACK_IMPORTED_MODULE_10__.store);
+  var _useSelect = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(function (selectStore) {
+      var store = (0,_store__WEBPACK_IMPORTED_MODULE_10__.getBoundSelectors)(selectStore);
+      return {
+        treeModels: store.getTreeModels(),
+        openIds: store.getOpenIds(),
+        isDragging: store.getIsDragging(),
+        hasMoreRoots: store.getHasMoreRoots(),
+        isLoadingMore: store.getIsLoadingMore()
+      };
+    }, []),
+    treeModels = _useSelect.treeModels,
+    openIds = _useSelect.openIds,
+    isDragging = _useSelect.isDragging,
+    hasMoreRoots = _useSelect.hasMoreRoots,
+    isLoadingMore = _useSelect.isLoadingMore;
+  var handleDrop = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (newTree) {
+    reorderDispatch.applyTreeDrop(newTree);
+  }, [reorderDispatch]);
+  var handleDragStart = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    reorderDispatch.setDragging(true);
+  }, [reorderDispatch]);
+  var handleDragEnd = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    reorderDispatch.setDragging(false);
+  }, [reorderDispatch]);
+  var handleChangeOpen = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (ids) {
+    reorderDispatch.setOpenIds(ids.map(Number));
+  }, [reorderDispatch]);
+  var handleLoadMore = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    void (0,_store__WEBPACK_IMPORTED_MODULE_10__.loadMoreRoots)();
+  }, []);
+  var renderNode = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (node, _ref2) {
+    var depth = _ref2.depth,
+      isOpen = _ref2.isOpen,
+      onToggle = _ref2.onToggle,
+      isDropTarget = _ref2.isDropTarget,
+      nodeIsDragging = _ref2.isDragging,
+      hasChild = _ref2.hasChild;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_CustomNode__WEBPACK_IMPORTED_MODULE_7__.CustomNode, {
+      node: node,
+      depth: depth,
+      isOpen: isOpen,
+      hasChild: hasChild,
+      isDropTarget: isDropTarget,
+      isDragging: nodeIsDragging,
+      onToggle: onToggle
+    });
+  }, []);
+  var dragPreviewRender = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (monitorProps) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_CustomDragPreview__WEBPACK_IMPORTED_MODULE_9__.CustomDragPreview, {
+      monitorProps: monitorProps
+    });
+  }, []);
+  var canDrop = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (tree, _ref3) {
+    var _dragSource$parent;
+    var dragSource = _ref3.dragSource,
+      dropTargetId = _ref3.dropTargetId;
+    if (!dragSource) {
+      return false;
+    }
+    var dragId = Number(dragSource.id);
+    var targetId = Number(dropTargetId);
+    var dragParentId = Number((_dragSource$parent = dragSource.parent) !== null && _dragSource$parent !== void 0 ? _dragSource$parent : 0);
+    if (dragId === targetId) {
+      return false;
+    }
+    if ((0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.isAncestor)(tree, dragId, targetId)) {
+      return false;
+    }
+    if (!hierarchical) {
+      return dragParentId === targetId;
+    }
+
+    // Reorder among siblings (dropTargetId is the shared parent, including root).
+    if (dragParentId === targetId) {
+      return true;
+    }
+
+    // Move to top level or nest under another page.
+    return true;
+  }, [hierarchical]);
+  var placeholderRender = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (node, _ref4) {
+    var depth = _ref4.depth;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Placeholder__WEBPACK_IMPORTED_MODULE_8__.Placeholder, {
+      node: node,
+      depth: depth
+    });
+  }, []);
+  var listClassName = ["reorder-posts-list", isDragging ? _classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.treeDragging : ""].filter(Boolean).join(" ");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
     className: listClassName,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_dnd__WEBPACK_IMPORTED_MODULE_2__.DndProvider, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_dnd__WEBPACK_IMPORTED_MODULE_2__.DndProvider, {
       backend: _minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.MultiBackend,
       options: (0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.getBackendOptions)(),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.Tree, {
-        tree: treeData,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.Tree, {
+        tree: treeModels,
         rootId: 0,
         sort: false,
+        insertDroppableFirst: false,
+        initialOpen: openIds,
+        onChangeOpen: handleChangeOpen,
         onDrop: handleDrop,
-        onDragStart: function onDragStart() {
-          return setIsDragging(true);
-        },
-        onDragEnd: function onDragEnd() {
-          return setIsDragging(false);
-        },
-        render: function render(node, _ref2) {
-          var depth = _ref2.depth,
-            isOpen = _ref2.isOpen,
-            onToggle = _ref2.onToggle,
-            isDropTarget = _ref2.isDropTarget,
-            isDragging = _ref2.isDragging,
-            hasChild = _ref2.hasChild;
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CustomNode__WEBPACK_IMPORTED_MODULE_4__.CustomNode, {
-            node: node,
-            depth: depth,
-            isOpen: isOpen,
-            hasChild: hasChild,
-            isDropTarget: isDropTarget,
-            isDragging: isDragging,
-            onToggle: onToggle
-          });
-        },
-        dragPreviewRender: function dragPreviewRender(monitorProps) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CustomDragPreview__WEBPACK_IMPORTED_MODULE_6__.CustomDragPreview, {
-            monitorProps: monitorProps
-          });
-        },
+        onDragStart: handleDragStart,
+        onDragEnd: handleDragEnd,
+        render: renderNode,
+        dragPreviewRender: dragPreviewRender,
         classes: {
-          root: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.treeRoot,
-          draggingSource: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.draggingSource,
-          placeholder: _classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.placeholderContainer,
-          dropTarget: "".concat(_classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.dropTarget, " ").concat(_classes__WEBPACK_IMPORTED_MODULE_3__.reorderClasses.canDrop)
+          root: _classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.treeRoot,
+          draggingSource: _classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.draggingSource,
+          placeholder: _classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.placeholderContainer,
+          dropTarget: "".concat(_classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.dropTarget, " ").concat(_classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.canDrop)
         },
-        canDrop: function canDrop(tree, _ref3) {
-          var dragSource = _ref3.dragSource,
-            dropTargetId = _ref3.dropTargetId;
-          if ((dragSource === null || dragSource === void 0 ? void 0 : dragSource.parent) === dropTargetId) {
-            return true;
-          }
-        },
+        canDrop: canDrop,
         dropTargetOffset: 10,
-        placeholderRender: function placeholderRender(node, _ref4) {
-          var depth = _ref4.depth;
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Placeholder__WEBPACK_IMPORTED_MODULE_5__.Placeholder, {
-            node: node,
-            depth: depth
-          });
-        }
+        placeholderRender: placeholderRender
       })
-    })
+    }), hasMoreRoots && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+      className: _classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.loadMoreWrap,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+        variant: "secondary",
+        className: _classes__WEBPACK_IMPORTED_MODULE_6__.reorderClasses.loadMoreButton,
+        onClick: handleLoadMore,
+        disabled: isLoadingMore || isDragging,
+        isBusy: isLoadingMore,
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Load More", "metronet-reorder-posts")
+      })
+    })]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (List);
@@ -1366,103 +1447,581 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
-/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _mediaron_react_spinners__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mediaron/react-spinners */ "./node_modules/@mediaron/react-spinners/dist/index.mjs");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./list */ "./src/ts/react/views/reorder/list.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
-function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
-function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
-function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
-function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _mediaron_react_spinners__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mediaron/react-spinners */ "./node_modules/@mediaron/react-spinners/dist/index.mjs");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./list */ "./src/ts/react/views/reorder/list.tsx");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store */ "./src/ts/react/views/reorder/store.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
 
 
 
-var Reorder = function Reorder(_ref) {
-  var postsPerPage = _ref.postsPerPage,
-    postType = _ref.postType,
-    nonce = _ref.nonce,
-    hierarchical = _ref.hierarchical,
-    postStatus = _ref.postStatus;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState2 = _slicedToArray(_useState, 2),
-    posts = _useState2[0],
-    setPosts = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
-    _useState4 = _slicedToArray(_useState3, 2),
-    loading = _useState4[0],
-    setLoading = _useState4[1];
+
+
+var Reorder = function Reorder(props) {
+  var hierarchical = props.hierarchical;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var getPosts = /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-        var response;
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.n) {
-            case 0:
-              _context.n = 1;
-              return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-                path: "/reorder-posts/v1/posts?post_type=".concat(postType, "&posts_per_page=").concat(postsPerPage, "&offset=0&order=ASC&nonce=").concat(nonce, "&hierarchical=").concat(hierarchical, "&post_status=").concat(postStatus.join(",")),
-                method: "GET"
-              }).then(function (response) {
-                return response;
-              })["catch"](function (error) {
-                console.error(error);
-                return {
-                  posts: []
-                };
-              })["finally"](function () {
-                setLoading(false);
-              });
-            case 1:
-              response = _context.v;
-              setPosts(response.posts || []);
-            case 2:
-              return _context.a(2);
-          }
-        }, _callee);
-      }));
-      return function getPosts() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-    getPosts();
+    void (0,_store__WEBPACK_IMPORTED_MODULE_6__.initializeReorderStore)(props);
   }, []);
-  var getLoading = function getLoading() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "loading",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Loading posts...", "metronet-reorder-posts")
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_mediaron_react_spinners__WEBPACK_IMPORTED_MODULE_2__.ReactSpinner1, {
+  var _useSelect = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.useSelect)(function (selectStore) {
+      var store = (0,_store__WEBPACK_IMPORTED_MODULE_6__.getBoundSelectors)(selectStore);
+      return {
+        isLoading: store.getIsInitialLoading(),
+        error: store.getError()
+      };
+    }, []),
+    isLoading = _useSelect.isLoading,
+    error = _useSelect.error;
+  if (isLoading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: "reorder-posts-loading",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("h2", {
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)("Loading posts...", "metronet-reorder-posts")
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_mediaron_react_spinners__WEBPACK_IMPORTED_MODULE_3__.ReactSpinner1, {
         size: 100,
         speedMultiplier: 1.2
       })]
     });
-  };
-  if (loading) {
-    return getLoading();
   }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-      children: "Reorder"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_list__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      data: posts,
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    className: "reorder-posts-interface",
+    children: [error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Notice, {
+      status: "error",
+      isDismissible: false,
+      children: error
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_list__WEBPACK_IMPORTED_MODULE_5__["default"], {
       hierarchical: hierarchical
     })]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reorder);
+
+/***/ },
+
+/***/ "./src/ts/react/views/reorder/store.ts"
+/*!*********************************************!*\
+  !*** ./src/ts/react/views/reorder/store.ts ***!
+  \*********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   STORE_NAME: () => (/* binding */ STORE_NAME),
+/* harmony export */   actions: () => (/* binding */ actions),
+/* harmony export */   ensureChildrenLoaded: () => (/* binding */ ensureChildrenLoaded),
+/* harmony export */   fetchRootPosts: () => (/* binding */ fetchRootPosts),
+/* harmony export */   getBoundSelectors: () => (/* binding */ getBoundSelectors),
+/* harmony export */   initializeReorderStore: () => (/* binding */ initializeReorderStore),
+/* harmony export */   loadMoreRoots: () => (/* binding */ loadMoreRoots),
+/* harmony export */   selectors: () => (/* binding */ selectors),
+/* harmony export */   store: () => (/* binding */ store),
+/* harmony export */   treeOrderToModels: () => (/* binding */ treeOrderToModels)
+/* harmony export */ });
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
+/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
+
+var STORE_NAME = "reorder-posts/data";
+var ROOT_PARENT_ID = 0;
+var CHILDREN_PER_PAGE = 500;
+var DEFAULT_CHILDREN_META = {
+  isLoading: false,
+  isLoaded: false,
+  hasMore: false,
+  offset: 0
+};
+var DEFAULT_STATE = {
+  config: null,
+  nodesById: {},
+  treeOrder: _defineProperty({}, ROOT_PARENT_ID, []),
+  openIds: [],
+  rootPagination: {
+    offset: 0,
+    hasMore: false,
+    isLoading: false,
+    isLoadingMore: false,
+    total: 0
+  },
+  childrenMeta: {},
+  isDragging: false,
+  error: null
+};
+var isNodeDroppable = function isNodeDroppable(node, state) {
+  var _state$config;
+  if ((_state$config = state.config) !== null && _state$config !== void 0 && _state$config.hierarchical) {
+    return true;
+  }
+  if (node.has_children) {
+    return true;
+  }
+  var childOrder = state.treeOrder[node.id];
+  return Boolean(childOrder && childOrder.length > 0);
+};
+var treeOrderToModels = function treeOrderToModels(state) {
+  var models = [];
+  var visited = new Set();
+  var _walk = function walk(parentId) {
+    var _state$treeOrder$pare;
+    var ids = (_state$treeOrder$pare = state.treeOrder[parentId]) !== null && _state$treeOrder$pare !== void 0 ? _state$treeOrder$pare : [];
+    ids.forEach(function (id) {
+      var _node$parent;
+      if (visited.has(id)) {
+        return;
+      }
+      visited.add(id);
+      var node = state.nodesById[id];
+      if (!node) {
+        return;
+      }
+      models.push({
+        id: node.id,
+        parent: (_node$parent = node.parent) !== null && _node$parent !== void 0 ? _node$parent : ROOT_PARENT_ID,
+        text: node.title,
+        data: node,
+        droppable: isNodeDroppable(node, state)
+      });
+      _walk(id);
+    });
+  };
+  _walk(ROOT_PARENT_ID);
+  return models;
+};
+var treeToTreeOrder = function treeToTreeOrder(tree) {
+  var order = {};
+  tree.forEach(function (node) {
+    var _node$parent2;
+    var parentId = Number((_node$parent2 = node.parent) !== null && _node$parent2 !== void 0 ? _node$parent2 : ROOT_PARENT_ID);
+    if (!order[parentId]) {
+      order[parentId] = [];
+    }
+    order[parentId].push(Number(node.id));
+  });
+  return order;
+};
+var buildPostsPath = function buildPostsPath(config, offset) {
+  var _options$postsPerPage;
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var params = new URLSearchParams({
+    post_type: config.postType,
+    posts_per_page: String((_options$postsPerPage = options.postsPerPage) !== null && _options$postsPerPage !== void 0 ? _options$postsPerPage : config.postsPerPage),
+    offset: String(offset),
+    order: "ASC",
+    nonce: config.nonce,
+    hierarchical: config.hierarchical ? "true" : "false",
+    post_status: config.postStatus.join(",")
+  });
+  if (config.hierarchical && options.parentId !== undefined) {
+    params.set("parent_id", String(options.parentId));
+  }
+  return "/reorder-posts/v1/posts?".concat(params.toString());
+};
+var mergePostsIntoState = function mergePostsIntoState(state, posts, listParentId) {
+  var bucketByPostParent = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  var nodesById = _objectSpread({}, state.nodesById);
+  var treeOrder = _objectSpread({}, state.treeOrder);
+  posts.forEach(function (post) {
+    var _post$parent, _post$parent2, _treeOrder$bucketPare;
+    var bucketParentId = bucketByPostParent ? Number((_post$parent = post.parent) !== null && _post$parent !== void 0 ? _post$parent : ROOT_PARENT_ID) : listParentId;
+    nodesById[post.id] = _objectSpread(_objectSpread({}, post), {}, {
+      parent: (_post$parent2 = post.parent) !== null && _post$parent2 !== void 0 ? _post$parent2 : listParentId
+    });
+    var siblingIds = (_treeOrder$bucketPare = treeOrder[bucketParentId]) !== null && _treeOrder$bucketPare !== void 0 ? _treeOrder$bucketPare : [];
+    if (!siblingIds.includes(post.id)) {
+      treeOrder[bucketParentId] = [].concat(_toConsumableArray(siblingIds), [post.id]);
+    }
+  });
+  return _objectSpread(_objectSpread({}, state), {}, {
+    nodesById: nodesById,
+    treeOrder: treeOrder
+  });
+};
+var actions = {
+  setConfig: function setConfig(config) {
+    return {
+      type: "SET_CONFIG",
+      config: config
+    };
+  },
+  setFetchingRoots: function setFetchingRoots(isLoading, isLoadingMore) {
+    return {
+      type: "SET_FETCHING_ROOTS",
+      isLoading: isLoading,
+      isLoadingMore: isLoadingMore
+    };
+  },
+  receiveRootPosts: function receiveRootPosts(response) {
+    return {
+      type: "RECEIVE_ROOT_POSTS",
+      response: response
+    };
+  },
+  setFetchingChildren: function setFetchingChildren(parentId, isLoading) {
+    return {
+      type: "SET_FETCHING_CHILDREN",
+      parentId: parentId,
+      isLoading: isLoading
+    };
+  },
+  receiveChildPosts: function receiveChildPosts(parentId, response) {
+    return {
+      type: "RECEIVE_CHILD_POSTS",
+      parentId: parentId,
+      response: response
+    };
+  },
+  setOpenIds: function setOpenIds(openIds) {
+    return {
+      type: "SET_OPEN_IDS",
+      openIds: openIds
+    };
+  },
+  applyTreeDrop: function applyTreeDrop(tree) {
+    return {
+      type: "APPLY_TREE_DROP",
+      tree: tree
+    };
+  },
+  setDragging: function setDragging(isDragging) {
+    return {
+      type: "SET_DRAGGING",
+      isDragging: isDragging
+    };
+  },
+  setError: function setError(error) {
+    return {
+      type: "SET_ERROR",
+      error: error
+    };
+  }
+};
+var reducer = function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_STATE;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  switch (action.type) {
+    case "SET_CONFIG":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        config: action.config
+      });
+    case "SET_FETCHING_ROOTS":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        rootPagination: _objectSpread(_objectSpread({}, state.rootPagination), {}, {
+          isLoading: action.isLoading,
+          isLoadingMore: action.isLoadingMore
+        }),
+        error: null
+      });
+    case "RECEIVE_ROOT_POSTS":
+      {
+        var _state$config2;
+        var listParentId = ROOT_PARENT_ID;
+        var merged = mergePostsIntoState(state, action.response.posts, listParentId, !((_state$config2 = state.config) !== null && _state$config2 !== void 0 && _state$config2.hierarchical));
+        return _objectSpread(_objectSpread({}, merged), {}, {
+          rootPagination: {
+            offset: action.response.offset,
+            hasMore: action.response.more_posts,
+            isLoading: false,
+            isLoadingMore: false,
+            total: action.response.total
+          }
+        });
+      }
+    case "SET_FETCHING_CHILDREN":
+      {
+        var _state$childrenMeta$a;
+        var current = (_state$childrenMeta$a = state.childrenMeta[action.parentId]) !== null && _state$childrenMeta$a !== void 0 ? _state$childrenMeta$a : DEFAULT_CHILDREN_META;
+        return _objectSpread(_objectSpread({}, state), {}, {
+          childrenMeta: _objectSpread(_objectSpread({}, state.childrenMeta), {}, _defineProperty({}, action.parentId, _objectSpread(_objectSpread({}, current), {}, {
+            isLoading: action.isLoading
+          })))
+        });
+      }
+    case "RECEIVE_CHILD_POSTS":
+      {
+        var _state$childrenMeta$a2;
+        var _merged = mergePostsIntoState(state, action.response.posts, action.parentId);
+        var _current = (_state$childrenMeta$a2 = state.childrenMeta[action.parentId]) !== null && _state$childrenMeta$a2 !== void 0 ? _state$childrenMeta$a2 : DEFAULT_CHILDREN_META;
+        return _objectSpread(_objectSpread({}, _merged), {}, {
+          childrenMeta: _objectSpread(_objectSpread({}, _merged.childrenMeta), {}, _defineProperty({}, action.parentId, _objectSpread(_objectSpread({}, _current), {}, {
+            isLoading: false,
+            isLoaded: !action.response.more_posts,
+            hasMore: action.response.more_posts,
+            offset: action.response.offset
+          })))
+        });
+      }
+    case "SET_OPEN_IDS":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        openIds: action.openIds
+      });
+    case "APPLY_TREE_DROP":
+      {
+        var nodesById = _objectSpread({}, state.nodesById);
+        action.tree.forEach(function (node) {
+          var id = Number(node.id);
+          if (nodesById[id]) {
+            var _node$parent3;
+            nodesById[id] = _objectSpread(_objectSpread({}, nodesById[id]), {}, {
+              parent: Number((_node$parent3 = node.parent) !== null && _node$parent3 !== void 0 ? _node$parent3 : ROOT_PARENT_ID)
+            });
+          }
+        });
+        return _objectSpread(_objectSpread({}, state), {}, {
+          nodesById: nodesById,
+          treeOrder: treeToTreeOrder(action.tree)
+        });
+      }
+    case "SET_DRAGGING":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isDragging: action.isDragging
+      });
+    case "SET_ERROR":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        error: action.error,
+        rootPagination: _objectSpread(_objectSpread({}, state.rootPagination), {}, {
+          isLoading: false,
+          isLoadingMore: false
+        })
+      });
+    default:
+      return state;
+  }
+};
+var selectors = {
+  getConfig: function getConfig(state) {
+    return state.config;
+  },
+  getTreeModels: function getTreeModels(state) {
+    return treeOrderToModels(state);
+  },
+  getOpenIds: function getOpenIds(state) {
+    return state.openIds;
+  },
+  getRootOffset: function getRootOffset(state) {
+    return state.rootPagination.offset;
+  },
+  getIsInitialLoading: function getIsInitialLoading(state) {
+    return state.rootPagination.isLoading;
+  },
+  getHasMoreRoots: function getHasMoreRoots(state) {
+    return state.rootPagination.hasMore;
+  },
+  getIsLoadingMore: function getIsLoadingMore(state) {
+    return state.rootPagination.isLoadingMore;
+  },
+  getIsDragging: function getIsDragging(state) {
+    return state.isDragging;
+  },
+  getError: function getError(state) {
+    return state.error;
+  },
+  getNodeById: function getNodeById(state, nodeId) {
+    return state.nodesById[nodeId];
+  },
+  getChildrenMeta: function getChildrenMeta(state, parentId) {
+    var _state$childrenMeta$p;
+    return (_state$childrenMeta$p = state.childrenMeta[parentId]) !== null && _state$childrenMeta$p !== void 0 ? _state$childrenMeta$p : DEFAULT_CHILDREN_META;
+  },
+  isNodeChildrenLoading: function isNodeChildrenLoading(state, parentId) {
+    var _state$childrenMeta$p2, _state$childrenMeta$p3;
+    return (_state$childrenMeta$p2 = (_state$childrenMeta$p3 = state.childrenMeta[parentId]) === null || _state$childrenMeta$p3 === void 0 ? void 0 : _state$childrenMeta$p3.isLoading) !== null && _state$childrenMeta$p2 !== void 0 ? _state$childrenMeta$p2 : false;
+  }
+};
+var store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.createReduxStore)(STORE_NAME, {
+  reducer: reducer,
+  actions: actions,
+  selectors: selectors
+});
+(0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.register)(store);
+var getBoundSelectors = function getBoundSelectors(selectStore) {
+  return selectStore(STORE_NAME);
+};
+var storeSelect = function storeSelect() {
+  return (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.select)(store);
+};
+var storeDispatch = function storeDispatch() {
+  return (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_1__.dispatch)(store);
+};
+function fetchRootPosts(_x, _x2) {
+  return _fetchRootPosts.apply(this, arguments);
+}
+function _fetchRootPosts() {
+  _fetchRootPosts = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee(offset, isLoadingMore) {
+    var storeActions, config, response, _t;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.p = _context.n) {
+        case 0:
+          storeActions = storeDispatch();
+          config = storeSelect().getConfig();
+          if (config) {
+            _context.n = 1;
+            break;
+          }
+          return _context.a(2);
+        case 1:
+          storeActions.setFetchingRoots(!isLoadingMore, isLoadingMore);
+          storeActions.setError(null);
+          _context.p = 2;
+          _context.n = 3;
+          return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+            path: buildPostsPath(config, offset, {
+              parentId: config.hierarchical ? ROOT_PARENT_ID : undefined
+            }),
+            method: "GET"
+          });
+        case 3:
+          response = _context.v;
+          storeActions.receiveRootPosts(response);
+          _context.n = 5;
+          break;
+        case 4:
+          _context.p = 4;
+          _t = _context.v;
+          console.error(_t);
+          storeActions.setError(_t instanceof Error ? _t.message : "Failed to load posts.");
+        case 5:
+          return _context.a(2);
+      }
+    }, _callee, null, [[2, 4]]);
+  }));
+  return _fetchRootPosts.apply(this, arguments);
+}
+function initializeReorderStore(_x3) {
+  return _initializeReorderStore.apply(this, arguments);
+}
+function _initializeReorderStore() {
+  _initializeReorderStore = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(config) {
+    var storeActions;
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
+        case 0:
+          storeActions = storeDispatch();
+          storeActions.setConfig(config);
+          _context2.n = 1;
+          return fetchRootPosts(0, false);
+        case 1:
+          return _context2.a(2);
+      }
+    }, _callee2);
+  }));
+  return _initializeReorderStore.apply(this, arguments);
+}
+function loadMoreRoots() {
+  return _loadMoreRoots.apply(this, arguments);
+}
+function _loadMoreRoots() {
+  _loadMoreRoots = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+    var storeSelector;
+    return _regenerator().w(function (_context3) {
+      while (1) switch (_context3.n) {
+        case 0:
+          storeSelector = storeSelect();
+          if (!(!storeSelector.getHasMoreRoots() || storeSelector.getIsLoadingMore() || storeSelector.getIsInitialLoading())) {
+            _context3.n = 1;
+            break;
+          }
+          return _context3.a(2);
+        case 1:
+          _context3.n = 2;
+          return fetchRootPosts(storeSelector.getRootOffset(), true);
+        case 2:
+          return _context3.a(2);
+      }
+    }, _callee3);
+  }));
+  return _loadMoreRoots.apply(this, arguments);
+}
+function ensureChildrenLoaded(_x4) {
+  return _ensureChildrenLoaded.apply(this, arguments);
+}
+function _ensureChildrenLoaded() {
+  _ensureChildrenLoaded = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(parentId) {
+    var storeSelector, storeActions, config, node, meta, currentMeta, response, _t2;
+    return _regenerator().w(function (_context4) {
+      while (1) switch (_context4.p = _context4.n) {
+        case 0:
+          storeSelector = storeSelect();
+          storeActions = storeDispatch();
+          config = storeSelector.getConfig();
+          node = storeSelector.getNodeById(parentId);
+          if (!(!(config !== null && config !== void 0 && config.hierarchical) || !(node !== null && node !== void 0 && node.has_children))) {
+            _context4.n = 1;
+            break;
+          }
+          return _context4.a(2);
+        case 1:
+          meta = storeSelector.getChildrenMeta(parentId);
+          if (!(meta.isLoading || meta.isLoaded)) {
+            _context4.n = 2;
+            break;
+          }
+          return _context4.a(2);
+        case 2:
+          storeActions.setFetchingChildren(parentId, true);
+          storeActions.setError(null);
+          _context4.p = 3;
+          currentMeta = meta;
+        case 4:
+          if (currentMeta.isLoaded) {
+            _context4.n = 6;
+            break;
+          }
+          _context4.n = 5;
+          return _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
+            path: buildPostsPath(config, currentMeta.offset, {
+              parentId: parentId,
+              postsPerPage: CHILDREN_PER_PAGE
+            }),
+            method: "GET"
+          });
+        case 5:
+          response = _context4.v;
+          storeActions.receiveChildPosts(parentId, response);
+          currentMeta = storeSelect().getChildrenMeta(parentId);
+          _context4.n = 4;
+          break;
+        case 6:
+          _context4.n = 8;
+          break;
+        case 7:
+          _context4.p = 7;
+          _t2 = _context4.v;
+          console.error(_t2);
+          storeActions.setFetchingChildren(parentId, false);
+          storeActions.setError(_t2 instanceof Error ? _t2.message : "Failed to load child posts.");
+        case 8:
+          return _context4.a(2);
+      }
+    }, _callee4, null, [[3, 7]]);
+  }));
+  return _ensureChildrenLoaded.apply(this, arguments);
+}
+
 
 /***/ },
 
@@ -2295,6 +2854,16 @@ module.exports = window["wp"]["apiFetch"];
 (module) {
 
 module.exports = window["wp"]["components"];
+
+/***/ },
+
+/***/ "@wordpress/data"
+/*!******************************!*\
+  !*** external ["wp","data"] ***!
+  \******************************/
+(module) {
+
+module.exports = window["wp"]["data"];
 
 /***/ },
 
@@ -27186,9 +27755,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "react-dom/client");
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom_client__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _reorder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reorder */ "./src/ts/react/views/reorder/reorder.tsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store */ "./src/ts/react/views/reorder/store.ts");
+/* harmony import */ var _reorder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reorder */ "./src/ts/react/views/reorder/reorder.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -27203,7 +27774,7 @@ if (container) {
   var hierarchical = container.getAttribute("data-hierarchical");
   var postStatus = container.getAttribute("data-post-status");
   var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_reorder__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_reorder__WEBPACK_IMPORTED_MODULE_3__["default"], {
     postsPerPage: parseInt(postsPerPage || "50"),
     postType: postType || "",
     nonce: nonce || "",

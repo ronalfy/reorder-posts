@@ -1,11 +1,11 @@
-import React from "react";
-import { Icon } from "@wordpress/components";
-import { chevronRight } from "@wordpress/icons";
+import React, { useCallback } from "react";
+import { Icon, Spinner } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+import { useSelect } from "@wordpress/data";
 import { NodeModel, useDragOver } from "@minoru/react-dnd-treeview";
 import { reorderClasses } from "./classes";
 import { PostData } from "./types";
-import { TypeIcon } from "./TypeIcon";
+import { ensureChildrenLoaded, getBoundSelectors } from "./store";
 
 type Props = {
 	node: NodeModel<PostData>;
@@ -14,33 +14,53 @@ type Props = {
 	hasChild: boolean;
 	isDropTarget: boolean;
 	isDragging: boolean;
-	onToggle: (id: NodeModel["id"]) => void;
+	onToggle: () => void;
 };
 
 const calculateIndent = (depth: number, hasChild: boolean) => {
 	let calculatedIndent = 0;
 	let calculatedDepth = 0;
 	calculatedDepth = depth + 1;
-	if ( depth === 0 && ! hasChild ) {
+	if (depth === 0 && !hasChild) {
 		calculatedDepth = 0;
 	}
 	calculatedIndent = calculatedDepth * 30;
-	if ( hasChild ) {
+	if (hasChild) {
 		calculatedIndent -= 40;
 	}
 	return calculatedIndent;
 };
 
 export const CustomNode: React.FC<Props> = (props) => {
-	const { id, droppable } = props.node;
-	const indent = calculateIndent( props.depth, props.hasChild );
+	const nodeId = Number(props.node.id);
+	const showExpand = props.hasChild || Boolean(props.node.data?.has_children);
 
-	const handleToggle = (e: React.MouseEvent) => {
-		e.stopPropagation();
-		props.onToggle(props.node.id);
-	};
+	const isChildrenLoading = useSelect(
+		(selectStore) => {
+			const store = getBoundSelectors(selectStore);
+			return store.isNodeChildrenLoading(nodeId);
+		},
+		[nodeId]
+	);
 
-	const dragOverProps = useDragOver(id, props.isOpen, props.onToggle);
+	const indent = calculateIndent(props.depth, showExpand);
+
+	const handleToggle = useCallback(async () => {
+		await ensureChildrenLoaded(nodeId);
+		props.onToggle();
+	}, [nodeId, props.onToggle]);
+
+	const handleDragOverOpen = useCallback(
+		(targetId: NodeModel["id"]) => {
+			void (async () => {
+				await ensureChildrenLoaded(Number(targetId));
+				props.onToggle();
+			})();
+		},
+		[props.onToggle]
+	);
+
+	const dragOverProps = useDragOver(nodeId, props.isOpen, handleDragOverOpen);
 
 	const nodeClassName = [
 		"tree-node",
@@ -56,14 +76,18 @@ export const CustomNode: React.FC<Props> = (props) => {
 			className={nodeClassName}
 			{...dragOverProps}
 		>
-			{props.hasChild && (
+			{showExpand && (
 				<div className={reorderClasses.nodeExpandWrap}>
 					<button
 						type="button"
 						className={`${reorderClasses.nodeExpand} ${
 							props.isOpen ? reorderClasses.nodeExpandOpen : ""
 						}`}
-						onClick={handleToggle}
+						onClick={(e) => {
+							e.stopPropagation();
+							void handleToggle();
+						}}
+						disabled={isChildrenLoading}
 						aria-expanded={props.isOpen}
 						aria-label={
 							props.isOpen
@@ -71,10 +95,14 @@ export const CustomNode: React.FC<Props> = (props) => {
 								: __("Expand", "metronet-reorder-posts")
 						}
 					>
-						<Icon
-							icon="arrow-right"
-							size={20}
-						/>
+						{isChildrenLoading ? (
+							<Spinner />
+						) : (
+							<Icon
+								icon="arrow-right"
+								size={20}
+							/>
+						)}
 					</button>
 				</div>
 			)}

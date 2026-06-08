@@ -37,6 +37,7 @@
 		"@types/react": "^18.0.14",
 		"@types/react-dom": "^18.3.7",
 		"@wordpress/api-fetch": "^7.47.0",
+		"@wordpress/data": "^10.47.0",
 		"@wordpress/components": "^28.9.0",
 		"@wordpress/icons": "^10.0.0",
 		"@wordpress/dependency-extraction-webpack-plugin": "^6.47.0",
