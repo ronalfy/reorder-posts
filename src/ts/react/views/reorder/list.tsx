@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import {
 	Tree,
 	getBackendOptions,
@@ -24,6 +24,7 @@ import {
 
 const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
 	const reorderDispatch = useDispatch(store) as ReorderStoreDispatch;
+	const [dragSourceId, setDragSourceId] = useState<number | null>(null);
 
 	const { treeModels, openIds, isDragging, hasMoreRoots, isLoadingMore } =
 		useSelect((selectStore) => {
@@ -36,6 +37,17 @@ const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
 				isLoadingMore: store.getIsLoadingMore(),
 			};
 		}, []);
+
+	const draggedNode = useSelect(
+		(selectStore) => {
+			if (dragSourceId === null) {
+				return null;
+			}
+
+			return getBoundSelectors(selectStore).getNodeModelById(dragSourceId) ?? null;
+		},
+		[dragSourceId]
+	);
 
 	const handleDrop = useCallback(
 		(newTree: NodeModel<PostData>[]) => {
@@ -50,6 +62,7 @@ const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
 
 	const handleDragEnd = useCallback(() => {
 		reorderDispatch.setDragging(false);
+		setDragSourceId(null);
 	}, [reorderDispatch]);
 
 	const handleChangeOpen = useCallback(
@@ -90,9 +103,10 @@ const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
 				isDropTarget={isDropTarget}
 				isDragging={nodeIsDragging}
 				onToggle={onToggle}
+				draggedNode={draggedNode ?? undefined}
 			/>
 		),
-		[]
+		[draggedNode]
 	);
 
 	const dragPreviewRender = useCallback(
@@ -116,6 +130,7 @@ const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
 			}
 		) => {
 			if (!dragSource) {
+				setDragSourceId(null);
 				return false;
 			}
 
@@ -124,16 +139,21 @@ const List = ({ hierarchical = false }: { hierarchical?: boolean }) => {
 			const dragParentId = Number(dragSource.parent ?? 0);
 
 			if (dragId === targetId) {
+				setDragSourceId(null);
 				return false;
 			}
 
 			if (isAncestor(tree, dragId, targetId)) {
+				setDragSourceId(null);
 				return false;
 			}
 
 			if (!hierarchical) {
+				setDragSourceId(null);
 				return dragParentId === targetId;
 			}
+
+			setDragSourceId(dragId);
 
 			// Reorder among siblings (dropTargetId is the shared parent, including root).
 			if (dragParentId === targetId) {

@@ -1078,12 +1078,15 @@ var CustomNode = function CustomNode(props) {
       style: {
         paddingInlineStart: indent
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabelWrap,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
           className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabel,
           children: props.node.text
-        })
+        }), props.isDropTarget && props.draggedNode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          className: _classes__WEBPACK_IMPORTED_MODULE_5__.reorderClasses.nodeLabel,
+          children: props.draggedNode.text
+        })]
       })
     })]
   }));
@@ -1287,6 +1290,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./store */ "./src/ts/react/views/reorder/store.ts");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__);
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
@@ -1303,6 +1312,10 @@ var List = function List(_ref) {
   var _ref$hierarchical = _ref.hierarchical,
     hierarchical = _ref$hierarchical === void 0 ? false : _ref$hierarchical;
   var reorderDispatch = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useDispatch)(_store__WEBPACK_IMPORTED_MODULE_10__.store);
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState2 = _slicedToArray(_useState, 2),
+    dragSourceId = _useState2[0],
+    setDragSourceId = _useState2[1];
   var _useSelect = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(function (selectStore) {
       var store = (0,_store__WEBPACK_IMPORTED_MODULE_10__.getBoundSelectors)(selectStore);
       return {
@@ -1318,6 +1331,13 @@ var List = function List(_ref) {
     isDragging = _useSelect.isDragging,
     hasMoreRoots = _useSelect.hasMoreRoots,
     isLoadingMore = _useSelect.isLoadingMore;
+  var draggedNode = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(function (selectStore) {
+    var _getBoundSelectors$ge;
+    if (dragSourceId === null) {
+      return null;
+    }
+    return (_getBoundSelectors$ge = (0,_store__WEBPACK_IMPORTED_MODULE_10__.getBoundSelectors)(selectStore).getNodeModelById(dragSourceId)) !== null && _getBoundSelectors$ge !== void 0 ? _getBoundSelectors$ge : null;
+  }, [dragSourceId]);
   var handleDrop = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (newTree) {
     reorderDispatch.applyTreeDrop(newTree);
   }, [reorderDispatch]);
@@ -1326,6 +1346,7 @@ var List = function List(_ref) {
   }, [reorderDispatch]);
   var handleDragEnd = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
     reorderDispatch.setDragging(false);
+    setDragSourceId(null);
   }, [reorderDispatch]);
   var handleChangeOpen = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (ids) {
     reorderDispatch.setOpenIds(ids.map(Number));
@@ -1347,9 +1368,10 @@ var List = function List(_ref) {
       hasChild: hasChild,
       isDropTarget: isDropTarget,
       isDragging: nodeIsDragging,
-      onToggle: onToggle
+      onToggle: onToggle,
+      draggedNode: draggedNode !== null && draggedNode !== void 0 ? draggedNode : undefined
     });
-  }, []);
+  }, [draggedNode]);
   var dragPreviewRender = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (monitorProps) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_CustomDragPreview__WEBPACK_IMPORTED_MODULE_9__.CustomDragPreview, {
       monitorProps: monitorProps
@@ -1360,20 +1382,25 @@ var List = function List(_ref) {
     var dragSource = _ref3.dragSource,
       dropTargetId = _ref3.dropTargetId;
     if (!dragSource) {
+      setDragSourceId(null);
       return false;
     }
     var dragId = Number(dragSource.id);
     var targetId = Number(dropTargetId);
     var dragParentId = Number((_dragSource$parent = dragSource.parent) !== null && _dragSource$parent !== void 0 ? _dragSource$parent : 0);
     if (dragId === targetId) {
+      setDragSourceId(null);
       return false;
     }
     if ((0,_minoru_react_dnd_treeview__WEBPACK_IMPORTED_MODULE_1__.isAncestor)(tree, dragId, targetId)) {
+      setDragSourceId(null);
       return false;
     }
     if (!hierarchical) {
+      setDragSourceId(null);
       return dragParentId === targetId;
     }
+    setDragSourceId(dragId);
 
     // Reorder among siblings (dropTargetId is the shared parent, including root).
     if (dragParentId === targetId) {
@@ -1557,6 +1584,7 @@ var DEFAULT_CHILDREN_META = {
   offset: 0
 };
 var DEFAULT_STATE = {
+  isInitialLoading: true,
   config: null,
   nodesById: {},
   treeOrder: _defineProperty({}, ROOT_PARENT_ID, []),
@@ -1662,6 +1690,12 @@ var mergePostsIntoState = function mergePostsIntoState(state, posts, listParentI
   });
 };
 var actions = {
+  setInitialLoading: function setInitialLoading(isInitialLoading) {
+    return {
+      type: "SET_INITIAL_LOADING",
+      isInitialLoading: isInitialLoading
+    };
+  },
   setConfig: function setConfig(config) {
     return {
       type: "SET_CONFIG",
@@ -1724,6 +1758,10 @@ var reducer = function reducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : DEFAULT_STATE;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
+    case "SET_INITIAL_LOADING":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        isInitialLoading: action.isInitialLoading
+      });
     case "SET_CONFIG":
       return _objectSpread(_objectSpread({}, state), {}, {
         config: action.config
@@ -1813,6 +1851,9 @@ var reducer = function reducer() {
   }
 };
 var selectors = {
+  getIsInitialLoading: function getIsInitialLoading(state) {
+    return state.isInitialLoading;
+  },
   getConfig: function getConfig(state) {
     return state.config;
   },
@@ -1824,9 +1865,6 @@ var selectors = {
   },
   getRootOffset: function getRootOffset(state) {
     return state.rootPagination.offset;
-  },
-  getIsInitialLoading: function getIsInitialLoading(state) {
-    return state.rootPagination.isLoading;
   },
   getHasMoreRoots: function getHasMoreRoots(state) {
     return state.rootPagination.hasMore;
@@ -1842,6 +1880,20 @@ var selectors = {
   },
   getNodeById: function getNodeById(state, nodeId) {
     return state.nodesById[nodeId];
+  },
+  getNodeModelById: function getNodeModelById(state, nodeId) {
+    var _node$parent4;
+    var node = state.nodesById[nodeId];
+    if (!node) {
+      return undefined;
+    }
+    return {
+      id: node.id,
+      parent: (_node$parent4 = node.parent) !== null && _node$parent4 !== void 0 ? _node$parent4 : ROOT_PARENT_ID,
+      text: node.title,
+      data: node,
+      droppable: isNodeDroppable(node, state)
+    };
   },
   getChildrenMeta: function getChildrenMeta(state, parentId) {
     var _state$childrenMeta$p;
@@ -1905,9 +1957,13 @@ function _fetchRootPosts() {
           console.error(_t);
           storeActions.setError(_t instanceof Error ? _t.message : "Failed to load posts.");
         case 5:
+          _context.p = 5;
+          storeActions.setInitialLoading(false);
+          return _context.f(5);
+        case 6:
           return _context.a(2);
       }
-    }, _callee, null, [[2, 4]]);
+    }, _callee, null, [[2, 4, 5, 6]]);
   }));
   return _fetchRootPosts.apply(this, arguments);
 }

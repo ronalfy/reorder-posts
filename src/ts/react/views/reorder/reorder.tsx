@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelect } from "@wordpress/data";
 import { Notice } from "@wordpress/components";
 import { ReactSpinner1 } from "@mediaron/react-spinners";
@@ -11,7 +11,7 @@ type Props = ReorderConfig;
 
 const Reorder = (props: Props) => {
 	const { hierarchical } = props;
-
+	
 	useEffect(() => {
 		void initializeReorderStore(props);
 	}, []);

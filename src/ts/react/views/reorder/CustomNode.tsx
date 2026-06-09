@@ -15,6 +15,7 @@ type Props = {
 	isDropTarget: boolean;
 	isDragging: boolean;
 	onToggle: () => void;
+	draggedNode?: NodeModel<PostData>;
 };
 
 const calculateIndent = (depth: number, hasChild: boolean) => {
@@ -115,6 +116,11 @@ export const CustomNode: React.FC<Props> = (props) => {
 					<span className={reorderClasses.nodeLabel}>
 						{props.node.text}
 					</span>
+					{props.isDropTarget && props.draggedNode && (
+						<span className={reorderClasses.nodeLabel}>
+							{props.draggedNode.text}
+						</span>
+					)}
 				</div>
 			</div>
 		</div>

@@ -14,6 +14,7 @@ const ROOT_PARENT_ID = 0;
 const CHILDREN_PER_PAGE = 500;
 
 type ReorderState = {
+	isInitialLoading: boolean;
 	config: ReorderConfig | null;
 	nodesById: Record<number, PostData>;
 	treeOrder: Record<number, number[]>;
@@ -38,6 +39,7 @@ const DEFAULT_CHILDREN_META: ChildrenMeta = {
 };
 
 const DEFAULT_STATE: ReorderState = {
+	isInitialLoading: true,
 	config: null,
 	nodesById: {},
 	treeOrder: { [ROOT_PARENT_ID]: [] },
@@ -169,6 +171,12 @@ const mergePostsIntoState = (
 };
 
 const actions = {
+	setInitialLoading(isInitialLoading: boolean) {
+		return {
+			type: "SET_INITIAL_LOADING",
+			isInitialLoading,
+		} as const;
+	},
 	setConfig(config: ReorderConfig) {
 		return {
 			type: "SET_CONFIG",
@@ -233,6 +241,11 @@ const reducer = (
 	action: ReturnType<(typeof actions)[keyof typeof actions]>
 ): ReorderState => {
 	switch (action.type) {
+		case "SET_INITIAL_LOADING":
+			return {
+				...state,
+				isInitialLoading: action.isInitialLoading,
+			};
 		case "SET_CONFIG":
 			return {
 				...state,
@@ -346,6 +359,9 @@ const reducer = (
 };
 
 const selectors = {
+	getIsInitialLoading(state: ReorderState) {
+		return state.isInitialLoading;
+	},
 	getConfig(state: ReorderState) {
 		return state.config;
 	},
@@ -357,9 +373,6 @@ const selectors = {
 	},
 	getRootOffset(state: ReorderState) {
 		return state.rootPagination.offset;
-	},
-	getIsInitialLoading(state: ReorderState) {
-		return state.rootPagination.isLoading;
 	},
 	getHasMoreRoots(state: ReorderState) {
 		return state.rootPagination.hasMore;
@@ -375,6 +388,20 @@ const selectors = {
 	},
 	getNodeById(state: ReorderState, nodeId: number) {
 		return state.nodesById[nodeId];
+	},
+	getNodeModelById(state: ReorderState, nodeId: number) {
+		const node = state.nodesById[nodeId];
+		if (!node) {
+			return undefined;
+		}
+
+		return {
+			id: node.id,
+			parent: node.parent ?? ROOT_PARENT_ID,
+			text: node.title,
+			data: node,
+			droppable: isNodeDroppable(node, state),
+		};
 	},
 	getChildrenMeta(state: ReorderState, parentId: number) {
 		return state.childrenMeta[parentId] ?? DEFAULT_CHILDREN_META;
@@ -401,16 +428,17 @@ export type ReorderStoreDispatch = {
 };
 
 export type BoundSelectors = {
+	getIsInitialLoading: () => boolean;
 	getConfig: () => ReorderConfig | null;
 	getTreeModels: () => NodeModel<PostData>[];
 	getOpenIds: () => number[];
 	getRootOffset: () => number;
-	getIsInitialLoading: () => boolean;
 	getHasMoreRoots: () => boolean;
 	getIsLoadingMore: () => boolean;
 	getIsDragging: () => boolean;
 	getError: () => string | null;
 	getNodeById: (nodeId: number) => PostData | undefined;
+	getNodeModelById: (nodeId: number) => NodeModel<PostData> | undefined;
 	getChildrenMeta: (parentId: number) => ChildrenMeta;
 	isNodeChildrenLoading: (parentId: number) => boolean;
 };
@@ -453,6 +481,8 @@ export async function fetchRootPosts(
 		storeActions.setError(
 			error instanceof Error ? error.message : "Failed to load posts."
 		);
+	} finally {
+		storeActions.setInitialLoading(false);
 	}
 }
 

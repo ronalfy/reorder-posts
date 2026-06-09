@@ -3563,6 +3563,7 @@ div.components-toolbar > div + div.has-left-divider::before {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: #FFF;
 }
 .reorder-posts-tree-root li {
   margin: 0;
@@ -3601,11 +3602,11 @@ div.components-toolbar > div + div.has-left-divider::before {
 }
 
 .reorder-posts-node.is-drop-target {
-  background-color: var(--wp-admin-theme-color, #2271b1);
-  color: #fff;
+  background-color: #e7e7e7;
+  color: #1d2327;
 }
 .reorder-posts-node.is-drop-target .reorder-posts-node-label {
-  color: #fff;
+  color: #1d2327;
 }
 
 .reorder-posts-list:not(.reorder-posts-tree-is-dragging) .reorder-posts-node {
@@ -3721,6 +3722,7 @@ div.components-toolbar > div + div.has-left-divider::before {
   grid-template-columns: auto auto;
   padding: 8px 12px;
   pointer-events: none;
+  opacity: 0.7;
 }
 
 .reorder-posts-drag-preview-icon,
